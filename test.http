@@ -1,0 +1,14 @@
+POST http://localhost:5237/api/AccountDetails
+Content-Type: application/json
+
+{
+  "Name": "User",
+  "Email": "user@gmail.com",
+  "Password": "12345",
+  "CreatedAt": "2005-07-21"
+}
+
+
+###
+
+GET http://localhost:5237/api/AccountDetails

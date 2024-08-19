@@ -1,0 +1,25 @@
+﻿@page "/"
+
+<PageTitle>Login Page</PageTitle>
+
+<div class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
+  <form class="text-center w-25">
+    <h1 class="mb-5">Sign In</h1>
+    <div class="mb-4">
+      <label for="userId" class="form-label">Username</label>
+      <input type="userId" class="form-control mx-auto w-75" id="userId1" aria-describedby="userId2" placeholder="Username">
+      <div id="userId" class="mt-2">
+        <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot Your Username?</a>
+      </div>
+    </div>
+    <div class="mb-4">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control mx-auto w-75" id="exampleInputPassword1" placeholder="Password">
+      <div id="emailHelp" class="mt-2">
+        <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot Your Password?</a>
+      </div>
+    </div>
+    <a class="btn btn-primary" href="/HomeManager" role="button">Sign In</a>
+    <p class="mt-4">New To Password Manager? <a href="/CreateAccount" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Create An Account</a></p>
+  </form>
+</div>

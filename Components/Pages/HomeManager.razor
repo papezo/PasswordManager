@@ -1,0 +1,34 @@
+﻿@page "/HomeManager"
+
+<PageTitle>Home Manager</PageTitle>
+
+    <div class="container-fluid d-flex p-0">
+        <!-- Sidebar -->
+        <nav class="d-flex justify-content-start navbar navbar-light bg-light flex-column vh-100 ">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <ul class="navbar-nav flex-column mb-2">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Disabled</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="w-100">
+            <div class="d-flex flex-column justify-content-center align-items-center p-5 vh-100 bg-dark text-white">
+                <h1 class="text-center">Welcome To Password Manager</h1>
+                <p class="mt-4 text-center">You can manage your passwords here</p>
+                <a class="btn btn-primary mt-4" href="/AddPassword" role="button">Add Password</a>
+                <div class="border w-50 h-50 mt-4"></div>
+            </div>
+        </main>
+    </div>
