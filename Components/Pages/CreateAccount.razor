@@ -10,56 +10,65 @@
 <PageTitle>Create Account</PageTitle>
 
 <div class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
-    <EditForm Model="@user" OnValidSubmit="HandleValidSubmit" class="text-center w-25" FormName="CreateAccount">
+    <EditForm Model="@user" OnValidSubmit="RegisterAccount" class="text-center w-25" FormName="CreateAccount">
+        <DataAnnotationsValidator />
+
         <h1 class="mb-5">Create an Account</h1>
 
-        <div class="form-group">
-            <label for="name">Name</label>
-            <InputText id="name" @bind-Value="user.Name" class="form-control" />
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                <h4 class="alert-heading">Error!</h4>
+                <p>@errorMessage</p>
+                <hr>
+                <p class="mb-0">Please try again.</p>
+            </div>
+        }
+
+        <div class="form-group mb-3">
+            <label for="name" class="mb-3">Name</label>
+            <InputText id="name" @bind-Value="user.Name" class="form-control w-75 mx-auto text-center" placeholder="Username" />
+            <ValidationMessage For="@(() => user.Name)" />
         </div>
 
-        <div class="form-group">
-            <label for="email">Email</label>
-            <InputText id="email" @bind-Value="user.Email" class="form-control" />
+        <div class="form-group mb-3">
+            <label for="email" class="mb-3">Email</label>
+            <InputText id="email" @bind-Value="user.Email" class="form-control w-75 mx-auto text-center" placeholder="Email"/>
+            <ValidationMessage For="@(() => user.Email)" />
         </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <InputText id="password" @bind-Value="user.Password" type="password" class="form-control" />
-        </div>
+        <div class="form-group mb-3">
+            <label for="password" class="mb-3">Password</label>
+            <InputText id="password" @bind-Value="user.Password" type="password" class="form-control w-75 mx-auto text-center" placeholder="Password"/>
+            <ValidationMessage For="@(() => user.Password)" />
+        </div> 
 
         <button type="submit" class="btn btn-primary mt-4">Create Account</button>
     </EditForm>
 </div>
 
 @code {
-    private AccountDetails user = new AccountDetails();
+    [SupplyParameterFromForm]
+    private AccountDetails user { get; set; } = new AccountDetails();
 
-    protected override void OnInitialized()
+    private string successMessage { get; set; } = string.Empty;
+    private string errorMessage { get; set; } = string.Empty;
+
+    private async Task RegisterAccount()
     {
-        // Inicializace modelu
-        user = new AccountDetails();
-    }
 
-    private async Task HandleValidSubmit()
-    {
-        Console.WriteLine($"Email: {user.Email}");
-        Console.WriteLine($"Username: {user.Name}");
-        Console.WriteLine($"Password: {user.Password}");
+        var httpClient = HttpClientFactory.CreateClient("ApiClient");
+        var response = await httpClient.PostAsJsonAsync("api/AccountDetails", user);
 
-        if (user != null)
+        if (response.IsSuccessStatusCode)
         {
-            var httpClient = HttpClientFactory.CreateClient("ApiClient");
-            var response = await httpClient.PostAsJsonAsync("api/AccountDetails", user);
-            
-            if (response.IsSuccessStatusCode)
-            {
-                NavigationManager.NavigateTo("/HomeManager");
-            }
-            else
-            {
-                Console.WriteLine("Error: " + response.ReasonPhrase);
-            }
+            await Task.Delay(3000);
+            NavigationManager.NavigateTo("/HomeManager");
+        }
+        else
+        {
+            successMessage = string.Empty;
+            errorMessage = $"Error: {response.ReasonPhrase}";
         }
     }
 }
