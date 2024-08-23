@@ -28,47 +28,57 @@
 
 
 
-<div class="d-flex justify-content-center align-items-center vh-100 bg-dark text-white">
-    <EditForm Model="@user" OnValidSubmit="HandleLogin" class="text-center w-25" FormName="loginForm">
-        <h1 class="mb-5">Sign In</h1>
+<div class="d-flex vh-100">
+    <!-- Levý div -->
+    <div class="d-flex justify-content-center align-items-center bg-dark text-white" style="width: 50%;">
+        <EditForm Model="@user" OnValidSubmit="HandleLogin" class="text-center w-75" FormName="loginForm">
+            <h1 class="mb-5">Sign In</h1>
 
-        @if (!string.IsNullOrEmpty(message))
-        {
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
-                    <use xlink:href="#exclamation-triangle-fill" />
-                </svg>
-                <div>@message</div>
+            @if (!string.IsNullOrEmpty(message))
+            {
+                <div class="alert alert-danger d-flex align-items-center" role="alert">
+                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                        <use xlink:href="#exclamation-triangle-fill" />
+                    </svg>
+                    <div>@message</div>
+                </div>
+            }
+
+            <div class="mb-4 w-50 mx-auto">
+                <label for="email" class="form-label">Username</label>
+                <InputText id="email" @bind-Value="user.Username" class="form-control" placeholder="Username" />
+
+                <div id="forgotEmail" class="mt-2">
+                    <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot
+                        Your Username?</a>
+                </div>
             </div>
-        }
 
-        <div class="mb-4 w-75 mx-auto">
-            <label for="email" class="form-label">Username</label>
-            <InputText id="email" @bind-Value="user.Username" class="form-control" placeholder="Username" />
+            <div class="mb-4 w-50 mx-auto">
+                <label for="password" class="form-label">Password</label>
+                <InputText id="password" @bind-Value="user.Password" class="form-control" placeholder="Password"
+                    type="password" />
 
-            <div id="forgotEmail" class="mt-2">
-                <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot
-                    Your Username?</a>
+                <div id="emailHelp" class="mt-2">
+                    <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot
+                        Your Password?</a>
+                </div>
             </div>
-        </div>
 
-        <div class="mb-4 w-75 mx-auto">
-            <label for="password" class="form-label">Password</label>
-            <InputText id="password" @bind-Value="user.Password" class="form-control" placeholder="Password"
-                type="password" />
+            <button type="submit" class="btn btn-primary">Sign In</button>
+            <p class="mt-4">New To Password Manager? <a href="/CreateAccount"
+                    class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Create An
+                    Account</a></p>
+        </EditForm>
+    </div>
 
-            <div id="emailHelp" class="mt-2">
-                <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot
-                    Your Password?</a>
-            </div>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Sign In</button>
-        <p class="mt-4">New To Password Manager? <a href="/CreateAccount"
-                class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Create An
-                Account</a></p>
-    </EditForm>
+    <!-- Pravý div -->
+    <div class="d-flex justify-content-center align-items-center bg-dark" style="width: 50%;">
+        <img src="/images/z13.jpg" alt="Logo" class="img-fluid" style="height: 100vh; width: auto; object-fit: cover; ">
+    </div>
 </div>
+
+
 
 @code {
     [SupplyParameterFromForm]

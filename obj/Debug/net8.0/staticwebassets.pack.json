@@ -1,12 +1,16 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
+      "Id": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
       "PackagePath": "staticwebassets\\WebApp.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\app.css",
+      "Id": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\z13.jpg",
+      "PackagePath": "staticwebassets\\images\\z13.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",

@@ -1,24 +1,25 @@
 using Microsoft.EntityFrameworkCore;
 using WebApp.Models;
-using Microsoft.AspNetCore.Mvc;
-using WebApp.Data;  
-using System.Threading.Tasks;
 
 namespace WebApp.Data
 {
     public class AccountDetailsContext : DbContext
-{
-    public AccountDetailsContext(DbContextOptions<AccountDetailsContext> options)
-        : base(options)
     {
+        public AccountDetailsContext(DbContextOptions<AccountDetailsContext> options)
+            : base(options)
+        {
+        }
+
+        // DbSet for AccountDetails
+        public DbSet<AccountDetails> AccountDetails { get; set; }
+
+        // DbSet for PasswordDetails
+        public DbSet<PasswordDetails> PasswordDetails { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<AccountDetails>().ToTable("AccountDetails");
+            modelBuilder.Entity<PasswordDetails>().ToTable("PasswordDetails");
+        }
     }
-
-    public DbSet<AccountDetails> AccountDetails { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<AccountDetails>().ToTable("AccountDetails");
-    }
-}
-
 }

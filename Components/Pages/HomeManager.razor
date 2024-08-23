@@ -2,33 +2,118 @@
 
 <PageTitle>Home Manager</PageTitle>
 
-    <div class="container-fluid d-flex p-0">
-        <!-- Sidebar -->
-        <nav class="d-flex justify-content-start navbar navbar-light bg-light flex-column vh-100 ">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <ul class="navbar-nav flex-column mb-2">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Disabled</a>
-                </li>
-            </ul>
-        </nav>
+<div class="container-fluid d-flex p-0">
+    <nav class="d-flex justify-content-start align-items-center navbar bg-dark flex-column vh-100 border-end">
+        <a class="navbar-brand p-2 text-white ms-2" href="#">Management</a>
+        <ul class="navbar-nav flex-column mb-2">
+            <li class="nav-item p-2 mt-3 ">                
+                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link active text-white ms-4" aria-current="page" href="#">Dashboard</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2">
+                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="PasswordsPage">Passwords</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2">
+                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Security Tips</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2">
+                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Validator</a>
+                </i>
+            </li>
+            <p class="navbar-brand p-2 text-white mt-5 ms-3">Settings</p>
+            <li class="nav-item p-2 mt-2">
+                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Account</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2">
+                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Support</a>
+                </i>
+            </li>
+        </ul>
+    </nav>
 
-        <!-- Main Content -->
-        <main class="w-100">
-            <div class="d-flex flex-column justify-content-center align-items-center p-5 vh-100 bg-dark text-white">
-                <h1 class="text-center">Welcome To Password Manager</h1>
-                <p class="mt-4 text-center">You can manage your passwords here</p>
-                <a class="btn btn-primary mt-4" href="/AddPassword" role="button">Add Password</a>
-                <div class="border w-50 h-50 mt-4"></div>
+<main class="w-100">
+    <div class="d-flex flex-column align-items-center p-3 bg-dark text-white vh-100">
+        <h1 class="text-center">Dashboard</h1>
+        <div class="container-fluid text-dark bg-light mt-4 p-4 rounded w-100" style="flex-grow: 1;">
+            <!-- First Row -->
+            <div class="row mb-3" style="height: 25%;">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">Security Overview</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                            <p>Secure Passwords: </p>
+                            <p>Insecure Passwords: </p>
+                            <p>Two-Factor Authentication: </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">Security Notification</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                            <p>Weak Passwords: </p>
+                            <p>Outdated Passwords: </p>
+                            <p>Duplicated Passwords: </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header">API Integrations</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="card h-100">
+                        <div class="card-header">Security Recommendations</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="card h-100">
+                        <div class="card-header">Security Insights</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-3">
+                    <div class="card h-100">
+                        <div class="card-header">Tools</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                            <button class="btn btn-primary w-100 mb-2">Add New Password</button>
+                            <button class="btn btn-secondary w-100 mb-2">Password Generator</button>
+                            <button class="btn btn-outline-primary w-100">Export/Import</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main>
+            <br><br><br><br><br><br><br>
+            <!-- Second Row -->
+            <div class="row" style="height: 40%;">
+                <div class="col-md-12">
+                    <div class="card h-100">
+                        <div class="card-header">Statistics</div>
+                        <div class="card-body d-flex justify-content-center align-items-center">
+                            <p>Graph ?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</main>
+</div>

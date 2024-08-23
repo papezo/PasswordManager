@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xSyjz/27eE7kE9KuJVg378WNBzSSlyg1eCVRUfr6ea4=",
+  "Hash": "9nZsaSAWfq2zWQ0He5GdaW32qaAoCbYggYjuIQLKgzA=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "WebApp\\wwwroot",
       "Source": "WebApp",
-      "ContentRoot": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\WebApp.styles.css",
+      "Identity": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\WebApp.styles.css",
       "SourceId": "WebApp",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "WebApp.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\WebApp.styles.css"
+      "OriginalItemSpec": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\WebApp.styles.css"
     },
     {
-      "Identity": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
+      "Identity": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
       "SourceId": "WebApp",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "WebApp.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css"
+      "OriginalItemSpec": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\app.css",
+      "Identity": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\app.css",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\",
+      "ContentRoot": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\",
       "BasePath": "_content/WebApp",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\app.css"
+    },
+    {
+      "Identity": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\z13.jpg",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "c:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "images/z13.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\z13.jpg"
     }
   ]
 }
