@@ -4,7 +4,7 @@ Content-Type: application/json
 {
   "Name": "User",
   "Email": "user@gmail.com",
-  "Password": "12345",
+  "Password": "12345fgdfgdgdffg",
   "CreatedAt": "2005-07-21"
 }
 
@@ -12,3 +12,5 @@ Content-Type: application/json
 ###
 
 GET http://localhost:5237/api/AccountDetails
+###
+DELETE http://localhost:5237/api/AccountDetails/2

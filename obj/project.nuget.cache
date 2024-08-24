@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2fwebxjjLyDV2xrgD7VEPi48eSg2hiCNunsVUQQHqT54Fj/O43dJw6is0Gp/kVYPEH9d8C9r9K8kLwqlisbPqg==",
+  "dgSpecHash": "Xo5WJ6+VlwbQZqOU540LifDUaCv3cZ1RKyZ6M6zmeaxB7WUk5uAcV8YGzBThgAu8sUIV3+5G8fT2+M3u5O+BlA==",
   "success": true,
   "projectFilePath": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\papez\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.8\\microsoft.aspnetcore.components.analyzers.8.0.8.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\8.0.8\\microsoft.aspnetcore.components.forms.8.0.8.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.8\\microsoft.aspnetcore.components.web.8.0.8.nupkg.sha512",
+    "C:\\Users\\papez\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.server\\8.0.8\\microsoft.aspnetcore.components.webassembly.server.8.0.8.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.8\\microsoft.aspnetcore.metadata.8.0.8.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.3.3\\microsoft.codeanalysis.analyzers.3.3.3.nupkg.sha512",

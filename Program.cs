@@ -8,15 +8,23 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AccountDetailsContext>(options =>
     options.UseSqlite("Data Source=WebAppDb.db"));
 
-// Add services for Razor Pages and Blazor Components
-builder.Services.AddRazorComponents();
+// Přidání Razor Components a povolení interaktivního serverového renderování
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents(); // Toto je klíčové pro správnou konfiguraci
+
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddHttpClient("ApiClient", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5237/"); // Set to your API base address
+    client.BaseAddress = new Uri("http://localhost:5237/"); // Změňte podle potřeby
 });
 
+// Přidejte antiforgery služby
+builder.Services.AddAntiforgery(options =>
+{
+    // Můžete nastavit volitelné možnosti zde
+    options.HeaderName = "X-CSRF-TOKEN";
+});
 
 var app = builder.Build();
 
@@ -30,20 +38,16 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-app.UseRouting();
-
-// Přidejte autentifikaci/autorizační middleware, pokud používáte
+// Přidejte autentifikaci/autorizační middleware
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Správné umístění antiforgery middleware mezi routingem a endpointy
-app.UseAntiforgery(); 
+// **Umístěte app.UseAntiforgery() zde, mezi UseRouting a UseEndpoints**
+app.UseAntiforgery();
 
-// Mapování API controllerů
 app.MapControllers();
-
-// Mapování Razor Pages nebo Razor Components, pokud je používáte
 app.MapRazorPages();
-app.MapRazorComponents<App>();
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 app.Run();
