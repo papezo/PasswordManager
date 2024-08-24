@@ -20,5 +20,6 @@ public class PasswordDetails
     [Required]
     public string? Description{get; set; }
     public DateTime CreatedAt {get; set; } = DateTime.Now;
+    public bool IsPasswordOld {get; set; }
 
 }

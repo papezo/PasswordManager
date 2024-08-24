@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Xo5WJ6+VlwbQZqOU540LifDUaCv3cZ1RKyZ6M6zmeaxB7WUk5uAcV8YGzBThgAu8sUIV3+5G8fT2+M3u5O+BlA==",
+  "dgSpecHash": "Fh+kPNUtcHroqZI3nwH10gJfBCcGc4yk+5alaF8TsNLnNHNkqOQ+xTuAaWd8uj/ZVg+ut3G0BLc5tM/XZKZhaQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
@@ -96,7 +96,8 @@
     "C:\\Users\\papez\\.nuget\\packages\\system.text.json\\8.0.4\\system.text.json.8.0.4.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\system.threading.channels\\6.0.0\\system.threading.channels.6.0.0.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\papez\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
+    "C:\\Users\\papez\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
+    "C:\\Users\\papez\\.nuget\\packages\\textcopy\\6.2.1\\textcopy.6.2.1.nupkg.sha512"
   ],
   "logs": []
 }

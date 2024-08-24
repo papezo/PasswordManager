@@ -212,3 +212,4 @@ C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp\bin\Debug\net8.0\BlazorDeb
 C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp\bin\Debug\net8.0\BlazorDebugProxy\Microsoft.SymbolStore.dll
 C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp\bin\Debug\net8.0\BlazorDebugProxy\Newtonsoft.Json.dll
 C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp\bin\Debug\net8.0\Microsoft.AspNetCore.Components.WebAssembly.Server.dll
+C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp\bin\Debug\net8.0\TextCopy.dll

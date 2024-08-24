@@ -1,0 +1,275 @@
+﻿@page "/Account"
+
+@rendermode InteractiveServer
+
+@using System.Text
+@using System.Text.Json
+@using WebApp.Models
+@using System.Net.Http
+@using System.Net.Http.Json
+
+
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Account</PageTitle>
+
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <nav class="d-flex flex-column bg-dark border-end" style="width: 160px;">
+        <a class="navbar-brand p-2 text-white ms-2 fs-5 mt-3" href="#">Management</a>
+        <ul class="navbar-nav flex-column mb-2">
+            <li class="nav-item p-2 mt-3 border-bottom border-top">
+                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link active text-white ms-4" aria-current="page" href="/HomeManager">Dashboard</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="PasswordsPage">Passwords</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Security Tips</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Validator</a>
+                </i>
+            </li>
+            <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
+            <li class="nav-item p-2 mt-2 border-bottom border-top">
+                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Account">Account</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="#">Support</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-box-arrow-left text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/">Log Out</a>
+                </i>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="w-100">
+        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
+            <h1 class="display-4">Account</h1>
+            <p class="lead">Manage your account settings</p>
+            <div class="container-fluid text-dark bg-light mt-4 p-4 rounded w-100" style="flex-grow: 1;">
+                <div class="row mb-3" style="height: 25%;">
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">Personal
+                                Informations
+                                <button type="submit" class="btn btn-primary w-25">Edit</button>
+                            </div>
+
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <p>Full Name: @user.Name</p>
+                                <p>Email Address: @user.Email</p>
+                                <p>Password: @user.Password</p>
+                                <p>Profile Picture: </p>
+                                <p>Address: </p>
+                                <p>Date Of Birth: </p>
+                                <hr>
+                                <p>Customer Id: </p>
+                                <p>Account Id:</p>
+                                <p>Dev Mode: Enabled</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-header">Change Password</div>
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <EditForm Model="@userPassword" OnValidSubmit="ChangePassword"
+                                    FormName="ChangePassword">
+                                    <div class="mb-3">
+                                        <label for="oldPassword" class="form-label">Old Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-lock"></i>
+                                            </span>
+                                            <InputText type="password" id="oldPassword" class="form-control"
+                                                @bind-Value="userPassword.Password" placeholder="Old Password" />
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="newPassword" class="form-label">New Password</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">
+                                                <i class="bi bi-lock"></i>
+                                            </span>
+                                            <InputText type="password" id="newPassword" class="form-control"
+                                                @bind-Value="userPassword.Password" placeholder="New Password" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <button type="submit" class="btn btn-primary w-100">Change Password</button>
+                                    </div>
+                                    <em class="d-flex align-items-center justify-content-center mt-3 italic-text">For
+                                        the security reasons, you can change the password one time per month</em>
+                                </EditForm>
+                                <!-- Additional content -->
+                                <div class="mt-4">
+                                    <h6>Need Help?</h6>
+                                    <p>If you encounter any issues while changing your password, please contact our 
+                                        <a href="#" class="text-decoration-none">support team</a> for assistance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100">
+                            <div class="card-header">2FA</div>
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <div class="mb-3">
+                                    <h5 class="card-title">Two-Factor Authentication</h5>
+                                    <p id="2fa-status" class="text-success">Enabled</p>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Set Up 2FA</h6>
+                                    <p>To enhance your account security, set up Two-Factor Authentication (2FA) by
+                                        following the instructions below.</p>
+                                    <button class="btn btn-primary" id="setup-2fa-btn">Set Up 2FA</button>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Manage 2FA</h6>
+                                    <button class="btn btn-secondary" id="manage-2fa-btn">Manage 2FA Settings</button>
+                                </div>
+                                <div class="mb-3">
+                                    <h6>Disable 2FA</h6>
+                                    <p>If you want to disable Two-Factor Authentication, click the button below. This
+                                        action will reduce the security of your account.</p>
+                                    <button class="btn btn-danger" id="disable-2fa-btn">Disable 2FA</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <div class="card h-100">
+                            <div class="card-header">Security Settings</div>
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <button class="btn btn-primary" id="view-activity">View Recent Activity</button>
+                                <button class="btn btn-primary mt-3" id="logout-dev">Log out From Other
+                                    Devices</button>
+                                <button class="btn btn-primary mt-3" id="backup-codes">Backup Codes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <div class="card h-100">
+                            <div class="card-header d-flex justify-content-between align-items-center">Notification Settings
+                                <button type="submit" class="btn btn-primary w-25">Manage</button>
+                            </div>
+
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <p>Email notifications: </p>
+                                <p>Notification Timing</p>
+                                <p>Alert Types: </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <div class="card h-100">
+                            <div class="card-header">Data Export and Import</div>
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <button class="btn btn-primary mt-3" id="logout-dev">Import Data</button>
+                                <button class="btn btn-secondary mt-3" id="backup-codes">Export Data</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <div class="card h-100">
+                            <div class="card-header">Backup and Restore</div>
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <button class="btn btn-primary mt-3" id="logout-dev">Backup Data</button>
+                                <button class="btn btn-danger mt-3" id="backup-codes">Restore Data</button>
+                                <button class="btn btn-secondary mt-3" id="backup-codes">Schedule Backup</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <div class="card h-100">
+                            <div class="card-header">Support and Contact</div>
+                            <div class="card-body d-flex flex-column justify-content-start">
+                                <div class="mb-3">
+                                    <h5>Help Center</h5>
+                                    <p>Find answers to common questions and troubleshoot issues.</p>
+                                    <a href="/help-center" class="btn btn-info">Visit Help Center</a>
+                                </div>
+                                <div class="mb-3">
+                                    <h5>Contact Us</h5>
+                                    <p>If you have any questions or need assistance, please fill out the contact form.
+                                    </p>
+                                    <a href="/contact-form" class="btn btn-primary">Contact Form</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                        <div class="card h-100">
+                            <div class="card-header">Billing</div>
+                            <div class="card-body d-flex flex-row justify-content-start card-content ps-5 mt-5">
+                                <div class="card-item ms-">
+                                    <h5 class="text-center">Billing Overview</h5>
+                                    <p class="text-center">View your current billing informations</p>
+                                    <a href="/billing-overview" class="btn btn-primary ms-4">View Overview</a>
+                                </div>
+
+                                <div class="card-item ms-4">
+                                    <h5 class="text-center">Payment Methods</h5>
+                                    <p class="text-center">Manage and update your payment methods.</p>
+                                    <a href="/payment-methods" class="btn btn-primary ms-4">Manage Payment</a>
+                                </div>
+
+                                <div class="card-item ms-4">
+                                    <h5 class="text-center">Subscription Plan</h5>
+                                    <p class="text-center">View details about your current subscription plan.</p>
+                                    <a href="/subscription-plan" class="btn btn-primary ms-5">View Subscription</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+@code {
+    private PasswordDetails userPassword { get; set; } = new PasswordDetails();
+    private AccountDetails user { get; set; } = new AccountDetails();
+    private bool Is2FAEnabled = false;
+
+    private int CustomerId;
+
+
+    private async Task ChangePassword()
+    {
+        var client = HttpClientFactory.CreateClient("API");
+        var response = await client.PostAsJsonAsync("api/Password/ChangePassword", userPassword);
+        if (response.IsSuccessStatusCode)
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Password Changed Successfully");
+        }
+        else
+        {
+            await JSRuntime.InvokeVoidAsync("alert", "Password Change Failed");
+        }
+    }
+
+    private int GenerateCustomerId()
+    {
+        Random random = new Random();
+        return random.Next(0, 9999);
+    }
+}

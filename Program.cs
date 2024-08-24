@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using TextCopy;
 using WebApp.Components;
 using WebApp.Data;
 
@@ -14,11 +15,16 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
+
 builder.Services.AddHttpClient("ApiClient", client =>
 {
     client.BaseAddress = new Uri("http://localhost:5237/"); // Změňte podle potřeby
 });
 
+var serviceCollection = builder.Services;
+#region InjectClipboard
+serviceCollection.InjectClipboard();
+#endregion
 // Přidejte antiforgery služby
 builder.Services.AddAntiforgery(options =>
 {
