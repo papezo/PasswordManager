@@ -5,6 +5,10 @@
     font-style: normal;
 }
 
+.italic-text {
+    font-style: italic;
+}
+
 h1:focus {
     outline: none;
 }
