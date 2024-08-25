@@ -1,9 +1,10 @@
 ﻿@page "/HomeManager"
+@using WebApp.Models
 
 <PageTitle>Home Manager</PageTitle>
 
 <div class="container-fluid d-flex p-0 min-vh-100">
-    <nav class="d-flex flex-column bg-dark border-end" style="width: 160px;">
+    <nav class="d-flex flex-column bg-dark border-end" style="width: 150px;">
         <a class="navbar-brand p-2 text-white ms-2 fs-5 mt-3" href="#">Management</a>
         <ul class="navbar-nav flex-column mb-2">
             <li class="nav-item p-2 mt-3 border-bottom border-top">                
@@ -18,12 +19,12 @@
             </li>
             <li class="nav-item p-2 mt-2 border-bottom">
                 <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="#">Security Tips</a>
+                    <a class="nav-link text-white ms-4" href="/SecurityTips">Security Tips</a>
                 </i>
             </li>
             <li class="nav-item p-2 mt-2 border-bottom">
                 <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="#">Validator</a>
+                    <a class="nav-link text-white ms-4" href="/Validator">Validator</a>
                 </i>
             </li>
             <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
@@ -34,7 +35,7 @@
             </li>
             <li class="nav-item p-2 mt-2 border-bottom">
                 <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="#">Support</a>
+                    <a class="nav-link text-white ms-4" href="/Support">Support</a>
                 </i>
             </li>
             <li class="nav-item p-2 mt-2 border-bottom">
@@ -47,57 +48,64 @@
 
 <main class="w-100">
     <div class="d-flex flex-column align-items-center p-4 bg-dark text-white vh-100">
-        <h1 class="text-center">Dashboard</h1>
-        <div class="container-fluid text-dark bg-light mt-4 p-4 rounded w-100" style="flex-grow: 1;">
-            <!-- First Row -->
-            <div class="row mb-3" style="height: 25%;">
+        <h1 class="text-center mb-4" style="font-size: 2.5rem; font-weight: bold;">Dashboard</h1>
+        <div class="container-fluid text-dark bg-light p-4 rounded w-100" style="flex-grow: 1;">
+            <div class="row mb-3">
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-header">Security Overview</div>
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-primary text-white" style="border-radius: 8px 8px 0 0;">Security Overview</div>
                         <div class="card-body d-flex flex-column justify-content-start">
-                            <p>Secure Passwords: </p>
-                            <p>Insecure Passwords: </p>
-                            <p>Two-Factor Authentication: </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-header">Security Notification</div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <p>Weak Passwords: </p>
-                            <p>Outdated Passwords: </p>
-                            <p>Duplicated Passwords: </p>
+                            <p class="mb-1"><i class="bi bi-shield-lock"></i> Secure Passwords: <span class="text-success font-weight-bold">10</span></p>
+                            <p class="mb-1"><i class="bi bi-exclamation-triangle"></i> Insecure Passwords: <span class="text-danger font-weight-bold">2</span></p>
+                            <p class="mb-1"><i class="bi bi-lock"></i> Two-Factor Authentication: <span class="text-info font-weight-bold">Enabled for 5 accounts</span></p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-header">API Integrations</div>
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-warning text-white" style="border-radius: 8px 8px 0 0;">Security Notification</div>
                         <div class="card-body d-flex flex-column justify-content-start">
-                            <button class="btn btn-info w-100 mb-2">API Documentation</button>
+                            <p class="mb-1"><i class="bi bi-shield-exclamation text-danger"></i> Weak Passwords: 2</p>
+                            <p class="mb-1"><i class="bi bi-clock-history text-warning"></i> Outdated Passwords: 3</p>
+                            <p class="mb-1"><i class="bi bi-files text-warning"></i> Duplicated Passwords: 1</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-3">
-                    <div class="card h-100">
-                        <div class="card-header">Security Recommendations</div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-info text-white" style="border-radius: 8px 8px 0 0;">API Integrations</div>
                         <div class="card-body d-flex flex-column justify-content-start">
-                            
+                            <button class="btn btn-info w-100 mb-2 text-white">API Documentation</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-3">
-                    <div class="card h-100">
-                        <div class="card-header">Security Insights</div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-success text-white" style="border-radius: 8px 8px 0 0;">Security Recommendations</div>
                         <div class="card-body d-flex flex-column justify-content-start">
-                         
+                            <p>Enable Two-Factor Authentication for 2 accounts</p>
+                            <p>Update 3 outdated passwords</p>
+                            <p>Change duplicated password for Email account</p>
+                            <p>Review and strengthen 2 weak passwords</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mt-3">
-                    <div class="card h-100">
-                        <div class="card-header">Tools</div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-secondary text-white" style="border-radius: 8px 8px 0 0;">Security Insights</div>
+                        <div class="card-body d-flex flex-column justify-content-start">
+                            <p>Security Score: 78/100</p>
+                            <p>2 Accounts vulnerable to potential breaches</p>
+                            <p>1 Password detected on breached lists</p>
+                            <p>80% of passwords are rated as strong</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-dark text-white" style="border-radius: 8px 8px 0 0;">Tools</div>
                         <div class="card-body d-flex flex-column justify-content-start">
                             <button class="btn btn-primary w-100 mb-2">Add New Password</button>
                             <button class="btn btn-secondary w-100 mb-2">Password Generator</button>
@@ -106,14 +114,12 @@
                     </div>
                 </div>
             </div>
-            <br><br><br><br><br><br><br>
-            <!-- Second Row -->
-            <div class="row" style="height: 40%;">
+            <div class="row mt-5">
                 <div class="col-md-12">
-                    <div class="card h-100">
-                        <div class="card-header">Statistics</div>
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
+                        <div class="card-header bg-danger text-white" style="border-radius: 8px 8px 0 0;">Statistics</div>
                         <div class="card-body d-flex justify-content-center align-items-center">
-                            <p>Graph ?</p>
+                            <p><i class="bi bi-graph-up"></i> Graph?</p>
                         </div>
                     </div>
                 </div>
@@ -122,3 +128,115 @@
     </div>
 </main>
 </div>
+
+@code {
+    private PasswordDetails userPassword { get; set; } = new PasswordDetails();
+    private List<PasswordDetails> passwords { get; set; } = new List<PasswordDetails>();
+
+    /*private int securityScore = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var passwordDetails = await passwordService.GetPasswordDetailsAsync(); // Získání detailů hesla
+        securityScore = await SecurityScore(passwordDetails); // Přímo zavoláme SecurityScore
+    }
+
+    private async Task<int> SecurityScore(PasswordDetails passwordDetails)
+    {
+        var score = 0;
+
+        if (passwordDetails.Password.Length >= 12)
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsDigit))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsUpper))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsLower))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsSymbol))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsPunctuation))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsLetterOrDigit))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsWhiteSpace))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsSeparator))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsControl))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsSurrogate))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsHighSurrogate))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsLowSurrogate))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsLetter))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsNumber))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsSymbol))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsSeparator))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsControl))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsPunctuation))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsWhiteSpace))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsSurrogate))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsHighSurrogate))
+        {
+            score += 10;
+        }
+        if (passwordDetails.Password.Any(char.IsLowSurrogate))
+        {
+            score += 10;
+        }
+        return score;
+    }*/
+}
