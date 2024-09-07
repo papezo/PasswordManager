@@ -1,40 +1,64 @@
+using Blazored.Toast;
+using CurrieTechnologies.Razor.SweetAlert2;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Syncfusion.Blazor;
 using TextCopy;
 using WebApp.Components;
 using WebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Přidání DbContext pro SQLite
 builder.Services.AddDbContext<AccountDetailsContext>(options =>
     options.UseSqlite("Data Source=WebAppDb.db"));
 
-// Přidání Razor Components a povolení interaktivního serverového renderování
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents(); // Toto je klíčové pro správnou konfiguraci
+    .AddInteractiveServerComponents();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Cookie.Name = "auth_token";
+        options.LogoutPath = "/logout";
+        options.Cookie.MaxAge = TimeSpan.FromMinutes(30);
+        options.AccessDeniedPath = "/access-denied";
+    });
+
+builder.Services.AddAuthorization();
+builder.Services.AddCascadingAuthenticationState();
 
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 
+
+builder.Services.AddSweetAlert2();
+builder.Services.AddBlazoredToast();
+
+
 builder.Services.AddHttpClient("ApiClient", client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5237/"); // Změňte podle potřeby
+    client.BaseAddress = new Uri("http://localhost:5237");
+    client.DefaultRequestHeaders.Add("Accept", "application/json");
 });
 
 var serviceCollection = builder.Services;
 #region InjectClipboard
 serviceCollection.InjectClipboard();
 #endregion
-// Přidejte antiforgery služby
 builder.Services.AddAntiforgery(options =>
 {
-    // Můžete nastavit volitelné možnosti zde
     options.HeaderName = "X-CSRF-TOKEN";
 });
 
+// Register CustomAuthenticationStateProvider
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+builder.Services.AddSyncfusionBlazor();
+
 var app = builder.Build();
 
-// Konfigurace HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -44,12 +68,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// Přidejte autentifikaci/autorizační middleware
 app.UseAuthentication();
-app.UseAuthorization();
-
-// **Umístěte app.UseAntiforgery() zde, mezi UseRouting a UseEndpoints**
 app.UseAntiforgery();
+app.UseAuthorization();
 
 app.MapControllers();
 app.MapRazorPages();

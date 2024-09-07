@@ -1,9 +1,21 @@
 ﻿@page "/"
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Antiforgery
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authentication.Cookies
+@using Microsoft.AspNetCore.Components.Authorization
+@using WebApp.Data
 @using WebApp.Models
 @using System.Net.Http
 @using System.Net.Http.Json
+
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
+@inject AccountDetailsContext appDbContext
+@inject IAntiforgery Antiforgery
+@inject IHttpContextAccessor HttpContextAccessor
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
 
 <PageTitle>Login Page</PageTitle>
 
@@ -29,9 +41,8 @@
 
 
 <div class="d-flex vh-100">
-    <!-- Levý div -->
     <div class="d-flex justify-content-center align-items-center bg-dark text-white" style="width: 50%;">
-        <EditForm Model="@user" OnValidSubmit="HandleLogin" class="text-center w-75" FormName="loginForm">
+        <EditForm Model="@user" OnValidSubmit="Authenticate" class="text-center w-75" FormName="loginForm">
             <h1 class="mb-5">Sign In</h1>
 
             @if (!string.IsNullOrEmpty(message))
@@ -47,22 +58,12 @@
             <div class="mb-4 w-50 mx-auto">
                 <label for="email" class="form-label">Username</label>
                 <InputText id="email" @bind-Value="user.Username" class="form-control" placeholder="Username" />
-
-                <div id="forgotEmail" class="mt-2">
-                    <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="cursor: pointer;">Forgot
-                        Your Username?</a>
-                </div>
             </div>
 
             <div class="mb-4 w-50 mx-auto">
                 <label for="password" class="form-label">Password</label>
                 <InputText id="password" @bind-Value="user.Password" class="form-control" placeholder="Password"
                     type="password" />
-
-                <div id="emailHelp" class="mt-2">
-                    <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" style="cursor: pointer;">Forgot
-                        Your Password?</a>
-                </div>
             </div>
 
             <button type="submit" class="btn btn-primary">Sign In</button>
@@ -72,36 +73,45 @@
         </EditForm>
     </div>
 
-    <!-- Pravý div -->
     <div class="d-flex justify-content-center align-items-center bg-dark" style="width: 50%;">
         <img src="/images/z13.jpg" alt="Logo" class="img-fluid" style="height: 100vh; width: auto; object-fit: cover; ">
     </div>
 </div>
 
-
-
 @code {
+
+    [CascadingParameter]
+    public HttpContext? HttpContext{get; set;}
+
     [SupplyParameterFromForm]
     private LoginDetails user { get; set; } = new LoginDetails();
     private string message { get; set; } = string.Empty;
     private string messageType { get; set; } = "success"; // Default to success
 
-    private async Task HandleLogin()
+    private async Task Authenticate()
+{
+    var userAccount = appDbContext.AccountDetails
+                      .Where(x => x.Username == user.Username && x.Password == user.Password)
+                      .FirstOrDefault();
+
+    if(userAccount is null || userAccount.Password != user.Password)
     {
-        Console.WriteLine($"Sending login request: Username={user.Username}, Password={user.Password}");
-
-        var httpClient = HttpClientFactory.CreateClient("ApiClient");
-        var response = await httpClient.PostAsJsonAsync("api/AccountDetails/authenticate", user);
-
-        if (response.IsSuccessStatusCode)
-        {
-            await Task.Delay(3000);
-            NavigationManager.NavigateTo("/HomeManager");
-        }
-        else
-        {
-            message = "Invalid login attempt.";
-            messageType = "danger";
-        }
+        message = "Invalid login attempt.";
+        messageType = "danger";
+        return;
     }
+
+    var claims = new List<Claim>
+    {
+        new Claim(ClaimTypes.NameIdentifier, userAccount.Id.ToString()), 
+        new Claim(ClaimTypes.Name, userAccount.Username),
+    };
+
+    var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+    var principal = new ClaimsPrincipal(identity);
+
+    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+    NavigationManager.NavigateTo("/HomeManager");
+}
+
 }

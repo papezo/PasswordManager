@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\security.png",
+      "PackagePath": "staticwebassets\\images\\security.png"
+    },
+    {
       "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\z13.jpg",
       "PackagePath": "staticwebassets\\images\\z13.jpg"
     },

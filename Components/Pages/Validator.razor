@@ -1,0 +1,71 @@
+﻿@page "/Validator"
+@using WebApp.Models
+
+<PageTitle>Validator</PageTitle>
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <nav class="d-flex flex-column bg-dark border-end" style="width: 160px;">
+        <a class="navbar-brand p-2 text-white ms-2 fs-5 mt-3" href="#">Management</a>
+        <ul class="navbar-nav flex-column mb-2">
+            <li class="nav-item p-2 mt-3 border-bottom border-top">
+                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link active text-white ms-4" aria-current="page" href="/HomeManager">Dashboard</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="PasswordsPage">Passwords</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/SecurityTips">Security Tips</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Validator">Validator</a>
+                </i>
+            </li>
+            <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
+            <li class="nav-item p-2 mt-2 border-bottom border-top">
+                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Account">Account</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Support">Support</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-box-arrow-left text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/">Log Out</a>
+                </i>
+            </li>
+        </ul>
+    </nav>
+    <main class="w-100">
+        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
+            <h1 class="text-center mb-4 mt-5" style="font-size: 2.5rem; font-weight: bold;">Check the strength of your password</h1>
+            <div class="container-fluid text-dark bg-dark p-4 rounded w-100" style="flex-grow: 1;">
+                <h2 class="text-center mb-4"></h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <input type="password" id="passwordInput" class="form-control mb-3"
+                                    placeholder="Enter your password" oninput="checkPasswordStrength()">
+                                <div id="strengthMeter" class="mb-3"></div>
+                                <p id="strengthFeedback" class="text-center"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+@code {
+
+}

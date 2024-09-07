@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using WebApp.Models;  
-using WebApp.Data;    
+using WebApp.Models;
+using WebApp.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Endpoints
@@ -29,7 +29,7 @@ namespace WebApp.Endpoints
             }
 
             Console.WriteLine($"Received data: Name={passwordDetails.Name}, Email={passwordDetails.Email}, Password={passwordDetails.Password}, Category={passwordDetails.Category}, Description={passwordDetails.Description}");
-            
+
 
             try
             {
@@ -45,19 +45,11 @@ namespace WebApp.Endpoints
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<PasswordDetails>>> GetPasswordDetails()
+        public async Task<ActionResult<List<PasswordDetails>>> GetPasswords()
         {
-            try
-            {
-                var passwords = await _context.PasswordDetails.ToListAsync();
-                return Ok(passwords);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            } 
+            return await _context.PasswordDetails.ToListAsync();
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePasswordDetails(int id)
         {
@@ -81,45 +73,27 @@ namespace WebApp.Endpoints
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPasswordDetails(int id, [FromBody] PasswordDetails passwordDetails)
+        public async Task<IActionResult> UpdatePassword(int id, PasswordDetails updatedPassword)
         {
-            if (id != passwordDetails.Id)
-            {
-                return BadRequest("ID mismatch.");
-            }
-
             var existingPassword = await _context.PasswordDetails.FindAsync(id);
             if (existingPassword == null)
             {
                 return NotFound();
             }
 
-            existingPassword.Name = passwordDetails.Name;
-            existingPassword.Email = passwordDetails.Email;
-            existingPassword.Password = passwordDetails.Password;
-            existingPassword.Category = passwordDetails.Category;
-            existingPassword.Description = passwordDetails.Description;
-            existingPassword.CreatedAt = passwordDetails.CreatedAt; 
+            // Aktualizujte data hesla
+            existingPassword.Name = updatedPassword.Name;
+            existingPassword.Email = updatedPassword.Email;
+            existingPassword.Password = updatedPassword.Password;
+            existingPassword.Category = updatedPassword.Category;
+            existingPassword.Description = updatedPassword.Description;
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PasswordDetailsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync(); // Uložení změn do databáze
 
             return NoContent();
         }
-        private bool PasswordDetailsExists(int id)
+
+        private bool PasswordExists(int id)
         {
             return _context.PasswordDetails.Any(e => e.Id == id);
         }
