@@ -9,6 +9,34 @@
     font-style: italic;
 }
 
+
+.circular-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: conic-gradient(#007bff 0% calc(var(--score) * 1%), #e9ecef calc(var(--score) * 1%) 100%);
+    border-radius: 50%;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.circular-progress .score-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+
 h1:focus {
     outline: none;
 }

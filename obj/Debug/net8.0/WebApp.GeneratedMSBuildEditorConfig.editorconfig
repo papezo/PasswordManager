@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/ForgotPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGb3Jnb3RQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/HomeManager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lTWFuYWdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,8 +58,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXNzd29yZHNQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Reset-password.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNldC1wYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/SecurityTips.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZWN1cml0eVRpcHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/SupportPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBwb3J0UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Validator.razor]

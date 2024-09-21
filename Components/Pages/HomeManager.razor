@@ -1,5 +1,25 @@
 ﻿@page "/HomeManager"
+
+@using System.Text
+@using System.Text.Json
+@using Azure
+@using Blazorise.Charts
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@using WebApp.Dto
 @using WebApp.Models
+@using System.Net.Http
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Net.Http.Json
+
+
+
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject SweetAlertService Swal
+
 
 @rendermode InteractiveServer
 
@@ -92,32 +112,64 @@
 
 
 <main class="w-100">
-    <div class="d-flex flex-column align-items-center p-4 bg-dark text-white vh-100">
+    <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
         <div class="container-fluid text-dark bg-light p-4 rounded w-100" style="flex-grow: 1;">
             <div class="row mb-3">
-                <div class="col-md-4">
+               <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-primary text-white" style="border-radius: 8px 8px 0 0;">Security Overview</div>
+                        <div class="card-header bg-primary text-white" style="border-radius: 8px 8px 0 0;">
+                            <h5 class="fw-bold mb-0">Security Overview</h5>
+                        </div>
                         <div class="card-body d-flex flex-column justify-content-start">
-                            <p class="mb-1"><i class="bi bi-shield-lock"></i> Secure Passwords: <span class="text-success font-weight-bold">10</span></p>
-                            <p class="mb-1"><i class="bi bi-exclamation-triangle"></i> Insecure Passwords: <span class="text-danger font-weight-bold">2</span></p>
-                            <p class="mb-1"><i class="bi bi-lock"></i> Two-Factor Authentication: <span class="text-info font-weight-bold">Enabled for 5 accounts</span></p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-shield-lock text-success me-2"></i>
+                                <span class="fw-bold">Secure Passwords:</span>
+                                <span class="font-weight-bold ms-auto">@securePasswords.Count</span>
+                            </p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-exclamation-triangle text-danger me-2"></i>
+                                <span class="fw-bold">Insecure Passwords:</span>
+                                <span class="font-weight-bold ms-auto">@insecurePasswords.Count</span>
+                            </p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-lock text-primary me-2"></i>
+                                <span class="fw-bold">Two-Factor Authentication:</span>
+                                <span class="ms-auto">@accountsWith2FA.Count accounts</span>
+                            </p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-warning text-white" style="border-radius: 8px 8px 0 0;">Security Notification</div>
+                        <div class="card-header bg-warning text-white" style="border-radius: 8px 8px 0 0;">
+                            <h5 class="fw-bold mb-0">Security Notification</h5>
+                        </div>
                         <div class="card-body d-flex flex-column justify-content-start">
-                            <p class="mb-1"><i class="bi bi-shield-exclamation text-danger"></i> Weak Passwords: 2</p>
-                            <p class="mb-1"><i class="bi bi-clock-history text-warning"></i> Outdated Passwords: 3</p>
-                            <p class="mb-1"><i class="bi bi-files text-warning"></i> Duplicated Passwords: 1</p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-shield-exclamation text-danger me-2"></i>
+                                <span class="fw-bold">Weak Passwords:</span>
+                                <span class="font-weight-bold ms-auto">@weakPasswords.Count</span>
+                            </p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-clock-history text-warning me-2"></i>
+                                <span class="fw-bold">Outdated Passwords:</span>
+                                <span class="font-weight-bold ms-auto">@outDatedPasswords.Count</span>
+                            </p>
+                            <p class="mb-2 d-flex align-items-center">
+                                <i class="bi bi-files text-warning me-2"></i>
+                                <span class="fw-bold">Duplicated Passwords:</span>
+                                <span class="font-weight-bold ms-auto">@duplicatePasswords.Count</span>
+                            </p>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-info text-white" style="border-radius: 8px 8px 0 0;">API Integrations</div>
+                        <div class="card-header bg-secondary text-white" style="border-radius: 8px 8px 0 0;">
+                            <h5 class="fw-bold mb-0">API</h5>
+                        </div>
                         <div class="card-body d-flex flex-column justify-content-start">
                             <button class="btn btn-info w-100 mb-2 text-white">API Documentation</button>
                         </div>
@@ -127,7 +179,9 @@
             <div class="row mt-3">
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-success text-white" style="border-radius: 8px 8px 0 0;">Security Recommendations</div>
+                        <div class="card-header bg-success text-white" style="border-radius: 8px 8px 0 0;">
+                            <h5 class="fw-bold mb-0">Security Notification</h5>
+                        </div>
                         <div class="card-body d-flex flex-column justify-content-start">
                             <p>Enable Two-Factor Authentication for 2 accounts</p>
                             <p>Update 3 outdated passwords</p>
@@ -136,20 +190,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-secondary text-white" style="border-radius: 8px 8px 0 0;">Security Insights</div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <p>Security Score: 78/100</p>
-                            <p>2 Accounts vulnerable to potential breaches</p>
-                            <p>1 Password detected on breached lists</p>
-                            <p>80% of passwords are rated as strong</p>
+                        <div class="card-header bg-secondary text-white" style="border-radius: 8px 8px 0 0;">
+                            <h5 class="fw-bold mb-0">Security Score</h5>
+                        </div>
+                        <div class="card-body d-flex flex-column justify-content-start align-items-center">
+                            <div class="circular-progress" style="--score: @user.AccountScore;">
+                                <div class="score-label">@user.AccountScore %</div>
+                            </div>
+                            <div class="text-center mt-3">
+                            @if(user.AccountScore <= 20)
+                                {
+                                    <p>Poor Score</p>
+                                    <p class="text-muted">Your account is at high risk. Consider updating your passwords and enabling 2FA.</p>
+                                }
+                                else if(user.AccountScore <= 40)
+                                {
+                                    <p>Weak Score</p>
+                                    <p class="text-muted">Your security is weak. Update weak passwords and avoid reusing them across accounts.</p>
+                                }
+                                else if(user.AccountScore <= 60)
+                                {
+                                    <p>Good Score</p>
+                                    <p class="text-muted">Your security is decent, but there are still areas to improve. Consider checking older passwords.</p>
+                                }
+                                else if(user.AccountScore <= 80)
+                                {
+                                    <p>Strong Score</p>
+                                    <p class="text-muted">Your security is strong, but make sure to regularly update passwords to maintain this level.</p>
+                                }
+                                else
+                                {
+                                    <p>Excellent Score</p>
+                                    <p class="text-muted">Your account is very secure. Keep maintaining strong passwords and security measures.</p>
+                                }
+                                </div>
                         </div>
                     </div>
-                </div>
+                 </div>
+
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-dark text-white" style="border-radius: 8px 8px 0 0;">Tools</div>
+                        <div class="card-header bg-dark text-white" style="border-radius: 8px 8px 0 0;">
+                            <h5 class="fw-bold mb-0">Tools</h5>
+                        </div>
                         <div class="card-body d-flex flex-column justify-content-start">
                             <button class="btn btn-primary w-100 mb-2">Add New Password</button>
                             <button class="btn btn-secondary w-100 mb-2">Password Generator</button>
@@ -160,10 +245,21 @@
             </div>
             <div class="row mt-5">
                 <div class="col-md-12">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-danger text-white" style="border-radius: 8px 8px 0 0;">Statistics</div>
-                        <div class="card-body d-flex justify-content-center align-items-center">
-                            <p><i class="bi bi-graph-up"></i> Graph?</p>
+                    <div class="card h-100 shadow-sm" style="border-radius: 8px; height: 500px;"> <!-- Adjust height -->
+                        <div class="card-header bg-danger text-white" style="border-radius: 8px 8px 0 0;">
+                            Statistics
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                            <ApexChart TItem="PasswordDetails"
+                                    Title="Password Scores Statistics"
+                                    Width="900" Height="500"> 
+                                <ApexPointSeries TItem="PasswordDetails"
+                                                Items="PasswordScoreChartData"
+                                                Name="Password Score"
+                                                SeriesType="SeriesType.Bar"
+                                                XValue="e => e.Category"
+                                                YValue="e => e.PasswordScore" />
+                                </ApexChart> 
                         </div>
                     </div>
                 </div>
@@ -175,112 +271,188 @@
 
 @code {
     private PasswordDetails userPassword { get; set; } = new PasswordDetails();
+    private AccountDetails user { get; set; } = new AccountDetails();
     private List<PasswordDetails> passwords { get; set; } = new List<PasswordDetails>();
+    private List<PasswordDetails> securePasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> insecurePasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> accountsWith2FA = new List<PasswordDetails>();
+    private List<PasswordDetails> weakPasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> outDatedPasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> duplicatePasswords = new List<PasswordDetails>();
+    private int MaxPasswordDays = 30;
+    private List<PasswordDetails> PasswordScoreChartData { get; set; } = new List<PasswordDetails>();
 
-    /*private int securityScore = 0;
-
+    
     protected override async Task OnInitializedAsync()
     {
-        var passwordDetails = await passwordService.GetPasswordDetailsAsync(); // Získání detailů hesla
-        securityScore = await SecurityScore(passwordDetails); // Přímo zavoláme SecurityScore
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var currentUser = authState.User;
+            var isAuthenticated = currentUser.Identity.IsAuthenticated;
+            Console.WriteLine($"Is user authenticated: {isAuthenticated}");
+
+            if (isAuthenticated)
+            {
+                var userIdClaim = currentUser.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+
+                if (!string.IsNullOrEmpty(userIdClaim))
+                {
+                    var httpClient = HttpClientFactory.CreateClient("ApiClient");
+                    var url = $"api/UserDetails/{userIdClaim}";
+                    Console.WriteLine($"Requesting URL: {url}");
+
+                    var result = await httpClient.GetFromJsonAsync<AccountDetails>(url);
+
+                    if (result != null)
+                    {
+                        user = result;
+                        Console.WriteLine("User data loaded successfully.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("User not found or API returned null.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("UserId claim is missing.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("User is not authenticated.");
+            }
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine($"HttpRequestException: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}");
+        }
+
+        Console.WriteLine($"accountDetails.Id: {user.Id}");
+
+        await LoadPasswords();
+        await TotalPasswordScore();
+        await IsPasswordSecure();
+        await AccountWith2FA();
+        await OutDatedPasswordsChecker();
+        await DuplicatePasswordsChecker();
+        
+
+         PasswordScoreChartData = passwords
+        .Select(p => new PasswordDetails { Category = p.Name, PasswordScore = p.PasswordScore })
+        .ToList();
     }
 
-    private async Task<int> SecurityScore(PasswordDetails passwordDetails)
+    private async Task LoadPasswords()
     {
-        var score = 0;
+        var httpClient = HttpClientFactory.CreateClient("ApiClient");
+        passwords = await httpClient.GetFromJsonAsync<List<PasswordDetails>>($"api/PasswordDetails/{user.Id}");
+    }
 
-        if (passwordDetails.Password.Length >= 12)
+    private async Task TotalPasswordScore()
+    {
+        if (passwords == null || passwords.Count == 0)
         {
-            score += 10;
+            return;
         }
-        if (passwordDetails.Password.Any(char.IsDigit))
+
+        var totalScore = passwords.Sum(p => p.PasswordScore);
+        var averageScore = totalScore / passwords.Count;
+
+        user.AccountScore = averageScore;
+
+        var httpClient = HttpClientFactory.CreateClient("ApiClient");
+        var response = await httpClient.PutAsJsonAsync($"api/AccountDetails/{user.Id}/update-score", user);
+
+        if (response.IsSuccessStatusCode)
         {
-            score += 10;
+            await LoadPasswords();
         }
-        if (passwordDetails.Password.Any(char.IsUpper))
+        else
         {
-            score += 10;
+            Console.WriteLine("Error");
         }
-        if (passwordDetails.Password.Any(char.IsLower))
+    }
+
+    private async Task IsPasswordSecure()
+    {
+        foreach (var password in passwords)
         {
-            score += 10;
+            if (password.PasswordSecure == true)
+            {
+                securePasswords.Add(password);
+            } 
+            else 
+            {
+                insecurePasswords.Add(password);
+                weakPasswords.Add(password);
+            }
         }
-        if (passwordDetails.Password.Any(char.IsSymbol))
+    }
+
+    private async Task AccountWith2FA()
+    {
+        foreach (var password in passwords)
         {
-            score += 10;
+            if (password.PasswordHas2FA == true)
+            {
+                accountsWith2FA.Add(password);
+            } 
+            else 
+            {
+                return;
+            }
         }
-        if (passwordDetails.Password.Any(char.IsPunctuation))
+    }
+
+    private async Task OutDatedPasswordsChecker()
+    {
+        foreach (var password in passwords)
         {
-            score += 10;
+            if (password.CreatedAt.AddDays(MaxPasswordDays) <= DateTime.Now)
+            {
+                outDatedPasswords.Add(password);
+            }
         }
-        if (passwordDetails.Password.Any(char.IsLetterOrDigit))
+    }
+
+   private async Task DuplicatePasswordsChecker()
+    {
+        Console.WriteLine($"Checking for duplicate passwords for userPassword.Id: {userPassword.Id}, Password: {userPassword.Password}");
+
+        if (string.IsNullOrWhiteSpace(userPassword.Password))
         {
-            score += 10;
+            Console.WriteLine("Password is missing!");
+            return;
         }
-        if (passwordDetails.Password.Any(char.IsWhiteSpace))
+
+        var httpClient = HttpClientFactory.CreateClient("ApiClient");
+        var response = await httpClient.PutAsJsonAsync($"api/PasswordDetails/{userPassword.Id}/check-duplicate", userPassword);
+
+
+        Console.WriteLine($"User ID for checking duplicates: {user.Id}");
+
+        foreach (var password in passwords)
         {
-            score += 10;
+            if (password.DuplicatedPassword == true)
+            {
+                duplicatePasswords.Add(password);
+            } 
         }
-        if (passwordDetails.Password.Any(char.IsSeparator))
+
+        if (response.IsSuccessStatusCode)
         {
-            score += 10;
+            await LoadPasswords();
+            Console.WriteLine("Passwords checked successfully."); // Přidání debug výpisu
         }
-        if (passwordDetails.Password.Any(char.IsControl))
+        else
         {
-            score += 10;
+            Console.WriteLine("Error"); // Přidání debug výpisu
         }
-        if (passwordDetails.Password.Any(char.IsSurrogate))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsHighSurrogate))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsLowSurrogate))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsLetter))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsNumber))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsSymbol))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsSeparator))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsControl))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsPunctuation))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsWhiteSpace))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsSurrogate))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsHighSurrogate))
-        {
-            score += 10;
-        }
-        if (passwordDetails.Password.Any(char.IsLowSurrogate))
-        {
-            score += 10;
-        }
-        return score;
-    }*/
+    } 
 }

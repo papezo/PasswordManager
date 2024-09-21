@@ -8,9 +8,9 @@ namespace WebApp.CreateAccount;
 
 public class CreateDetails : PageModel
 {
-        private readonly AccountDetailsContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public CreateDetails(AccountDetailsContext context)
+        public CreateDetails(ApplicationDbContext context)
         {
             _context = context;
         }

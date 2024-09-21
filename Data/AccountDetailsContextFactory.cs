@@ -5,16 +5,16 @@ using System.IO;
 
 namespace WebApp.Data
 {
-    public class AccountDetailsContextFactory : IDesignTimeDbContextFactory<AccountDetailsContext>
+    public class ApplicationDbContextFactory : IDesignTimeDbContextFactory<ApplicationDbContext>
     {
-        public AccountDetailsContext CreateDbContext(string[] args)
+        public ApplicationDbContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<AccountDetailsContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
             // Použijte SQLite connection string
             optionsBuilder.UseSqlite("Data Source=WebAppDb.db");
 
-            return new AccountDetailsContext(optionsBuilder.Options);
+            return new ApplicationDbContext(optionsBuilder.Options);
         }
     }
 }

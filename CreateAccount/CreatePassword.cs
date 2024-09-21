@@ -9,9 +9,9 @@ namespace WebApp.CreateAccount;
 
 public class CreatePassword : PageModel
 {
-    private readonly AccountDetailsContext _context;
+    private readonly ApplicationDbContext _context;
 
-        public CreatePassword(AccountDetailsContext context)
+        public CreatePassword(ApplicationDbContext context)
         {
             _context = context;
         }

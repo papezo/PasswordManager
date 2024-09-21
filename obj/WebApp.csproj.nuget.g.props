@@ -13,14 +13,17 @@
     <SourceRoot Include="C:\Users\papez\.nuget\packages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.themes\26.2.13\buildTransitive\Syncfusion.Blazor.Themes.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.themes\26.2.13\buildTransitive\Syncfusion.Blazor.Themes.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.core\26.2.13\buildTransitive\Syncfusion.Blazor.Core.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.core\26.2.13\buildTransitive\Syncfusion.Blazor.Core.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.buttons\26.2.13\buildTransitive\Syncfusion.Blazor.Buttons.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.buttons\26.2.13\buildTransitive\Syncfusion.Blazor.Buttons.props')" />
-    <Import Project="$(NuGetPackageRoot)syncfusion.blazor.notifications\26.2.13\buildTransitive\Syncfusion.Blazor.Notifications.props" Condition="Exists('$(NuGetPackageRoot)syncfusion.blazor.notifications\26.2.13\buildTransitive\Syncfusion.Blazor.Notifications.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.8\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore\8.0.8\buildTransitive\net8.0\Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\8.0.8\build\net8.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\8.0.8\build\net8.0\Microsoft.EntityFrameworkCore.Design.props')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\8.0.8\build\Microsoft.AspNetCore.Identity.UI.props" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.identity.ui\8.0.8\build\Microsoft.AspNetCore.Identity.UI.props')" />
+    <Import Project="$(NuGetPackageRoot)googlecaptchacomponent\4.2.0\buildTransitive\GoogleCaptchaComponent.props" Condition="Exists('$(NuGetPackageRoot)googlecaptchacomponent\4.2.0\buildTransitive\GoogleCaptchaComponent.props')" />
     <Import Project="$(NuGetPackageRoot)currietechnologies.razor.sweetalert2\5.6.0\buildTransitive\CurrieTechnologies.Razor.SweetAlert2.props" Condition="Exists('$(NuGetPackageRoot)currietechnologies.razor.sweetalert2\5.6.0\buildTransitive\CurrieTechnologies.Razor.SweetAlert2.props')" />
-    <Import Project="$(NuGetPackageRoot)blazored.toast\4.2.1\buildTransitive\Blazored.Toast.props" Condition="Exists('$(NuGetPackageRoot)blazored.toast\4.2.1\buildTransitive\Blazored.Toast.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise\1.6.1\buildTransitive\Blazorise.props" Condition="Exists('$(NuGetPackageRoot)blazorise\1.6.1\buildTransitive\Blazorise.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.icons.fontawesome\1.6.1\buildTransitive\Blazorise.Icons.FontAwesome.props" Condition="Exists('$(NuGetPackageRoot)blazorise.icons.fontawesome\1.6.1\buildTransitive\Blazorise.Icons.FontAwesome.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.charts\1.6.1\buildTransitive\Blazorise.Charts.props" Condition="Exists('$(NuGetPackageRoot)blazorise.charts\1.6.1\buildTransitive\Blazorise.Charts.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.captcha.recaptcha\1.5.2\buildTransitive\Blazorise.Captcha.ReCaptcha.props" Condition="Exists('$(NuGetPackageRoot)blazorise.captcha.recaptcha\1.5.2\buildTransitive\Blazorise.Captcha.ReCaptcha.props')" />
+    <Import Project="$(NuGetPackageRoot)blazorise.bootstrap\1.6.1\buildTransitive\Blazorise.Bootstrap.props" Condition="Exists('$(NuGetPackageRoot)blazorise.bootstrap\1.6.1\buildTransitive\Blazorise.Bootstrap.props')" />
+    <Import Project="$(NuGetPackageRoot)blazor-apexcharts\3.4.0\buildTransitive\Blazor-ApexCharts.props" Condition="Exists('$(NuGetPackageRoot)blazor-apexcharts\3.4.0\buildTransitive\Blazor-ApexCharts.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\papez\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.3</PkgMicrosoft_CodeAnalysis_Analyzers>

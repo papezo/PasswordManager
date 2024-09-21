@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\app.css"
     },
     {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\google.png",
+      "PackagePath": "staticwebassets\\images\\google.png"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\google2.png",
+      "PackagePath": "staticwebassets\\images\\google2.png"
+    },
+    {
       "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\wwwroot\\images\\security.png",
       "PackagePath": "staticwebassets\\images\\security.png"
     },

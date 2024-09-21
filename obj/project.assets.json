@@ -46,24 +46,187 @@
           }
         }
       },
-      "Blazored.Toast/4.2.1": {
+      "Blazor-ApexCharts/3.4.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.AspNetCore.Components": "8.0.2",
-          "Microsoft.AspNetCore.Components.Web": "8.0.2",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0"
+          "Microsoft.AspNetCore.Components.Web": "8.0.2"
         },
         "compile": {
-          "lib/net8.0/Blazored.Toast.dll": {}
+          "lib/net8.0/Blazor-ApexCharts.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net8.0/Blazored.Toast.dll": {}
+          "lib/net8.0/Blazor-ApexCharts.dll": {
+            "related": ".xml"
+          }
         },
         "build": {
-          "buildTransitive/Blazored.Toast.props": {}
+          "buildTransitive/Blazor-ApexCharts.props": {}
         },
         "buildMultiTargeting": {
-          "buildMultiTargeting/Blazored.Toast.props": {}
+          "buildMultiTargeting/Blazor-ApexCharts.props": {}
+        }
+      },
+      "Blazorise/1.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise.Licensing": "1.2.0",
+          "Microsoft.AspNetCore.Components": "8.0.8",
+          "Microsoft.AspNetCore.Components.Web": "8.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Blazorise.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Blazorise.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.props": {}
+        }
+      },
+      "Blazorise.Bootstrap/1.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "1.6.1",
+          "Microsoft.AspNetCore.Components": "8.0.8",
+          "Microsoft.AspNetCore.Components.Web": "8.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Blazorise.Bootstrap.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.Bootstrap.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Bootstrap.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Bootstrap.props": {}
+        }
+      },
+      "Blazorise.Captcha/1.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "1.6.1",
+          "Microsoft.AspNetCore.Components": "8.0.8",
+          "Microsoft.AspNetCore.Components.Web": "8.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Blazorise.Captcha.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.Captcha.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Blazorise.Captcha.ReCaptcha/1.5.2": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "1.5.2",
+          "Blazorise.Captcha": "1.5.2",
+          "Microsoft.AspNetCore.Components": "8.0.4",
+          "Microsoft.AspNetCore.Components.Web": "8.0.4",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Blazorise.Captcha.ReCaptcha.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.Captcha.ReCaptcha.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Blazorise.Captcha.ReCaptcha.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Captcha.ReCaptcha.props": {}
+        }
+      },
+      "Blazorise.Charts/1.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "1.6.1",
+          "Lambda2Js": "3.1.4",
+          "Microsoft.AspNetCore.Components": "8.0.8",
+          "Microsoft.AspNetCore.Components.Web": "8.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Blazorise.Charts.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.Charts.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Blazorise.Charts.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Charts.props": {}
+        }
+      },
+      "Blazorise.Icons.FontAwesome/1.6.1": {
+        "type": "package",
+        "dependencies": {
+          "Blazorise": "1.6.1",
+          "Microsoft.AspNetCore.Components": "8.0.8",
+          "Microsoft.AspNetCore.Components.Web": "8.0.8",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/Blazorise.Icons.FontAwesome.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.Icons.FontAwesome.dll": {}
+        },
+        "build": {
+          "buildTransitive/Blazorise.Icons.FontAwesome.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Blazorise.Icons.FontAwesome.props": {}
+        }
+      },
+      "Blazorise.Licensing/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Blazorise.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/Blazorise.Licensing.dll": {}
+        }
+      },
+      "BouncyCastle.Cryptography/2.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "related": ".xml"
+          }
         }
       },
       "CurrieTechnologies.Razor.SweetAlert2/5.6.0": {
@@ -85,6 +248,25 @@
           "buildMultiTargeting/CurrieTechnologies.Razor.SweetAlert2.props": {}
         }
       },
+      "GoogleCaptchaComponent/4.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components": "8.0.0",
+          "Microsoft.AspNetCore.Components.Web": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/GoogleCaptchaComponent.dll": {}
+        },
+        "runtime": {
+          "lib/net8.0/GoogleCaptchaComponent.dll": {}
+        },
+        "build": {
+          "buildTransitive/GoogleCaptchaComponent.props": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/GoogleCaptchaComponent.props": {}
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "type": "package",
         "compile": {
@@ -95,6 +277,36 @@
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "related": ".xml"
+          }
+        }
+      },
+      "Lambda2Js/3.1.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Lambda2Js.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Lambda2Js.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MailKit/4.7.1.1": {
+        "type": "package",
+        "dependencies": {
+          "MimeKit": "4.7.1",
+          "System.Formats.Asn1": "8.0.1"
+        },
+        "compile": {
+          "lib/net8.0/MailKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MailKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
           }
         }
       },
@@ -442,6 +654,25 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Identity/2.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "2.2.0",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Identity.Core": "2.2.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Identity.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Identity.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -457,6 +688,33 @@
           "lib/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll": {
             "related": ".xml"
           }
+        }
+      },
+      "Microsoft.AspNetCore.Identity.UI/8.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Embedded": "8.0.8",
+          "Microsoft.Extensions.Identity.Stores": "8.0.8"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.AspNetCore.Identity.UI.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.AspNetCore.Identity.UI.dll": {
+            "related": ".xml"
+          }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ],
+        "build": {
+          "build/Microsoft.AspNetCore.Identity.UI.props": {},
+          "buildTransitive/Microsoft.AspNetCore.Identity.UI.targets": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/Microsoft.AspNetCore.Identity.UI.targets": {}
         }
       },
       "Microsoft.AspNetCore.Metadata/8.0.8": {
@@ -1161,20 +1419,45 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "Microsoft.Extensions.FileProviders.Abstractions/2.2.0": {
+      "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "2.2.0"
+          "Microsoft.Extensions.Primitives": "8.0.0"
         },
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
+      "Microsoft.Extensions.FileProviders.Embedded/8.0.8": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.FileProviders.Abstractions": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Embedded.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.FileProviders.Embedded.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/netstandard2.0/_._": {}
+        },
+        "buildMultiTargeting": {
+          "buildMultiTargeting/_._": {}
         }
       },
       "Microsoft.Extensions.Hosting.Abstractions/2.2.0": {
@@ -1641,6 +1924,24 @@
           }
         }
       },
+      "MimeKit/4.7.1": {
+        "type": "package",
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.4.0",
+          "System.Formats.Asn1": "8.0.1",
+          "System.Security.Cryptography.Pkcs": "8.0.0"
+        },
+        "compile": {
+          "lib/net8.0/MimeKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/MimeKit.dll": {
+            "related": ".dll.config;.pdb;.xml"
+          }
+        }
+      },
       "MinimalApis.Extensions/0.11.0": {
         "type": "package",
         "dependencies": {
@@ -1833,103 +2134,6 @@
         },
         "runtime": {
           "lib/net6.0/SQLitePCLRaw.provider.e_sqlite3.dll": {}
-        }
-      },
-      "Syncfusion.Blazor.Buttons/26.2.13": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Blazor.Core": "26.2.13"
-        },
-        "compile": {
-          "lib/net8.0/Syncfusion.Blazor.Buttons.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Buttons.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Syncfusion.Blazor.Buttons.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Syncfusion.Blazor.Buttons.props": {}
-        }
-      },
-      "Syncfusion.Blazor.Core/26.2.13": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "8.0.0",
-          "Syncfusion.Licensing": "26.2.13",
-          "System.Text.Json": "8.0.4"
-        },
-        "compile": {
-          "lib/net8.0/Syncfusion.Blazor.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Core.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Syncfusion.Blazor.Core.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Syncfusion.Blazor.Core.props": {}
-        }
-      },
-      "Syncfusion.Blazor.Notifications/26.2.13": {
-        "type": "package",
-        "dependencies": {
-          "Syncfusion.Blazor.Buttons": "26.2.13",
-          "Syncfusion.Blazor.Core": "26.2.13"
-        },
-        "compile": {
-          "lib/net8.0/Syncfusion.Blazor.Notifications.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Notifications.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Syncfusion.Blazor.Notifications.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Syncfusion.Blazor.Notifications.props": {}
-        }
-      },
-      "Syncfusion.Blazor.Themes/26.2.13": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/Syncfusion.Blazor.Themes.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Themes.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Syncfusion.Blazor.Themes.props": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/Syncfusion.Blazor.Themes.props": {}
-        }
-      },
-      "Syncfusion.Licensing/26.2.13": {
-        "type": "package",
-        "compile": {
-          "lib/net8.0/Syncfusion.Licensing.dll": {}
-        },
-        "runtime": {
-          "lib/net8.0/Syncfusion.Licensing.dll": {}
         }
       },
       "System.Buffers/4.5.0": {
@@ -2130,17 +2334,20 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "System.Formats.Asn1/5.0.0": {
+      "System.Formats.Asn1/8.0.1": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/_._": {
+          "lib/net8.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/System.Formats.Asn1.dll": {
+          "lib/net8.0/System.Formats.Asn1.dll": {
             "related": ".xml"
           }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.IdentityModel.Tokens.Jwt/6.35.0": {
@@ -2350,21 +2557,26 @@
           }
         }
       },
-      "System.Security.Cryptography.Pkcs/4.5.0": {
+      "System.Security.Cryptography.Pkcs/8.0.0": {
         "type": "package",
         "dependencies": {
-          "System.Security.Cryptography.Cng": "4.5.0"
+          "System.Formats.Asn1": "8.0.0"
         },
         "compile": {
-          "ref/netcoreapp2.1/_._": {
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {}
+          "lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
         },
         "runtimeTargets": {
-          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
+          "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -2637,25 +2849,265 @@
         "lib/netstandard2.0/Azure.Identity.xml"
       ]
     },
-    "Blazored.Toast/4.2.1": {
-      "sha512": "RuSGS8m21IejQ8EKXjZYEcCbgZEhyP7VptvyHjdRDKkJ3wxCqANKWvDxSKuExSbk1NLD1tySe8OpPYsdCeqvcw==",
+    "Blazor-ApexCharts/3.4.0": {
+      "sha512": "6kebpxkz3OY99Ghj+S5QdR7ElU4Cyv2VnP88JjPygmkuCe8SIvf4eaOVZa4K7MR6BRSgfDFhZS6TGqvBFroq6Q==",
       "type": "package",
-      "path": "blazored.toast/4.2.1",
+      "path": "blazor-apexcharts/3.4.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "LICENSE",
         "README.md",
-        "blazored.toast.4.2.1.nupkg.sha512",
-        "blazored.toast.nuspec",
-        "build/Blazored.Toast.props",
+        "apexchart_logo.png",
+        "blazor-apexcharts.3.4.0.nupkg.sha512",
+        "blazor-apexcharts.nuspec",
+        "build/Blazor-ApexCharts.props",
         "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "buildMultiTargeting/Blazored.Toast.props",
-        "buildTransitive/Blazored.Toast.props",
-        "icon.png",
-        "lib/net6.0/Blazored.Toast.dll",
-        "lib/net7.0/Blazored.Toast.dll",
-        "lib/net8.0/Blazored.Toast.dll",
-        "staticwebassets/Blazored.Toast.bundle.scp.css"
+        "buildMultiTargeting/Blazor-ApexCharts.props",
+        "buildTransitive/Blazor-ApexCharts.props",
+        "lib/net6.0/Blazor-ApexCharts.dll",
+        "lib/net6.0/Blazor-ApexCharts.xml",
+        "lib/net7.0/Blazor-ApexCharts.dll",
+        "lib/net7.0/Blazor-ApexCharts.xml",
+        "lib/net8.0/Blazor-ApexCharts.dll",
+        "lib/net8.0/Blazor-ApexCharts.xml",
+        "staticwebassets/css/apexcharts.css",
+        "staticwebassets/js/apexcharts.esm.js",
+        "staticwebassets/js/blazor-apexcharts.js"
+      ]
+    },
+    "Blazorise/1.6.1": {
+      "sha512": "QvZ52qEvwGlwn02DeFmXlzQXjqkYchYrZUnI0CdUp+zwXOln6oRNbOeXLNaJb1NfQt9pCwHQcypMd9UNref5tg==",
+      "type": "package",
+      "path": "blazorise/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.1.6.1.nupkg.sha512",
+        "blazorise.nuspec",
+        "build/Blazorise.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.props",
+        "buildTransitive/Blazorise.props",
+        "lib/net6.0/Blazorise.dll",
+        "lib/net6.0/Blazorise.xml",
+        "lib/net7.0/Blazorise.dll",
+        "lib/net7.0/Blazorise.xml",
+        "lib/net8.0/Blazorise.dll",
+        "lib/net8.0/Blazorise.xml",
+        "staticwebassets/blazorise.css",
+        "staticwebassets/blazorise.min.css",
+        "staticwebassets/breakpoint.js",
+        "staticwebassets/button.js",
+        "staticwebassets/closable.js",
+        "staticwebassets/colorPicker.js",
+        "staticwebassets/datePicker.js",
+        "staticwebassets/dragDrop.js",
+        "staticwebassets/dropdown.js",
+        "staticwebassets/fileEdit.js",
+        "staticwebassets/filePicker.js",
+        "staticwebassets/floatingUi.js",
+        "staticwebassets/inputMask.js",
+        "staticwebassets/io.js",
+        "staticwebassets/memoEdit.js",
+        "staticwebassets/numericPicker.js",
+        "staticwebassets/observer.js",
+        "staticwebassets/table.js",
+        "staticwebassets/textEdit.js",
+        "staticwebassets/theme.js",
+        "staticwebassets/timePicker.js",
+        "staticwebassets/tooltip.js",
+        "staticwebassets/utilities.js",
+        "staticwebassets/validators/DateTimeMaskValidator.js",
+        "staticwebassets/validators/NoValidator.js",
+        "staticwebassets/validators/NumericMaskValidator.js",
+        "staticwebassets/validators/RegExMaskValidator.js",
+        "staticwebassets/vendors/Behave.js",
+        "staticwebassets/vendors/Pickr.js",
+        "staticwebassets/vendors/autoNumeric.js",
+        "staticwebassets/vendors/flatpickr.js",
+        "staticwebassets/vendors/floating-ui-core.js",
+        "staticwebassets/vendors/floating-ui.js",
+        "staticwebassets/vendors/inputmask.js",
+        "staticwebassets/vendors/jsencrypt.js",
+        "staticwebassets/vendors/sha512.js"
+      ]
+    },
+    "Blazorise.Bootstrap/1.6.1": {
+      "sha512": "5px7ylqzGW+QIizttJgt4Bx2vOim3DzxTkuJB6nfTL0sE7MoWR/A4qbAqzqZt5idIPShp+4MgTGa4VX+GhIoQw==",
+      "type": "package",
+      "path": "blazorise.bootstrap/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.bootstrap.1.6.1.nupkg.sha512",
+        "blazorise.bootstrap.nuspec",
+        "build/Blazorise.Bootstrap.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Bootstrap.props",
+        "buildTransitive/Blazorise.Bootstrap.props",
+        "lib/net6.0/Blazorise.Bootstrap.dll",
+        "lib/net7.0/Blazorise.Bootstrap.dll",
+        "lib/net8.0/Blazorise.Bootstrap.dll",
+        "staticwebassets/blazorise.bootstrap.css",
+        "staticwebassets/blazorise.bootstrap.min.css",
+        "staticwebassets/modal.js",
+        "staticwebassets/tooltip.js"
+      ]
+    },
+    "Blazorise.Captcha/1.6.1": {
+      "sha512": "OFpee9kI94/Ok8mBdlxaw+fQTySsGW3DtSdXXp5PRlHGENAhejg6El2cjsCSTlLQmzJyhIxZI0Vi0ANyJC1ruA==",
+      "type": "package",
+      "path": "blazorise.captcha/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.captcha.1.6.1.nupkg.sha512",
+        "blazorise.captcha.nuspec",
+        "lib/net6.0/Blazorise.Captcha.dll",
+        "lib/net6.0/Blazorise.Captcha.xml",
+        "lib/net7.0/Blazorise.Captcha.dll",
+        "lib/net7.0/Blazorise.Captcha.xml",
+        "lib/net8.0/Blazorise.Captcha.dll",
+        "lib/net8.0/Blazorise.Captcha.xml"
+      ]
+    },
+    "Blazorise.Captcha.ReCaptcha/1.5.2": {
+      "sha512": "FJFljN5hMLtm2hIDt4NH7RBxm+vwaAmXdSPB7OA6B8ImXEqqhFTWPuP3tW8P0HlqEZ6cHrXoc4umRNQIXhSLYA==",
+      "type": "package",
+      "path": "blazorise.captcha.recaptcha/1.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.captcha.recaptcha.1.5.2.nupkg.sha512",
+        "blazorise.captcha.recaptcha.nuspec",
+        "build/Blazorise.Captcha.ReCaptcha.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Captcha.ReCaptcha.props",
+        "buildTransitive/Blazorise.Captcha.ReCaptcha.props",
+        "lib/net6.0/Blazorise.Captcha.ReCaptcha.dll",
+        "lib/net6.0/Blazorise.Captcha.ReCaptcha.xml",
+        "lib/net7.0/Blazorise.Captcha.ReCaptcha.dll",
+        "lib/net7.0/Blazorise.Captcha.ReCaptcha.xml",
+        "lib/net8.0/Blazorise.Captcha.ReCaptcha.dll",
+        "lib/net8.0/Blazorise.Captcha.ReCaptcha.xml",
+        "staticwebassets/blazorise.recaptcha.js"
+      ]
+    },
+    "Blazorise.Charts/1.6.1": {
+      "sha512": "YYjqs7usuIfEfu1U79w9msHVcLQAH5BVhiydBKNHDeRJcUFbdraaQ4jkMqXOEzAR7sG0/jN2K1fSBG9Stgc5Rw==",
+      "type": "package",
+      "path": "blazorise.charts/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.charts.1.6.1.nupkg.sha512",
+        "blazorise.charts.nuspec",
+        "build/Blazorise.Charts.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Charts.props",
+        "buildTransitive/Blazorise.Charts.props",
+        "lib/net6.0/Blazorise.Charts.dll",
+        "lib/net6.0/Blazorise.Charts.xml",
+        "lib/net7.0/Blazorise.Charts.dll",
+        "lib/net7.0/Blazorise.Charts.xml",
+        "lib/net8.0/Blazorise.Charts.dll",
+        "lib/net8.0/Blazorise.Charts.xml",
+        "staticwebassets/charts.js",
+        "staticwebassets/utilities.js"
+      ]
+    },
+    "Blazorise.Icons.FontAwesome/1.6.1": {
+      "sha512": "apJtyUSuLPjoyDx14YG9O14GHL9lRG5m1/2tN2r975EHbwF6hfr2zvV9a6c6aJ2C8cNE9XXIHPZcLPZg7/nRGw==",
+      "type": "package",
+      "path": "blazorise.icons.fontawesome/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.icons.fontawesome.1.6.1.nupkg.sha512",
+        "blazorise.icons.fontawesome.nuspec",
+        "build/Blazorise.Icons.FontAwesome.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/Blazorise.Icons.FontAwesome.props",
+        "buildTransitive/Blazorise.Icons.FontAwesome.props",
+        "lib/net6.0/Blazorise.Icons.FontAwesome.dll",
+        "lib/net7.0/Blazorise.Icons.FontAwesome.dll",
+        "lib/net8.0/Blazorise.Icons.FontAwesome.dll",
+        "staticwebassets/v5/css/all.css",
+        "staticwebassets/v5/css/all.min.css",
+        "staticwebassets/v5/webfonts/fa-brands-400.eot",
+        "staticwebassets/v5/webfonts/fa-brands-400.svg",
+        "staticwebassets/v5/webfonts/fa-brands-400.ttf",
+        "staticwebassets/v5/webfonts/fa-brands-400.woff",
+        "staticwebassets/v5/webfonts/fa-brands-400.woff2",
+        "staticwebassets/v5/webfonts/fa-regular-400.eot",
+        "staticwebassets/v5/webfonts/fa-regular-400.svg",
+        "staticwebassets/v5/webfonts/fa-regular-400.ttf",
+        "staticwebassets/v5/webfonts/fa-regular-400.woff",
+        "staticwebassets/v5/webfonts/fa-regular-400.woff2",
+        "staticwebassets/v5/webfonts/fa-solid-900.eot",
+        "staticwebassets/v5/webfonts/fa-solid-900.svg",
+        "staticwebassets/v5/webfonts/fa-solid-900.ttf",
+        "staticwebassets/v5/webfonts/fa-solid-900.woff",
+        "staticwebassets/v5/webfonts/fa-solid-900.woff2",
+        "staticwebassets/v6/css/all.css",
+        "staticwebassets/v6/css/all.min.css",
+        "staticwebassets/v6/webfonts/fa-brands-400.ttf",
+        "staticwebassets/v6/webfonts/fa-brands-400.woff2",
+        "staticwebassets/v6/webfonts/fa-regular-400.ttf",
+        "staticwebassets/v6/webfonts/fa-regular-400.woff2",
+        "staticwebassets/v6/webfonts/fa-solid-900.ttf",
+        "staticwebassets/v6/webfonts/fa-solid-900.woff2",
+        "staticwebassets/v6/webfonts/fa-v4compatibility.ttf",
+        "staticwebassets/v6/webfonts/fa-v4compatibility.woff2"
+      ]
+    },
+    "Blazorise.Licensing/1.2.0": {
+      "sha512": "h7jkAF+yyIKnUqFYivaxIySDma1zLV+0xcg52r2gIe772BLQWnBaANjpMBKXxRlYiEyOGPQWjMHJWs3dL/TgmA==",
+      "type": "package",
+      "path": "blazorise.licensing/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Blazorise.png",
+        "LICENSE.md",
+        "blazorise.licensing.1.2.0.nupkg.sha512",
+        "blazorise.licensing.nuspec",
+        "lib/net6.0/Blazorise.Licensing.dll",
+        "lib/net7.0/Blazorise.Licensing.dll",
+        "lib/net8.0/Blazorise.Licensing.dll"
+      ]
+    },
+    "BouncyCastle.Cryptography/2.4.0": {
+      "sha512": "SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
+      "type": "package",
+      "path": "bouncycastle.cryptography/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "bouncycastle.cryptography.2.4.0.nupkg.sha512",
+        "bouncycastle.cryptography.nuspec",
+        "lib/net461/BouncyCastle.Cryptography.dll",
+        "lib/net461/BouncyCastle.Cryptography.xml",
+        "lib/net6.0/BouncyCastle.Cryptography.dll",
+        "lib/net6.0/BouncyCastle.Cryptography.xml",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.dll",
+        "lib/netstandard2.0/BouncyCastle.Cryptography.xml",
+        "packageIcon.png"
       ]
     },
     "CurrieTechnologies.Razor.SweetAlert2/5.6.0": {
@@ -2713,6 +3165,25 @@
         "staticwebassets/wordpressAdminTheme.min.js"
       ]
     },
+    "GoogleCaptchaComponent/4.2.0": {
+      "sha512": "M2jDuL8UN4h7YBf4U34tjvwhnlXeN/oiAOcqPAWEPzOt5UTs9KreoE8fEUCDi/1vXvpVyx4FkAbN8Zqzl5enxg==",
+      "type": "package",
+      "path": "googlecaptchacomponent/4.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/GoogleCaptchaComponent.props",
+        "build/Microsoft.AspNetCore.StaticWebAssets.props",
+        "buildMultiTargeting/GoogleCaptchaComponent.props",
+        "buildTransitive/GoogleCaptchaComponent.props",
+        "googlecaptchacomponent.4.2.0.nupkg.sha512",
+        "googlecaptchacomponent.nuspec",
+        "icon.png",
+        "lib/net8.0/GoogleCaptchaComponent.dll",
+        "staticwebassets/Scripts/JsOfReCAPTCHA.js",
+        "staticwebassets/Scripts/ScriptLoader.js"
+      ]
+    },
     "Humanizer.Core/2.14.1": {
       "sha512": "lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "type": "package",
@@ -2729,6 +3200,69 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Lambda2Js/3.1.4": {
+      "sha512": "yxPJ5n+jUdjTZSItFj2wx5uFGm8iN6Gt42apqnEq0Zm5R6GgueZFFl+GDSe/CEogMSaBRw8kRG3yZm8ABFWXGQ==",
+      "type": "package",
+      "path": "lambda2js/3.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "icon-512.png",
+        "lambda2js.3.1.4.nupkg.sha512",
+        "lambda2js.nuspec",
+        "lib/net40/Lambda2Js.dll",
+        "lib/net40/Lambda2Js.xml",
+        "lib/netstandard1.0/Lambda2Js.dll",
+        "lib/netstandard1.0/Lambda2Js.xml",
+        "lib/netstandard2.0/Lambda2Js.dll",
+        "lib/netstandard2.0/Lambda2Js.xml"
+      ]
+    },
+    "MailKit/4.7.1.1": {
+      "sha512": "Y3okmIxu8g/ZcoJiE2i+dCeKgnNyddsXmcJslZnCPGVPP0aRyeVINHV1h97V+OVMdqjQI6O12J2p8Duwq5UEqQ==",
+      "type": "package",
+      "path": "mailkit/4.7.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "docs/ExchangeOAuth2.md",
+        "docs/FAQ.md",
+        "docs/GMailOAuth2.md",
+        "docs/README.md",
+        "icons/mailkit-50.png",
+        "lib/net462/MailKit.dll",
+        "lib/net462/MailKit.dll.config",
+        "lib/net462/MailKit.pdb",
+        "lib/net462/MailKit.xml",
+        "lib/net47/MailKit.dll",
+        "lib/net47/MailKit.dll.config",
+        "lib/net47/MailKit.pdb",
+        "lib/net47/MailKit.xml",
+        "lib/net48/MailKit.dll",
+        "lib/net48/MailKit.dll.config",
+        "lib/net48/MailKit.pdb",
+        "lib/net48/MailKit.xml",
+        "lib/net6.0/MailKit.dll",
+        "lib/net6.0/MailKit.dll.config",
+        "lib/net6.0/MailKit.pdb",
+        "lib/net6.0/MailKit.xml",
+        "lib/net8.0/MailKit.dll",
+        "lib/net8.0/MailKit.dll.config",
+        "lib/net8.0/MailKit.pdb",
+        "lib/net8.0/MailKit.xml",
+        "lib/netstandard2.0/MailKit.dll",
+        "lib/netstandard2.0/MailKit.dll.config",
+        "lib/netstandard2.0/MailKit.pdb",
+        "lib/netstandard2.0/MailKit.xml",
+        "lib/netstandard2.1/MailKit.dll",
+        "lib/netstandard2.1/MailKit.dll.config",
+        "lib/netstandard2.1/MailKit.pdb",
+        "lib/netstandard2.1/MailKit.xml",
+        "mailkit.4.7.1.1.nupkg.sha512",
+        "mailkit.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authentication/2.2.0": {
@@ -3033,6 +3567,19 @@
         "microsoft.aspnetcore.http.features.nuspec"
       ]
     },
+    "Microsoft.AspNetCore.Identity/2.2.0": {
+      "sha512": "F16BKeS96wKhyIyhaFR7m8kRIwIvPUW9Dx7IlGWmu2IIwnUDCdo+2z7IrWKA8r77pZQ1UE9kYcBPg5456YdAIA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.identity/2.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Identity.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Identity.xml",
+        "microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
+        "microsoft.aspnetcore.identity.nuspec"
+      ]
+    },
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/8.0.8": {
       "sha512": "OtjXwZkWdW7UTQ1XR/IGWmeVCujnly0fjjCbUxsjHC1o3cB9iWQRTREdL4931Ulwk9RRgjYQ/mAo7k8ggcZ9xQ==",
       "type": "package",
@@ -3046,6 +3593,124 @@
         "lib/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.xml",
         "microsoft.aspnetcore.identity.entityframeworkcore.8.0.8.nupkg.sha512",
         "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Identity.UI/8.0.8": {
+      "sha512": "tvweO7FJ+4nPTYK/CXMyPtmT/0GVAOsoEKbzaXffI0NVKUS1lujWX9fTtEji+U+S7zjmtZSdqdQ+CqCN45cuBA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.identity.ui/8.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "build/Microsoft.AspNetCore.Identity.UI.props",
+        "build/Microsoft.AspNetCore.Identity.UI.targets",
+        "build/Microsoft.AspNetCore.StaticWebAssets.V4.targets",
+        "build/Microsoft.AspNetCore.StaticWebAssets.V5.targets",
+        "build/Microsoft.AspNetCore.StaticWebAssets.targets",
+        "buildMultiTargeting/Microsoft.AspNetCore.Identity.UI.targets",
+        "buildTransitive/Microsoft.AspNetCore.Identity.UI.targets",
+        "lib/net8.0/Microsoft.AspNetCore.Identity.UI.dll",
+        "lib/net8.0/Microsoft.AspNetCore.Identity.UI.xml",
+        "microsoft.aspnetcore.identity.ui.8.0.8.nupkg.sha512",
+        "microsoft.aspnetcore.identity.ui.nuspec",
+        "staticwebassets/V4/css/site.css",
+        "staticwebassets/V4/favicon.ico",
+        "staticwebassets/V4/js/site.js",
+        "staticwebassets/V4/lib/bootstrap/LICENSE",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-grid.css",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-reboot.css",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap.css",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap.css.map",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap.min.css",
+        "staticwebassets/V4/lib/bootstrap/dist/css/bootstrap.min.css.map",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.bundle.js",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.js",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.js.map",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.min.js",
+        "staticwebassets/V4/lib/bootstrap/dist/js/bootstrap.min.js.map",
+        "staticwebassets/V4/lib/jquery-validation-unobtrusive/LICENSE.txt",
+        "staticwebassets/V4/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+        "staticwebassets/V4/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+        "staticwebassets/V4/lib/jquery-validation/LICENSE.md",
+        "staticwebassets/V4/lib/jquery-validation/dist/additional-methods.js",
+        "staticwebassets/V4/lib/jquery-validation/dist/additional-methods.min.js",
+        "staticwebassets/V4/lib/jquery-validation/dist/jquery.validate.js",
+        "staticwebassets/V4/lib/jquery-validation/dist/jquery.validate.min.js",
+        "staticwebassets/V4/lib/jquery/LICENSE.txt",
+        "staticwebassets/V4/lib/jquery/dist/jquery.js",
+        "staticwebassets/V4/lib/jquery/dist/jquery.min.js",
+        "staticwebassets/V4/lib/jquery/dist/jquery.min.map",
+        "staticwebassets/V5/css/site.css",
+        "staticwebassets/V5/favicon.ico",
+        "staticwebassets/V5/js/site.js",
+        "staticwebassets/V5/lib/bootstrap/LICENSE",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.rtl.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+        "staticwebassets/V5/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.bundle.js",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.esm.js",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.js",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.js.map",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.min.js",
+        "staticwebassets/V5/lib/bootstrap/dist/js/bootstrap.min.js.map",
+        "staticwebassets/V5/lib/jquery-validation-unobtrusive/LICENSE.txt",
+        "staticwebassets/V5/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+        "staticwebassets/V5/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+        "staticwebassets/V5/lib/jquery-validation/LICENSE.md",
+        "staticwebassets/V5/lib/jquery-validation/dist/additional-methods.js",
+        "staticwebassets/V5/lib/jquery-validation/dist/additional-methods.min.js",
+        "staticwebassets/V5/lib/jquery-validation/dist/jquery.validate.js",
+        "staticwebassets/V5/lib/jquery-validation/dist/jquery.validate.min.js",
+        "staticwebassets/V5/lib/jquery/LICENSE.txt",
+        "staticwebassets/V5/lib/jquery/dist/jquery.js",
+        "staticwebassets/V5/lib/jquery/dist/jquery.min.js",
+        "staticwebassets/V5/lib/jquery/dist/jquery.min.map"
       ]
     },
     "Microsoft.AspNetCore.Metadata/8.0.8": {
@@ -4130,17 +4795,55 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.FileProviders.Abstractions/2.2.0": {
-      "sha512": "EcnaSsPTqx2MGnHrmWOD0ugbuuqVT8iICqSqPzi45V5/MA1LjUNb0kwgcxBGqizV1R+WeBK7/Gw25Jzkyk9bIw==",
+    "Microsoft.Extensions.FileProviders.Abstractions/8.0.0": {
+      "sha512": "ZbaMlhJlpisjuWbvXr4LdAst/1XxH3vZ6A0BsgTphZ2L4PGuxRLz7Jr/S7mkAAnOn78Vu0fKhEgNF5JO3zfjqQ==",
       "type": "package",
-      "path": "microsoft.extensions.fileproviders.abstractions/2.2.0",
+      "path": "microsoft.extensions.fileproviders.abstractions/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "PACKAGE.md",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.FileProviders.Abstractions.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.FileProviders.Abstractions.targets",
+        "lib/net462/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/net462/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/net6.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
+        "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
+        "lib/net8.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Abstractions.xml",
-        "microsoft.extensions.fileproviders.abstractions.2.2.0.nupkg.sha512",
-        "microsoft.extensions.fileproviders.abstractions.nuspec"
+        "microsoft.extensions.fileproviders.abstractions.8.0.0.nupkg.sha512",
+        "microsoft.extensions.fileproviders.abstractions.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.FileProviders.Embedded/8.0.8": {
+      "sha512": "fefQMlaOIQnc7cn7R/GWCwnA6X0tv5pB9ZKIR6I1JZPmYcoCNY7HtLt0bJPMj+F0StrMkwTk2cPtMGtr9zhkoA==",
+      "type": "package",
+      "path": "microsoft.extensions.fileproviders.embedded/8.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.props",
+        "build/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.targets",
+        "buildMultiTargeting/Microsoft.Extensions.FileProviders.Embedded.props",
+        "buildMultiTargeting/Microsoft.Extensions.FileProviders.Embedded.targets",
+        "lib/net462/Microsoft.Extensions.FileProviders.Embedded.dll",
+        "lib/net462/Microsoft.Extensions.FileProviders.Embedded.xml",
+        "lib/net8.0/Microsoft.Extensions.FileProviders.Embedded.dll",
+        "lib/net8.0/Microsoft.Extensions.FileProviders.Embedded.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.xml",
+        "microsoft.extensions.fileproviders.embedded.8.0.8.nupkg.sha512",
+        "microsoft.extensions.fileproviders.embedded.nuspec",
+        "tasks/netstandard2.0/Microsoft.Extensions.FileProviders.Embedded.Manifest.Task.dll"
       ]
     },
     "Microsoft.Extensions.Hosting.Abstractions/2.2.0": {
@@ -4814,6 +5517,48 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "MimeKit/4.7.1": {
+      "sha512": "Qoj4aVvhX14A1FNvaJ33hzOP4VZI2j+Mr38I9wSGcjMq4BYDtWLJG89aJ9nRW2cNfH6Czjwyp7+Mh++xv3AZvg==",
+      "type": "package",
+      "path": "mimekit/4.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "docs/FAQ.md",
+        "docs/README.md",
+        "icons/mimekit-50.png",
+        "lib/net462/MimeKit.dll",
+        "lib/net462/MimeKit.dll.config",
+        "lib/net462/MimeKit.pdb",
+        "lib/net462/MimeKit.xml",
+        "lib/net47/MimeKit.dll",
+        "lib/net47/MimeKit.dll.config",
+        "lib/net47/MimeKit.pdb",
+        "lib/net47/MimeKit.xml",
+        "lib/net48/MimeKit.dll",
+        "lib/net48/MimeKit.dll.config",
+        "lib/net48/MimeKit.pdb",
+        "lib/net48/MimeKit.xml",
+        "lib/net6.0/MimeKit.dll",
+        "lib/net6.0/MimeKit.dll.config",
+        "lib/net6.0/MimeKit.pdb",
+        "lib/net6.0/MimeKit.xml",
+        "lib/net8.0/MimeKit.dll",
+        "lib/net8.0/MimeKit.dll.config",
+        "lib/net8.0/MimeKit.pdb",
+        "lib/net8.0/MimeKit.xml",
+        "lib/netstandard2.0/MimeKit.dll",
+        "lib/netstandard2.0/MimeKit.dll.config",
+        "lib/netstandard2.0/MimeKit.pdb",
+        "lib/netstandard2.0/MimeKit.xml",
+        "lib/netstandard2.1/MimeKit.dll",
+        "lib/netstandard2.1/MimeKit.dll.config",
+        "lib/netstandard2.1/MimeKit.pdb",
+        "lib/netstandard2.1/MimeKit.xml",
+        "mimekit.4.7.1.nupkg.sha512",
+        "mimekit.nuspec"
+      ]
+    },
     "MinimalApis.Extensions/0.11.0": {
       "sha512": "H+T96ZIoK9nUwQvycG4py39jvp+4LjUV9YiFVdKOnrUdEwktWkKDpF6ccHIn1o9tXeCH+vmZYnlobZ/X8eG6ug==",
       "type": "package",
@@ -4987,158 +5732,6 @@
         "lib/netstandard2.0/SQLitePCLRaw.provider.e_sqlite3.dll",
         "sqlitepclraw.provider.e_sqlite3.2.1.6.nupkg.sha512",
         "sqlitepclraw.provider.e_sqlite3.nuspec"
-      ]
-    },
-    "Syncfusion.Blazor.Buttons/26.2.13": {
-      "sha512": "clCU/RPbz9fT54l95LFG0BV88nO+uyvzUMIbPTaSNEnN87OY2ANhraxJuYyF+UfuEfU+2yHAf8zXEa3XCO7UGA==",
-      "type": "package",
-      "path": "syncfusion.blazor.buttons/26.2.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "build/Syncfusion.Blazor.Buttons.props",
-        "buildMultiTargeting/Syncfusion.Blazor.Buttons.props",
-        "buildTransitive/Syncfusion.Blazor.Buttons.props",
-        "lib/net6.0/Syncfusion.Blazor.Buttons.dll",
-        "lib/net6.0/Syncfusion.Blazor.Buttons.xml",
-        "lib/net7.0/Syncfusion.Blazor.Buttons.dll",
-        "lib/net7.0/Syncfusion.Blazor.Buttons.xml",
-        "lib/net8.0/Syncfusion.Blazor.Buttons.dll",
-        "lib/net8.0/Syncfusion.Blazor.Buttons.xml",
-        "staticwebassets/scripts/sf-floating-action-button.min.js",
-        "staticwebassets/scripts/sf-speeddial.min.js",
-        "syncfusion.blazor.buttons.26.2.13.nupkg.sha512",
-        "syncfusion.blazor.buttons.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Blazor.Core/26.2.13": {
-      "sha512": "LslEAwll7nNu8DPxY9o7oUfjyp6uhOtAITrejGGuamPCUqEiccwJTd1FAmVTg00wSGh0LZhq/qWS0DDrTEml0g==",
-      "type": "package",
-      "path": "syncfusion.blazor.core/26.2.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "build/Syncfusion.Blazor.Core.props",
-        "buildMultiTargeting/Syncfusion.Blazor.Core.props",
-        "buildTransitive/Syncfusion.Blazor.Core.props",
-        "lib/net6.0/Syncfusion.Blazor.Core.dll",
-        "lib/net6.0/Syncfusion.Blazor.Core.xml",
-        "lib/net7.0/Syncfusion.Blazor.Core.dll",
-        "lib/net7.0/Syncfusion.Blazor.Core.xml",
-        "lib/net8.0/Syncfusion.Blazor.Core.dll",
-        "lib/net8.0/Syncfusion.Blazor.Core.xml",
-        "staticwebassets/scripts/popup.min.js",
-        "staticwebassets/scripts/popupsbase.min.js",
-        "staticwebassets/scripts/sf-svg-export.min.js",
-        "staticwebassets/scripts/svgbase.min.js",
-        "staticwebassets/scripts/syncfusion-blazor-base.min.js",
-        "staticwebassets/scripts/syncfusion-blazor.min.js",
-        "syncfusion.blazor.core.26.2.13.nupkg.sha512",
-        "syncfusion.blazor.core.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Blazor.Notifications/26.2.13": {
-      "sha512": "vrJEG+/HdKafxh0n7d8Sh4lz4cAzwMvsEAr4XKq4CahaBligAZsKIHNvORDknxH6Ln3+nIZqfF8EqoqM9UHF9Q==",
-      "type": "package",
-      "path": "syncfusion.blazor.notifications/26.2.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "build/Syncfusion.Blazor.Notifications.props",
-        "buildMultiTargeting/Syncfusion.Blazor.Notifications.props",
-        "buildTransitive/Syncfusion.Blazor.Notifications.props",
-        "lib/net6.0/Syncfusion.Blazor.Notifications.dll",
-        "lib/net6.0/Syncfusion.Blazor.Notifications.xml",
-        "lib/net7.0/Syncfusion.Blazor.Notifications.dll",
-        "lib/net7.0/Syncfusion.Blazor.Notifications.xml",
-        "lib/net8.0/Syncfusion.Blazor.Notifications.dll",
-        "lib/net8.0/Syncfusion.Blazor.Notifications.xml",
-        "staticwebassets/scripts/sf-toast.min.js",
-        "syncfusion.blazor.notifications.26.2.13.nupkg.sha512",
-        "syncfusion.blazor.notifications.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Blazor.Themes/26.2.13": {
-      "sha512": "yb1YEJ+52MeTNAEoTQO1q9agE04Z+2gVM3BLYWa+Vbg1iieO4nCZHLUckSfGFlhOpmiTL+ua4KjYtOa+Y7xDNw==",
-      "type": "package",
-      "path": "syncfusion.blazor.themes/26.2.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "build/Microsoft.AspNetCore.StaticWebAssets.props",
-        "build/Syncfusion.Blazor.Themes.props",
-        "buildMultiTargeting/Syncfusion.Blazor.Themes.props",
-        "buildTransitive/Syncfusion.Blazor.Themes.props",
-        "lib/net6.0/Syncfusion.Blazor.Themes.dll",
-        "lib/net6.0/Syncfusion.Blazor.Themes.xml",
-        "lib/net7.0/Syncfusion.Blazor.Themes.dll",
-        "lib/net7.0/Syncfusion.Blazor.Themes.xml",
-        "lib/net8.0/Syncfusion.Blazor.Themes.dll",
-        "lib/net8.0/Syncfusion.Blazor.Themes.xml",
-        "staticwebassets/bootstrap-dark.css",
-        "staticwebassets/bootstrap.css",
-        "staticwebassets/bootstrap4.css",
-        "staticwebassets/bootstrap5-dark.css",
-        "staticwebassets/bootstrap5.css",
-        "staticwebassets/customized/material-dark.css",
-        "staticwebassets/customized/material.css",
-        "staticwebassets/customized/tailwind-dark.css",
-        "staticwebassets/customized/tailwind.css",
-        "staticwebassets/fabric-dark.css",
-        "staticwebassets/fabric.css",
-        "staticwebassets/fluent-dark.css",
-        "staticwebassets/fluent.css",
-        "staticwebassets/fluent2-dark.css",
-        "staticwebassets/fluent2.css",
-        "staticwebassets/highcontrast.css",
-        "staticwebassets/material-dark.css",
-        "staticwebassets/material.css",
-        "staticwebassets/material3-dark.css",
-        "staticwebassets/material3.css",
-        "staticwebassets/tailwind-dark.css",
-        "staticwebassets/tailwind.css",
-        "syncfusion.blazor.themes.26.2.13.nupkg.sha512",
-        "syncfusion.blazor.themes.nuspec",
-        "syncfusion_logo.png"
-      ]
-    },
-    "Syncfusion.Licensing/26.2.13": {
-      "sha512": "pFOJrYkUu3h1bzVVuAc5GAch6naY0N5OGshiigLKqID4o/HptDgnBqA5GiBqeZR1aOK6yvt8cdDj3aBzM8sUcQ==",
-      "type": "package",
-      "path": "syncfusion.licensing/26.2.13",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.txt",
-        "README.md",
-        "lib/MonoAndroid90/Syncfusion.Licensing.dll",
-        "lib/Xamarin.Mac/Syncfusion.Licensing.dll",
-        "lib/Xamarin.iOS10/Syncfusion.Licensing.dll",
-        "lib/net40/Syncfusion.Licensing.dll",
-        "lib/net45/Syncfusion.Licensing.dll",
-        "lib/net462/Syncfusion.Licensing.dll",
-        "lib/net6.0/Syncfusion.Licensing.dll",
-        "lib/net7.0/Syncfusion.Licensing.dll",
-        "lib/net8.0/Syncfusion.Licensing.dll",
-        "lib/netstandard2.0/Syncfusion.Licensing.dll",
-        "lib/uap10.0/Syncfusion.Licensing.dll",
-        "syncfusion.licensing.26.2.13.nupkg.sha512",
-        "syncfusion.licensing.nuspec",
-        "syncfusion_logo.png"
       ]
     },
     "System.Buffers/4.5.0": {
@@ -5440,24 +6033,33 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "System.Formats.Asn1/5.0.0": {
-      "sha512": "MTvUIktmemNB+El0Fgw9egyqT9AYSIk6DTJeoDSpc3GIHxHCMo8COqkWT1mptX5tZ1SlQ6HJZ0OsSvMth1c12w==",
+    "System.Formats.Asn1/8.0.1": {
+      "sha512": "XqKba7Mm/koKSjKMfW82olQdmfbI5yqeoLV/tidRp7fbh5rmHAQ5raDI/7SU0swTzv+jgqtUGkzmFxuUg0it1A==",
       "type": "package",
-      "path": "system.formats.asn1/5.0.0",
+      "path": "system.formats.asn1/8.0.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net461/System.Formats.Asn1.dll",
-        "lib/net461/System.Formats.Asn1.xml",
+        "buildTransitive/net461/System.Formats.Asn1.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Formats.Asn1.targets",
+        "lib/net462/System.Formats.Asn1.dll",
+        "lib/net462/System.Formats.Asn1.xml",
+        "lib/net6.0/System.Formats.Asn1.dll",
+        "lib/net6.0/System.Formats.Asn1.xml",
+        "lib/net7.0/System.Formats.Asn1.dll",
+        "lib/net7.0/System.Formats.Asn1.xml",
+        "lib/net8.0/System.Formats.Asn1.dll",
+        "lib/net8.0/System.Formats.Asn1.xml",
         "lib/netstandard2.0/System.Formats.Asn1.dll",
         "lib/netstandard2.0/System.Formats.Asn1.xml",
-        "system.formats.asn1.5.0.0.nupkg.sha512",
+        "system.formats.asn1.8.0.1.nupkg.sha512",
         "system.formats.asn1.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.IdentityModel.Tokens.Jwt/6.35.0": {
@@ -5931,37 +6533,41 @@
         "version.txt"
       ]
     },
-    "System.Security.Cryptography.Pkcs/4.5.0": {
-      "sha512": "TGQX51gxpY3K3I6LJlE2LAftVlIMqJf0cBGhz68Y89jjk3LJCB6SrwiD+YN1fkqemBvWGs+GjyMJukl6d6goyQ==",
+    "System.Security.Cryptography.Pkcs/8.0.0": {
+      "sha512": "ULmp3xoOwNYjOYp4JZ2NK/6NdTgiN1GQXzVVN1njQ7LOZ0d0B9vyMnhyqbIi9Qw4JXj1JgCsitkTShboHRx7Eg==",
       "type": "package",
-      "path": "system.security.cryptography.pkcs/4.5.0",
+      "path": "system.security.cryptography.pkcs/8.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
-        "lib/net46/System.Security.Cryptography.Pkcs.dll",
-        "lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
+        "buildTransitive/net461/System.Security.Cryptography.Pkcs.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/System.Security.Cryptography.Pkcs.targets",
+        "lib/net462/System.Security.Cryptography.Pkcs.dll",
+        "lib/net462/System.Security.Cryptography.Pkcs.xml",
+        "lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net6.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "lib/net8.0/System.Security.Cryptography.Pkcs.xml",
         "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "ref/net46/System.Security.Cryptography.Pkcs.dll",
-        "ref/net461/System.Security.Cryptography.Pkcs.dll",
-        "ref/net461/System.Security.Cryptography.Pkcs.xml",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "ref/netcoreapp2.1/System.Security.Cryptography.Pkcs.xml",
-        "ref/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "ref/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
-        "runtimes/win/lib/net46/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
-        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
-        "system.security.cryptography.pkcs.4.5.0.nupkg.sha512",
+        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
+        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard2.1/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net7.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.xml",
+        "system.security.cryptography.pkcs.8.0.0.nupkg.sha512",
         "system.security.cryptography.pkcs.nuspec",
-        "useSharedDesignerContext.txt",
-        "version.txt"
+        "useSharedDesignerContext.txt"
       ]
     },
     "System.Security.Cryptography.ProtectedData/6.0.0": {
@@ -6433,12 +7039,22 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Blazored.Toast >= 4.2.1",
+      "Blazor-ApexCharts >= 3.4.0",
+      "Blazorise >= 1.6.1",
+      "Blazorise.Bootstrap >= 1.6.1",
+      "Blazorise.Captcha >= 1.6.1",
+      "Blazorise.Captcha.ReCaptcha >= 1.5.2",
+      "Blazorise.Charts >= 1.6.1",
+      "Blazorise.Icons.FontAwesome >= 1.6.1",
       "CurrieTechnologies.Razor.SweetAlert2 >= 5.6.0",
+      "GoogleCaptchaComponent >= 4.2.0",
+      "MailKit >= 4.7.1.1",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.2.0",
       "Microsoft.AspNetCore.Components.Web >= 8.0.8",
       "Microsoft.AspNetCore.Components.WebAssembly.Server >= 8.0.8",
+      "Microsoft.AspNetCore.Identity >= 2.2.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.8",
+      "Microsoft.AspNetCore.Identity.UI >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Design >= 8.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.8",
       "Microsoft.EntityFrameworkCore.Sqlite >= 8.0.8",
@@ -6446,8 +7062,6 @@
       "MinimalApis.Extensions >= 0.11.0",
       "Otp.NET >= 1.4.0",
       "QRCoder >= 1.6.0",
-      "Syncfusion.Blazor.Notifications >= 26.2.13",
-      "Syncfusion.Blazor.Themes >= 26.2.13",
       "System.Drawing.Common >= 8.0.8",
       "TextCopy >= 6.2.1"
     ]
@@ -6491,13 +7105,45 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "Blazored.Toast": {
+          "Blazor-ApexCharts": {
             "target": "Package",
-            "version": "[4.2.1, )"
+            "version": "[3.4.0, )"
+          },
+          "Blazorise": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "Blazorise.Bootstrap": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "Blazorise.Captcha": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "Blazorise.Captcha.ReCaptcha": {
+            "target": "Package",
+            "version": "[1.5.2, )"
+          },
+          "Blazorise.Charts": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "Blazorise.Icons.FontAwesome": {
+            "target": "Package",
+            "version": "[1.6.1, )"
           },
           "CurrieTechnologies.Razor.SweetAlert2": {
             "target": "Package",
             "version": "[5.6.0, )"
+          },
+          "GoogleCaptchaComponent": {
+            "target": "Package",
+            "version": "[4.2.0, )"
+          },
+          "MailKit": {
+            "target": "Package",
+            "version": "[4.7.1.1, )"
           },
           "Microsoft.AspNetCore.Authentication.Cookies": {
             "target": "Package",
@@ -6511,7 +7157,15 @@
             "target": "Package",
             "version": "[8.0.8, )"
           },
+          "Microsoft.AspNetCore.Identity": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[8.0.8, )"
+          },
+          "Microsoft.AspNetCore.Identity.UI": {
             "target": "Package",
             "version": "[8.0.8, )"
           },
@@ -6544,14 +7198,6 @@
           "QRCoder": {
             "target": "Package",
             "version": "[1.6.0, )"
-          },
-          "Syncfusion.Blazor.Notifications": {
-            "target": "Package",
-            "version": "[26.2.13, )"
-          },
-          "Syncfusion.Blazor.Themes": {
-            "target": "Package",
-            "version": "[26.2.13, )"
           },
           "System.Drawing.Common": {
             "target": "Package",

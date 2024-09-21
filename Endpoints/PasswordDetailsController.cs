@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using WebApp.Models;
 using WebApp.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Azure.Identity;
 
 namespace WebApp.Endpoints
 {
@@ -11,9 +13,9 @@ namespace WebApp.Endpoints
     [ApiController]
     public class PasswordDetailsController : ControllerBase
     {
-        private readonly AccountDetailsContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public PasswordDetailsController(AccountDetailsContext context)
+        public PasswordDetailsController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -21,21 +23,27 @@ namespace WebApp.Endpoints
         [HttpPost]
         public async Task<IActionResult> PostPasswordDetails([FromBody] PasswordDetails passwordDetails)
         {
-
+            // Kontrola, zda data nejsou null
             if (passwordDetails == null)
             {
-                Console.WriteLine("Received null data.");
                 return BadRequest("Invalid data.");
             }
 
-            Console.WriteLine($"Received data: Name={passwordDetails.Name}, Email={passwordDetails.Email}, Password={passwordDetails.Password}, Category={passwordDetails.Category}, Description={passwordDetails.Description}");
-
+            // Získání AccountDetails na základě AccountDetailsId
+            var accountDetails = await _context.AccountDetails.FindAsync(passwordDetails.AccountDetailsId);
+            
+            // Kontrola existence AccountDetails
+            if (accountDetails == null)
+            {
+                return BadRequest("Invalid AccountDetailsId. The related AccountDetails record does not exist.");
+            }
 
             try
             {
+                // Přidání PasswordDetails do databáze
                 _context.PasswordDetails.Add(passwordDetails);
                 await _context.SaveChangesAsync();
-                return Ok();
+                return Ok(); 
             }
             catch (Exception ex)
             {
@@ -44,10 +52,10 @@ namespace WebApp.Endpoints
             }
         }
 
-        [HttpGet]
-        public async Task<ActionResult<List<PasswordDetails>>> GetPasswords()
+        [HttpGet("{accountId}")]
+        public async Task<ActionResult<List<PasswordDetails>>> GetPasswords(int accountId)
         {
-            return await _context.PasswordDetails.ToListAsync();
+            return await _context.PasswordDetails.Where(p => p.AccountDetailsId == accountId).ToListAsync();
         }
 
         [HttpDelete("{id}")]
@@ -76,6 +84,7 @@ namespace WebApp.Endpoints
         public async Task<IActionResult> UpdatePassword(int id, PasswordDetails updatedPassword)
         {
             var existingPassword = await _context.PasswordDetails.FindAsync(id);
+            
             if (existingPassword == null)
             {
                 return NotFound();
@@ -87,15 +96,104 @@ namespace WebApp.Endpoints
             existingPassword.Password = updatedPassword.Password;
             existingPassword.Category = updatedPassword.Category;
             existingPassword.Description = updatedPassword.Description;
+            existingPassword.CreatedAt = updatedPassword.CreatedAt;
+            existingPassword.PasswordScore = updatedPassword.PasswordScore;
 
             await _context.SaveChangesAsync(); // Uložení změn do databáze
 
             return NoContent();
         }
 
-        private bool PasswordExists(int id)
+
+        [HttpPut("UpdateOldPasswords")]
+        public async Task<IActionResult> UpdateOldPasswords([FromBody] List<PasswordDetails> passwords)
         {
-            return _context.PasswordDetails.Any(e => e.Id == id);
+            foreach (var password in passwords)
+            {
+                var dbPassword = await _context.PasswordDetails.FindAsync(password.Id);
+                if (dbPassword != null)
+                {
+                    dbPassword.IsPasswordOld = password.IsPasswordOld;
+                }
+            }
+            
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpPut("{id}/calculate-score")]
+        public async Task<IActionResult> CalculatePasswordScore([FromRoute] int id, [FromBody] PasswordDetails passwordDetails)
+        {
+            if (passwordDetails == null || string.IsNullOrWhiteSpace(passwordDetails.Password))
+            {
+                return BadRequest("Password is required.");
+            }
+
+            int score = 0;
+
+            if (passwordDetails.Password.Length >= 8 && passwordDetails.Password.Length <= 14)
+                score += 25;
+
+            if (passwordDetails.Password.Any(char.IsUpper))
+                score += 25;
+
+            if (passwordDetails.Password.Any(char.IsLower))
+                score += 25;
+
+            if (passwordDetails.Password.Any(char.IsDigit))
+                score += 10;
+
+            if (passwordDetails.Password.Any(char.IsSymbol))
+                score += 15;
+
+            bool isSecure = score >= 50;
+            
+            var existingPassword = await _context.PasswordDetails.FindAsync(id);
+
+
+            if (existingPassword == null)
+            {
+                return NotFound("Password record not found.");
+            }
+
+            existingPassword.PasswordScore = score;
+            existingPassword.PasswordSecure = isSecure;
+
+            await _context.SaveChangesAsync();
+            
+            return Ok(score);
+        }
+
+        [HttpPut("{id}/check-duplicate")]
+        public async Task<IActionResult> CheckDuplicatePassword([FromRoute] int id, [FromBody] PasswordDetails passwordDetails)
+        {
+            if (passwordDetails == null || string.IsNullOrWhiteSpace(passwordDetails.Password))
+            {
+                return BadRequest("Password is required.");
+            }
+
+            var existingPassword = await _context.PasswordDetails.FindAsync(id);
+
+            if (existingPassword == null)
+            {
+                return NotFound("Password record not found.");
+            }
+
+            var duplicatePassword = await _context.PasswordDetails.FirstOrDefaultAsync(p => p.Password == passwordDetails.Password && p.Id != id);
+
+            if (duplicatePassword != null)
+            {
+                existingPassword.DuplicatedPassword = true;
+            }
+            else
+            {
+                existingPassword.DuplicatedPassword = false;
+            }
+
+            await _context.SaveChangesAsync();
+            
+            return Ok(existingPassword.DuplicatedPassword);
         }
     }
+
 }

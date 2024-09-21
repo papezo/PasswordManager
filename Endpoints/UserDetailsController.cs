@@ -11,9 +11,9 @@ namespace WebApp.Endpoints
     [ApiController]
     public class UserDetailsController : ControllerBase
     {
-        private readonly AccountDetailsContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public UserDetailsController(AccountDetailsContext context)
+        public UserDetailsController(ApplicationDbContext context)
         {
             _context = context;
         }
