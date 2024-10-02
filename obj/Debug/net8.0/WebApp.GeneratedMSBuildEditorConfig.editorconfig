@@ -1,0 +1,87 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = WebApp
+build_property.RootNamespace = WebApp
+build_property.ProjectDir = /Users/ondrejpapez/Desktop/PasswordManager-main/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/ondrejpapez/Desktop/PasswordManager-main
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/2FA.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy8yRkEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/Account.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BY2NvdW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/CreateAccount.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9DcmVhdGVBY2NvdW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/Error.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9FcnJvci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/ForgotPassword.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Gb3Jnb3RQYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/HomeManager.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lTWFuYWdlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9JbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/Logout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Mb2dvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/PasswordsPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9QYXNzd29yZHNQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/Reset-password.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SZXNldC1wYXNzd29yZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/SecurityTips.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TZWN1cml0eVRpcHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/SupportPage.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TdXBwb3J0UGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Pages/Validator.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9WYWxpZGF0b3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ondrejpapez/Desktop/PasswordManager-main/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-fq3qcrodmt

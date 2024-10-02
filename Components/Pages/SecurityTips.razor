@@ -1,0 +1,295 @@
+﻿@page "/SecurityTips"
+
+@rendermode InteractiveServer
+
+@using System.Text
+@using System.Text.Json
+@using WebApp.Models
+@using System.Net.Http
+@using System.Net.Http.Json
+
+<PageTitle>Home Manager</PageTitle>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white d-flex align-items-center" href="#">
+            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security Image">
+            <span class="ms-2">Password Manager</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="d-flex align-items-center ms-auto">
+                 <div class="me-3">
+                    <div class="input-group input-group-sm">
+                        <input type="search" class="form-control form-control-sm" placeholder="Search" aria-label="Search">
+                         <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-bell fs-4"></i>
+                </button>
+
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-person fs-4"></i>
+                </button>
+
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-question-circle fs-4"></i>
+                </button>
+
+                <button type="button" class="btn btn-dark">
+                    <i class="bi bi-gear fs-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <nav class="d-flex flex-column bg-dark border-end" style="width: 160px;">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item p-2 border-bottom">
+                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link active text-white ms-4" aria-current="page" href="/HomeManager">Dashboard</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/PasswordsPage">Passwords</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/SecurityTips" style="width: 200px;">Security Tips</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Validator">Validator</a>
+                </i>
+            </li>
+            <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
+            <li class="nav-item p-2 mt-2 border-bottom border-top">
+                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Account">Account</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Support">Support</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-box-arrow-left text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/logout">Log Out</a>
+                </i>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="w-100">
+        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
+            <h1 class="text-center mb-5" style="font-size: 2.5rem; font-weight: bold;">Security Tips</h1>
+            <p>Keep your accounts safe by following these best practices for password security and online safety.</p>
+            <div class="container-fluid text-dark bg-dark p-4 rounded w-100">
+                <div class="container">
+                    <h2 class="text-center mb-4">Security Tips</h2>
+                    <div class="row g-4">
+                        <!-- Card 1 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <i class="bi bi-lock-fill mb-3" style="font-size: 2rem;"></i>
+                                    <h5 class="card-title">Use Strong Passwords</h5>
+                                    <p class="card-text">Create passwords that are at least 12 characters long and
+                                        include a mix of letters, numbers, and symbols.</p>
+                                    <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <i class="bi bi-shield-check mb-3" style="font-size: 2rem;"></i>
+                                    <h5 class="card-title">Enable Two-Factor Authentication</h5>
+                                    <p class="card-text">Add an extra layer of security by enabling two-factor
+                                        authentication on your accounts.</p>
+                                    <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <i class="bi bi-key mb-3" style="font-size: 2rem;"></i>
+                                    <h5 class="card-title">Use Unique Passwords for Different Accounts</h5>
+                                    <p class="card-text">Avoid using the same password across multiple sites. This
+                                        reduces the risk if one account is compromised.</p>
+                                    <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <i class="bi bi-calendar-check mb-3" style="font-size: 2rem;"></i>
+                                    <h5 class="card-title">Update Your Passwords Regularly</h5>
+                                    <p class="card-text">Change your passwords periodically to enhance security.
+                                        Consider setting reminders for password updates.</p>
+                                    <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <i class="bi bi-gear mb-3" style="font-size: 2rem;"></i>
+                                    <h5 class="card-title">Review Account Permissions</h5>
+                                    <p class="card-text">Regularly review and adjust permissions for your online
+                                        accounts to ensure they have access only to what is necessary.</p>
+                                    <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card 6 -->
+                        <div class="col-md-4">
+                            <div class="card h-100 text-center">
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <i class="bi bi-cloud-arrow-up mb-3" style="font-size: 2rem;"></i>
+                                    <h5 class="card-title">Backup Important Data</h5>
+                                    <p class="card-text">Regularly backup important data to a secure location to prevent
+                                        loss in case of an incident.</p>
+                                    <a href="#" class="btn btn-primary mt-auto">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+                <div class="container mt-5">
+                    <h3 class="text-center mb-5 text-white mt-5">Frequently Asked Questions</h3>
+                    <div class="text-white text-center mb-5">
+                    <p>We understand that managing security and passwords can raise many questions. 
+                        Below, we've addressed some of the most common queries to help you stay informed and secure.
+                         If you have any additional questions or need further assistance, 
+                        please dont hesitate to reach out to our support team or consult our resources.</p>
+                    </div>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What is Two-Factor Authentication?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Two-Factor Authentication (2FA) adds an extra layer of security by requiring not
+                                    only a password but also a second factor, such as a code sent to your phone.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How can I create a strong password?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A strong password should be at least 12 characters long and include a mix of uppercase and lowercase letters, 
+                                    numbers, and special characters. 
+                                    Avoid using easily guessable information such as your name or birthdate.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    How Often Should I Change My Password?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It is recommended to change your password every 3 to 6 months or sooner if you
+                                    suspect your account has been compromised.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    What should I do if I think my password has been compromised?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    If you suspect your password has been compromised, immediately change the password for the affected account.
+                                     Also, review and update passwords for other accounts where you may be using the same password. 
+                                    If possible, enable two-factor authentication on all your accounts.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    What are the benefits of using a password manager?
+                                </button>
+                            </h2>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A password manager helps you securely store and manage all your passwords in one place.
+                                     It also offers features like generating strong passwords, 
+                                    automatically filling in login details, and monitoring for data breaches.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingSix">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    What are the best ways to protect my personal data online?
+                                </button>
+                            </h2>
+                            <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+                                data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Use strong and unique passwords, enable two-factor authentication, regularly review privacy settings on social media,
+                                     and be cautious when sharing personal information online.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+@code {
+
+}

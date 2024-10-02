@@ -1,0 +1,186 @@
+﻿@page "/Support"
+
+@using System.Text
+@using System.Text.Json
+@using Azure
+@using Blazorise.Charts
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@using WebApp.Dto
+@using WebApp.Models
+@using System.Net.Http
+@using Microsoft.AspNetCore.Components.Authorization
+@using System.Net.Http.Json
+@using System.Threading.Tasks
+
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject SweetAlertService Swal
+@inject IRecaptchaService RecaptchaService
+@inject HttpClient HttpClient
+
+@rendermode InteractiveServer
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white d-flex align-items-center" href="#">
+            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security Image">
+            <span class="ms-2">Password Manager</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="d-flex align-items-center ms-auto">
+                <div class="me-3">
+                    <div class="input-group input-group-sm">
+                        <input type="search" class="form-control form-control-sm" placeholder="Search" aria-label="Search">
+                        <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-bell fs-4"></i>
+                </button>
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-person fs-4"></i>
+                </button>
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-question-circle fs-4"></i>
+                </button>
+                <button type="button" class="btn btn-dark">
+                    <i class="bi bi-gear fs-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <nav class="d-flex flex-column bg-dark text-white border-end" style="width: 160px;">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item p-2 border-bottom">
+                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link active text-white ms-4" aria-current="page" href="/HomeManager">Dashboard</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/PasswordsPage">Passwords</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/SecurityTips">Security Tips</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Validator">Validator</a>
+                </i>
+            </li>
+            <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
+            <li class="nav-item p-2 mt-2 border-bottom border-top">
+                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Account">Account</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Support">Support</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-box-arrow-left text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/logout">Log Out</a>
+                </i>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="flex-grow-1 bg-dark">
+        <div class="container p-4">
+                <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">We're here to help!</h5>
+                    <p class="card-text">If you need assistance or have any questions, please fill out the form below and our support team will get back to you as soon as possible.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Your Name" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Your Email" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <input type="text" class="form-control" id="subject" placeholder="Subject" />
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="4" placeholder="Your message"></textarea>
+                        </div>
+                        <GoogleRecaptcha SuccessCallBack="SuccessCallBack"
+                            TimeOutCallBack="TimeOutCallBack"
+                            ServerValidationErrorCallBack="ServerSideValidationError"
+                            ServerSideValidationHandler="ServerSideValidationHandler"
+                            Version="CaptchaConfiguration.Version.V2"
+                            Theme="CaptchaConfiguration.Theme.Light"
+                            Language="CaptchaLanguages.English">
+                        </GoogleRecaptcha>
+                        <button type="submit" class="btn btn-primary" disabled="@Disabled">Send Message</button>
+                    </form>
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div class="alert alert-danger mt-3" role="alert">
+                            @errorMessage
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+@code {
+    private bool Disabled { get; set; } = true;
+    private string captchaResponse { get; set; }
+    private string errorMessage { get; set; }
+
+    void SuccessCallBack(CaptchaSuccessEventArgs e)
+    {
+        Disabled = false; // Disable attribute of button becomes false for example
+        captchaResponse = e.CaptchaResponse; // Result received from reCaptcha
+        StateHasChanged();
+    }
+
+    void TimeOutCallBack(CaptchaTimeOutEventArgs e)
+    {
+        Disabled = true; // Button becomes disabled again
+        Console.WriteLine($"Captcha Time Out with message {e.ErrorMessage}");
+        errorMessage = $"Captcha Timeout: {e.ErrorMessage}";
+    }
+
+    private void ServerSideValidationError(CaptchaServerSideValidationErrorEventArgs e)
+    {
+        errorMessage = $"Captcha server side validation error: {e.ErrorMessage}";
+    }
+
+    private async Task<ServerSideCaptchaValidationResultModel> ServerSideValidationHandler(ServerSideCaptchaValidationRequestModel requestModel)
+    {
+        var secretKey = "6Ld66EUqAAAAAAdvbb3ay_zUbVe3IJLsAPktX8sA";
+        var apiResult = await HttpClient.GetFromJsonAsync<GoogleCaptchaCheckResponseResult>($"https://www.google.com/recaptcha/api/siteverify?secret=6Ld66EUqAAAAAAdvbb3ay_zUbVe3IJLsAPktX8sA&response={requestModel.CaptchaResponse}");
+        return new ServerSideCaptchaValidationResultModel(apiResult.Success, string.Join("\n",apiResult.ErrorCodes ?? new List<string>(){"No Error"}));
+    }
+
+    public class GoogleCaptchaCheckResponseResult
+    {
+        public bool Success { get; set; }
+        public List<string> ErrorCodes { get; set; }
+    }
+}

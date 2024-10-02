@@ -1,0 +1,124 @@
+﻿@page "/Validator"
+@using WebApp.Models
+
+<PageTitle>Validator</PageTitle>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white d-flex align-items-center" href="#">
+            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security Image">
+            <span class="ms-2">Password Manager</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="d-flex align-items-center ms-auto">
+                 <div class="me-3">
+                    <div class="input-group input-group-sm">
+                        <input type="search" class="form-control form-control-sm" placeholder="Search" aria-label="Search">
+                         <span class="input-group-text bg-dark text-white">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-bell fs-4"></i>
+                </button>
+
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-person fs-4"></i>
+                </button>
+
+                <button type="button" class="btn btn-dark me-2">
+                    <i class="bi bi-question-circle fs-4"></i>
+                </button>
+
+                <button type="button" class="btn btn-dark">
+                    <i class="bi bi-gear fs-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <nav class="d-flex flex-column bg-dark border-end" style="width: 160px;">
+        <ul class="navbar-nav flex-column">
+            <li class="nav-item p-2 border-bottom">
+                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link active text-white ms-4" aria-current="page" href="/HomeManager">Dashboard</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/PasswordsPage">Passwords</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/SecurityTips" style="width: 200px;">Security Tips</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Validator">Validator</a>
+                </i>
+            </li>
+            <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
+            <li class="nav-item p-2 mt-2 border-bottom border-top">
+                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Account">Account</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/Support">Support</a>
+                </i>
+            </li>
+            <li class="nav-item p-2 mt-2 border-bottom">
+                <i class="bi bi-box-arrow-left text-white d-flex justify-content-start align-items-center">
+                    <a class="nav-link text-white ms-4" href="/logout">Log Out</a>
+                </i>
+            </li>
+        </ul>
+    </nav>
+    <main class="w-100">
+        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
+            <h1 class="text-center mb-4 mt-5" style="font-size: 2.5rem; font-weight: bold;">Check the strength of your password</h1>
+            <div class="container-fluid text-dark bg-dark p-4 rounded w-100" style="flex-grow: 1;">
+                <h2 class="text-center mb-4"></h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Enter Password</h5>
+                                <input type="password" id="passwordInput" class="form-control mb-3"
+                                     @oninput="checkPasswordStrength">
+                                <div>
+                                        <ul>
+                                            <li>At least 8 characters</li>
+                                            <li>At least one uppercase letter</li>
+                                            <li>At least one lowercase letter</li>
+                                            <li>At least one number</li>
+                                            <li>At least one special character</li>       
+                                        </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+@code {
+
+    private async Task checkPasswordStrength()
+    {
+        
+    }
+}
