@@ -22,6 +22,24 @@
 
 <main class="w-100">
     <div class="d-flex flex-column align-items-center p-5 text-secondary-emphasis bg-dark min-vh-100">
+        <div class="position-relative m-4 w-50">
+            <div class="progress" role="progressbar" aria-label="Progress" aria-valuenow="@progressValue"
+                aria-valuemin="0" aria-valuemax="100" style="height: 2px;">
+                <div class="progress-bar bg-primary" style="width: @progressValue%"></div>
+            </div>
+
+            <button type="button"
+                class="position-absolute top-0 start-0 translate-middle btn btn-sm @(progressValue >= 33 ? "btn-primary" : "btn-secondary") rounded-pill"
+                style="width: 2rem; height:2rem;">1</button>
+
+            <button type="button"
+                class="position-absolute top-0 start-50 translate-middle btn btn-sm @(progressValue >= 66 ? "btn-primary" : "btn-secondary") rounded-pill"
+                style="width: 2rem; height:2rem;">2</button>
+
+            <button type="button"
+                class="position-absolute top-0 start-100 translate-middle btn btn-sm @(progressValue == 100 ? "btn-primary" : "btn-secondary") rounded-pill"
+                style="width: 2rem; height:2rem;">3</button>
+        </div>
         <div class="mb-4">
             <h3 class="text-center mt-5 mb-5 text-white">@TopText</h3>
             <div class="bg-body-tertiary p-5">
@@ -42,7 +60,7 @@
                     <p><strong>Setup Key:</strong> @setupKey</p>
                     <div class="text-center d-flex justify-content-center align-items-center flex-column">
                         <label for="verifyQR" class="form-label fw-bold mt-3">Verify the Code From The App</label>
-                        <input type="text" class="mt-3 text-center form-control w-25" id="verifyQR" placeholder="XXXXXX" />
+                        <input type="text" class="mt-3 text-center form-control w-25" id="verifyQR" placeholder="XXXXXX" @bind="verificationCode" />
                         <button type="submit" class="btn btn-success mt-3" @onclick="VerifyTheCode">Verify The Code</button>
                     </div>
                     <hr>
@@ -156,6 +174,8 @@
     private List<string> recoveryCodes = new List<string>();
     private string TopText;
     private bool IsAbleToContinue = false;
+    private string verificationCode = string.Empty;
+    private int progressValue = 0;
 
     protected override void OnInitialized()
     {
@@ -236,6 +256,7 @@
     {
         _isFirstSetupComplete = true;
         TopText = "Enable Two-Factor Authentication";
+        progressValue = 50;
         _qrCodeSvg = null;
         setupKey = null;
         StateHasChanged();
@@ -246,6 +267,7 @@
         if (_isFirstSetupComplete)
         {
             var client = HttpClientFactory.CreateClient("ApiClient");
+            progressValue = 100;
 
             try
             {
@@ -306,33 +328,56 @@
     }
 
     private async Task VerifyTheCode()
-{
-    // Initialize OTP validator
-    var otpKey = setupKey; // This should be the raw key
-    var totp = new Totp(Base32Encoding.ToBytes(otpKey)); // Decode to get the byte array
-    
-    var inputCode = (await JSRuntime.InvokeAsync<string>("eval", "document.getElementById('verifyQR').value")) ?? "";
-    if (totp.VerifyTotp(inputCode, out long timeStepMatched, new VerificationWindow(2, 2)))
     {
-        await Swal.FireAsync(new SweetAlertOptions
+        if (string.IsNullOrWhiteSpace(verificationCode))
         {
-            Title = "Success",
-            Text = "The verification code you entered is correct.",
-            Icon = SweetAlertIcon.Success,
-            ConfirmButtonText = "OK"
-        });
-    }
-    else
-    {
-        await Swal.FireAsync(new SweetAlertOptions
+            await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Error",
+                Text = "Please enter the verification code.",
+                Icon = SweetAlertIcon.Warning,
+                ConfirmButtonText = "OK"
+            });
+            return;
+        }
+
+        try
         {
-            Title = "Error",
-            Text = "The verification code you entered is incorrect. Please try again.",
-            Icon = SweetAlertIcon.Error,
-            ConfirmButtonText = "OK"
-        });
+            var otpKey = setupKey; // Použití raw klíče
+            var totp = new Totp(Base32Encoding.ToBytes(otpKey)); // Konverze na byte array
+
+            if (totp.VerifyTotp(verificationCode, out long timeStepMatched, new VerificationWindow(2, 2)))
+            {
+                await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Title = "Success",
+                    Text = "The verification code you entered is correct.",
+                    Icon = SweetAlertIcon.Success,
+                    ConfirmButtonText = "OK"
+                });
+            }
+            else
+            {
+                await Swal.FireAsync(new SweetAlertOptions
+                {
+                    Title = "Error",
+                    Text = "The verification code you entered is incorrect. Please try again.",
+                    Icon = SweetAlertIcon.Error,
+                    ConfirmButtonText = "OK"
+                });
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error during verification: {ex.Message}");
+            await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Error",
+                Text = "An error occurred during verification. Please try again later.",
+                Icon = SweetAlertIcon.Error,
+                ConfirmButtonText = "OK"
+            });
+        }
     }
 }
-
-
 }

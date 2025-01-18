@@ -201,17 +201,22 @@ namespace WebApp.Controllers
         [HttpGet("{id}/passwords")]
         public async Task<IActionResult> GetPasswords(int id)
         {
+            Console.WriteLine($"Received AccountDetailsId: {id}");
+
             var passwords = await _context.PasswordDetails
                 .Where(p => p.AccountDetailsId == id)
                 .ToListAsync();
 
-            if (passwords == null || !passwords.Any())
+            Console.WriteLine($"Passwords count for AccountDetailsId {id}: {passwords.Count}");
+
+            if (!passwords.Any())
             {
                 return NotFound("No passwords found for this account.");
             }
 
             return Ok(passwords);
         }
+
 
 
 

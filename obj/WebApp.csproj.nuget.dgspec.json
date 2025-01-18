@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj": {}
+    "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj": {
+    "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj",
+        "projectPath": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\WebApp.csproj",
         "packagesPath": "C:\\Users\\papez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\obj\\",
+        "outputPath": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\papez\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -162,7 +162,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.108/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

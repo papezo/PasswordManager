@@ -46,7 +46,7 @@
         <!-- Sign In Form -->
         <div class="d-flex justify-content-center align-items-center vh-100 text-white" style="width: 100%;">
             <div class="col-md-6 col-lg-4">
-                <div class="card bg-light text-dark shadow-lg rounded-4 p-4">
+                <div class="card text-dark shadow-lg rounded-4 p-4">
                     <h1 class="card-title text-center mb-4">Sign In</h1>
                     <p class="text-center mb-5">New to Password Manager? <a href="/CreateAccount" class="link-primary text-decoration-none">Create an Account</a></p>
 
@@ -112,11 +112,13 @@
 
 </body>
 <style>
-        body {
-             background: #bdc3c7;  /* fallback for old browsers */
-            background: -webkit-linear-gradient(to right, #2c3e50, #747779);  /* Chrome 10-25, Safari 5.1-6 */
-            background: linear-gradient(to right, #2c3e50, #bdc3c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        }
+
+    body {
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #3b5998, #192f6a);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+}
+
         .divider-text {
             position: relative;
             text-align: center;

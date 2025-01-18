@@ -9,33 +9,65 @@
     font-style: italic;
 }
 
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+@keyframes floatingGlow {
+    0% { box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); }
+    50% { box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3); }
+    100% { box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); }
+}
+
+
+
 
 .circular-progress {
     position: relative;
     width: 120px;
     height: 120px;
-    background: conic-gradient(#007bff 0% calc(var(--score) * 1%), #e9ecef calc(var(--score) * 1%) 100%);
+    background: conic-gradient(#0eb928 0% calc(var(--score) * 1%), #e9ecef calc(var(--score) * 1%) 100%);
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .circular-progress::before {
     content: "";
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
+    width: 80%;
+    height: 80%;
     background-color: white;
     border-radius: 50%;
+    z-index: 1;
 }
 
 .circular-progress .score-label {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 20px;
+    font-weight: bold;
+    z-index: 2;
+    text-align: center;
+    width: 100%; /* Zajistí lepší zarovnání */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.actions-required {
+    margin-top: 40px; /* Zvýšení mezery nad touto sekcí */
+}
+
+.card-header {
+    background: linear-gradient(135deg, rgba(0, 123, 255, 1) 0%, rgba(0, 102, 204, 1) 100%);
+}
+
+
 
 h1:focus {
     outline: none;
@@ -66,4 +98,5 @@ h1:focus {
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
 }
+
 

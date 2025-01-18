@@ -9,79 +9,79 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebApp
 build_property.RootNamespace = WebApp
-build_property.ProjectDir = C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp\
+build_property.ProjectDir = C:\Users\papez\OneDrive\Plocha\pasman\WebApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\papez\OneDrive\Plocha\PasswordManager\WebApp
+build_property.MSBuildProjectDirectory = C:\Users\papez\OneDrive\Plocha\pasman\WebApp
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/App.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/2FA.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/2FA.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1wyRkEucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Account.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Account.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBY2NvdW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/CreateAccount.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/CreateAccount.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDcmVhdGVBY2NvdW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Error.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/ForgotPassword.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/ForgotPassword.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xGb3Jnb3RQYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/HomeManager.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/HomeManager.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lTWFuYWdlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Index.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Logout.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Logout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xMb2dvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/PasswordsPage.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/PasswordsPage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXNzd29yZHNQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Reset-password.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Reset-password.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNldC1wYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/SecurityTips.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/SecurityTips.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTZWN1cml0eVRpcHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/SupportPage.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/SupportPage.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBwb3J0UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Pages/Validator.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Validator.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xWYWxpZGF0b3IucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Routes.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/_Imports.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/papez/OneDrive/Plocha/PasswordManager/WebApp/Components/Layout/MainLayout.razor]
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-pui3qmsk44

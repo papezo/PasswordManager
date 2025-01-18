@@ -18,6 +18,7 @@ using WebApp.Components;
 using WebApp.Data;
 using WebApp.Endpoints;
 using WebApp.Models;
+using TextCopy;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,6 +60,9 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddSweetAlert2();
+
+builder.Services.AddScoped<IClipboard, Clipboard>();
+
 builder.Services.Configure<DataProtectionTokenProviderOptions>(o =>
     o.TokenLifespan = TimeSpan.FromHours(2));
 

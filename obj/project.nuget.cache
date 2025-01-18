@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XWdiaRz8vzeEG1rroRZNm4rjCEkuPtf6Zn7DCHveQRadYo7HNJYUlKgbfaqDa0wHI6D9Q6FF6FjfDDMtCnxd3A==",
+  "dgSpecHash": "oI/E9KeV/940qW/7UMMLMAdMHq+UEnjgzlbftpw/UbFuphjNQqWhJRaEBOZ9FEJtkVubjWpyBESIfKcEU7NNKg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\papez\\OneDrive\\Plocha\\PasswordManager\\WebApp\\WebApp.csproj",
+  "projectFilePath": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\papez\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\papez\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

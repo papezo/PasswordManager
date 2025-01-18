@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using WebApp.Migrations;
 
+namespace WebApp.Models;
 public class AccountDetails
 {
     [Key]

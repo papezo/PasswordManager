@@ -12,6 +12,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 
     public DbSet<AccountDetails> AccountDetails { get; set; }
     public DbSet<PasswordDetails> PasswordDetails { get; set; }
+    public DbSet<PasswordChanges> PasswordChanges { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -19,6 +20,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<AccountDetails>().ToTable("AccountDetails");
         modelBuilder.Entity<PasswordDetails>().ToTable("PasswordDetails");
+        modelBuilder.Entity<PasswordChanges>().ToTable("PasswordChanges");
 
 
         modelBuilder.Entity<PasswordDetails>()

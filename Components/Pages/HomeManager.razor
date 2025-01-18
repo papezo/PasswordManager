@@ -24,250 +24,323 @@
 @rendermode InteractiveServer
 
 <PageTitle>Home Manager</PageTitle>
-
-<nav class="navbar navbar-expand-lg navbar-light bg-dark border-bottom">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3">
     <div class="container-fluid">
-        <a class="navbar-brand text-white d-flex align-items-center" href="#">
-            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security Image">
-            <span class="ms-2">Password Manager</span>
+        <!-- Logo -->
+        <a class="navbar-brand text-white d-flex align-items-center fw-bold" href="#">
+            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security">
+            <span class="ms-2">Bertly</span>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="d-flex align-items-center ms-auto">
-                 <div class="me-3">
-                    <div class="input-group input-group-sm">
-                        <input type="search" class="form-control form-control-sm" placeholder="Search" aria-label="Search">
-                         <span class="input-group-text bg-dark text-white">
-                            <i class="bi bi-search"></i>
-                        </span>
-                    </div>
-                </div>
 
-                <button type="button" class="btn btn-dark me-2">
-                    <i class="bi bi-bell fs-4"></i>
+        <!-- Ikony -->
+        <div class="d-flex align-items-center ms-3">
+            <!-- Dropdown menu pro notifikace -->
+            <div class="dropdown">
+                <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn position-relative"
+                        type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-danger text-white fw-bold"
+                        style="width: 18px; height: 18px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                        @notifications
+                    </span>
                 </button>
-
-                <button type="button" class="btn btn-dark me-2">
-                    <i class="bi bi-person fs-4"></i>
-                </button>
-
-                <button type="button" class="btn btn-dark me-2">
-                    <i class="bi bi-question-circle fs-4"></i>
-                </button>
-
-                <button type="button" class="btn btn-dark">
-                    <i class="bi bi-gear fs-4"></i>
-                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="notificationsDropdown">
+                    <li><h6 class="dropdown-header">Notifications</h6></li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Weak password detected</a></li>
+                    <!--<li><a class="dropdown-item text-warning" href="#"><i class="bi bi-clock-history me-2"></i> Password needs update</a></li>
+                    <li><a class="dropdown-item text-primary" href="#"><i class="bi bi-patch-check me-2"></i> 2FA not enabled</a></li> -->
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-muted" href="#">View all</a></li>
+                </ul>
             </div>
+
+            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-person"></i></button>
+            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-question-circle"></i></button>
+            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn"><i class="bi bi-gear"></i></button>
         </div>
+
+
+
     </div>
 </nav>
 
 
 
-<div class="container-fluid d-flex p-0 min-vh-100">
-    <nav class="d-flex flex-column bg-dark border-end" style="width: 160px;">
+<div class="container-fluid d-flex p-0 h-100 min-vh-100">
+    <nav class="d-flex flex-column bg-dark border-end shadow-sm sidebar ">
+    <!-- Logo a název -->
+        <div class="navbar-brand text-white text-center py-3 border-bottom">
+            Management
+        </div>
+
         <ul class="navbar-nav flex-column">
-            <li class="nav-item p-2 border-bottom">
-                <i class="bi bi-speedometer2 text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link active text-white ms-4" aria-current="page" href="/HomeManager">Dashboard</a>
-                </i>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center text-white" href="/HomeManager">
+                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                </a>
             </li>
-            <li class="nav-item p-2 mt-2 border-bottom">
-                <i class="bi bi-lock text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="/PasswordsPage">Passwords</a>
-                </i>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center text-white" href="/PasswordsPage">
+                    <i class="bi bi-lock me-2"></i> Passwords
+                </a>
             </li>
-            <li class="nav-item p-2 mt-2 border-bottom">
-                <i class="bi bi-book text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="/SecurityTips">Security Tips</a>
-                </i>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center text-white" href="/SecurityTips">
+                    <i class="bi bi-book me-2"></i> Security Tips
+                </a>
             </li>
-            <li class="nav-item p-2 mt-2 border-bottom">
-                <i class="bi bi-patch-check text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="/Validator">Validator</a>
-                </i>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center text-white" href="/Validator">
+                    <i class="bi bi-patch-check me-2"></i> Validator
+                </a>
             </li>
-            <p class="navbar-brand p-2 text-white mt-3 fs-5 ms-4">Settings</p>
-            <li class="nav-item p-2 mt-2 border-bottom border-top">
-                <i class="bi bi-person-circle text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="/Account">Account</a>
-                </i>
+
+            <!-- Oddělení Settings -->
+            <div class="sidebar-divider"></div>
+            <p class="text-white ps-3 fw-bold text-white">Settings</p>
+
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center" href="/Account">
+                    <i class="bi bi-person-circle me-2 text-white"></i> Account
+                </a>
             </li>
-            <li class="nav-item p-2 mt-2 border-bottom">
-                <i class="bi bi-chat-right text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="/Support">Support</a>
-                </i>
+            <li class="nav-item">
+                <a class="nav-link d-flex align-items-center" href="/Support">
+                    <i class="bi bi-chat-right me-2 text-white"></i> Support
+                </a>
             </li>
-            <li class="nav-item p-2 mt-2 border-bottom">
-                <i class="bi bi-box-arrow-left text-white d-flex justify-content-start align-items-center">
-                    <a class="nav-link text-white ms-4" href="/logout">Log Out</a>
-                </i>
+            <li class="nav-item mt-auto">
+                <a class="nav-link logout-link d-flex align-items-center" href="/logout">
+                    <i class="bi bi-box-arrow-left me-2"></i> Log Out
+                </a>
             </li>
         </ul>
     </nav>
 
 
-<main class="w-100">
-    <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
-        <div class="container-fluid text-dark bg-light p-4 rounded w-100" style="flex-grow: 1;">
-            <div class="row mb-3">
-               <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-primary text-white" style="border-radius: 8px 8px 0 0;">
-                            <h5 class="fw-bold mb-0">Security Overview</h5>
+<!-- Main Content -->
+    <main class="w-100 bg-light p-4 d-flex flex-column flex-grow-1 overflow-auto">
+        <div class="container">
+            <!-- Overview Row -->
+            <!-- Welcome Message -->
+            <div class="d-flex align-items-center text-center justify-content-center mb-4">
+                <div>
+                    <h2 class="fw-bold text-dark">
+                        Welcome, @userName! 👋
+                    </h2>
+                    <p class="text-muted">Let's keep your passwords secure and up-to-date.</p>
+                </div>
+            </div>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-md-4">
+                    <div class="card shadow-lg border-0 rounded-3 d-flex flex-column h-100">
+                        <div class="card-header bg-success text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-shield-lock-fill me-2"></i> Security Overview
                         </div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <p class="mb-2 d-flex align-items-center">
-                                <i class="bi bi-shield-lock text-success me-2"></i>
-                                <span class="fw-bold">Secure Passwords:</span>
-                                <span class="font-weight-bold ms-auto">@securePasswords.Count</span>
+                        <div class="card-body flex-grow-1">
+                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
+                                <i class="bi bi-check-circle-fill text-success fs-5 me-2"></i> 
+                                <span class="fw-bold">Secure Passwords:</span> 
+                                <span class="ms-auto">@securePasswords.Count</span>
                             </p>
-                            <p class="mb-2 d-flex align-items-center">
-                                <i class="bi bi-exclamation-triangle text-danger me-2"></i>
-                                <span class="fw-bold">Insecure Passwords:</span>
-                                <span class="font-weight-bold ms-auto">@insecurePasswords.Count</span>
+                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
+                                <i class="bi bi-exclamation-triangle-fill text-danger fs-5 me-2"></i> 
+                                <span class="fw-bold">Insecure Passwords:</span> 
+                                <span class="ms-auto">@insecurePasswords.Count</span>
                             </p>
-                            <p class="mb-2 d-flex align-items-center">
-                                <i class="bi bi-lock text-primary me-2"></i>
-                                <span class="fw-bold">Two-Factor Authentication:</span>
+                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
+                                <i class="bi bi-lock-fill text-primary fs-5 me-2"></i> 
+                                <span class="fw-bold">Two-Factor Authentication:</span> 
                                 <span class="ms-auto">@accountsWith2FA.Count accounts</span>
                             </p>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-warning text-white" style="border-radius: 8px 8px 0 0;">
-                            <h5 class="fw-bold mb-0">Security Notification</h5>
+                    <div class="card shadow-lg border-0 rounded-3 d-flex flex-column h-100">
+                        <div class="card-header bg-gradient bg-primary text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-bar-chart-fill me-2"></i> Security Score
                         </div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <p class="mb-2 d-flex align-items-center">
-                                <i class="bi bi-shield-exclamation text-danger me-2"></i>
-                                <span class="fw-bold">Weak Passwords:</span>
-                                <span class="font-weight-bold ms-auto">@weakPasswords.Count</span>
-                            </p>
-                            <p class="mb-2 d-flex align-items-center">
-                                <i class="bi bi-clock-history text-warning me-2"></i>
-                                <span class="fw-bold">Outdated Passwords:</span>
-                                <span class="font-weight-bold ms-auto">@outDatedPasswords.Count</span>
-                            </p>
-                            <p class="mb-2 d-flex align-items-center">
-                                <i class="bi bi-files text-warning me-2"></i>
-                                <span class="fw-bold">Duplicated Passwords:</span>
-                                <span class="font-weight-bold ms-auto">@duplicatePasswords.Count</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-secondary text-white" style="border-radius: 8px 8px 0 0;">
-                            <h5 class="fw-bold mb-0">API</h5>
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <button class="btn btn-info w-100 mb-2 text-white">API Documentation</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-success text-white" style="border-radius: 8px 8px 0 0;">
-                            <h5 class="fw-bold mb-0">Security Notification</h5>
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <p>Enable Two-Factor Authentication for 2 accounts</p>
-                            <p>Update 3 outdated passwords</p>
-                            <p>Change duplicated password for Email account</p>
-                            <p>Review and strengthen 2 weak passwords</p>
-                        </div>
-                    </div>
-                </div>
-                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-secondary text-white" style="border-radius: 8px 8px 0 0;">
-                            <h5 class="fw-bold mb-0">Security Score</h5>
-                        </div>
-                        <div class="card-body d-flex flex-column justify-content-start align-items-center">
-                            <div class="circular-progress" style="--score: @user.AccountScore;">
-                                <div class="score-label">@user.AccountScore %</div>
-                            </div>
-                            <div class="text-center mt-3">
-                            @if(user.AccountScore <= 20)
-                                {
-                                    <p>Poor Score</p>
-                                    <p class="text-muted">Your account is at high risk. Consider updating your passwords and enabling 2FA.</p>
-                                }
-                                else if(user.AccountScore <= 40)
-                                {
-                                    <p>Weak Score</p>
-                                    <p class="text-muted">Your security is weak. Update weak passwords and avoid reusing them across accounts.</p>
-                                }
-                                else if(user.AccountScore <= 60)
-                                {
-                                    <p>Good Score</p>
-                                    <p class="text-muted">Your security is decent, but there are still areas to improve. Consider checking older passwords.</p>
-                                }
-                                else if(user.AccountScore <= 80)
-                                {
-                                    <p>Strong Score</p>
-                                    <p class="text-muted">Your security is strong, but make sure to regularly update passwords to maintain this level.</p>
-                                }
-                                else
-                                {
-                                    <p>Excellent Score</p>
-                                    <p class="text-muted">Your account is very secure. Keep maintaining strong passwords and security measures.</p>
-                                }
+                        <div class="card-body text-center flex-grow-1">
+                            <div class="position-relative d-flex flex-column justify-content-center align-items-center">
+                                <div class="circular-progress d-flex justify-content-center align-items-center" style="--score: @user.AccountScore;">
+                                    <div class="score-label fs-4 fw-bold">@user.AccountScore %</div>
                                 </div>
+                                <div class="text-center mt-3">
+                                    @if(user.AccountScore <= 20)
+                                    {
+                                        <p class="fw-bold">Poor Score</p>
+                                        <p class="text-muted">Your account is at high risk. Consider updating your passwords and enabling 2FA.</p>
+                                    }
+                                    else if(user.AccountScore <= 40)
+                                    {
+                                        <p class="fw-bold">Weak Score</p>
+                                        <p class="text-muted">Your security is weak. Update weak passwords and avoid reusing them across accounts.</p>
+                                    }
+                                    else if(user.AccountScore <= 60)
+                                    {
+                                        <p class="fw-bold" >Good Score</p>
+                                        <p class="text-muted">Your security is decent, but there are still areas to improve. Consider checking older passwords.</p>
+                                    }
+                                    else if(user.AccountScore <= 80)
+                                    {
+                                        <p class="fw-bold">Strong Score</p>
+                                        <p class="text-muted">Your security is strong, but make sure to regularly update passwords to maintain this level.</p>
+                                    }
+                                    else
+                                    {
+                                        <p class="fw-bold">Excellent Score</p>
+                                        <p class="text-muted">Your account is very secure. Keep maintaining strong passwords and security measures.</p>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
-                 </div>
+                </div>
 
                 <div class="col-md-4">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px;">
-                        <div class="card-header bg-dark text-white" style="border-radius: 8px 8px 0 0;">
-                            <h5 class="fw-bold mb-0">Tools</h5>
+                    <div class="card shadow-lg border-0 rounded-3 d-flex flex-column h-100">
+                        <div class="card-header bg-warning text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-bell-fill me-2"></i> Security Notification
                         </div>
-                        <div class="card-body d-flex flex-column justify-content-start">
-                            <button class="btn btn-primary w-100 mb-2">Add New Password</button>
-                            <button class="btn btn-secondary w-100 mb-2">Password Generator</button>
-                            <button class="btn btn-outline-primary w-100">Export/Import</button>
+                        <div class="card-body flex-grow-1">
+                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
+                                <i class="bi bi-exclamation-circle-fill text-danger fs-5 me-2"></i> 
+                                <span class="fw-bold">Weak Passwords:</span> 
+                                <span class="ms-auto">@weakPasswords.Count</span>
+                            </p>
+                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
+                                <i class="bi bi-clock-history text-warning fs-5 me-2"></i> 
+                                <span class="fw-bold">Outdated Passwords:</span> 
+                                <span class="ms-auto">@outDatedPasswords.Count</span>
+                            </p>
+                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
+                                <i class="bi bi-files text-warning fs-5 me-2"></i> 
+                                <span class="fw-bold">Duplicated Passwords:</span> 
+                                <span class="ms-auto">@duplicatePasswords.Count</span>
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Actions Required -->
             <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="card h-100 shadow-sm" style="border-radius: 8px; height: 500px;"> <!-- Adjust height -->
-                        <div class="card-header bg-danger text-white" style="border-radius: 8px 8px 0 0;">
-                            Statistics
+                <div class="col-md-6 mx-auto">
+                    <div class="card shadow-lg border-0 rounded-3">
+                        <div class="card-header bg-danger text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-exclamation-diamond-fill me-2"></i> Actions Required
                         </div>
-                        <div class="card-body d-flex justify-content-center align-items-center" style="width: 100%; height: 100%;">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                @if (user.TwoFactorEnabled == false)
+                                {
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-shield-x text-danger fs-5 me-2"></i>
+                                        <span class="fw-bold">Enable Two-Factor Authentication</span>
+                                        <a href="/settings/security" class="btn btn-primary btn-sm ms-auto w-25">Enable</a>
+                                    </li>
+                                }
+                                @if (weakPasswords.Count > 0)
+                                {
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-exclamation-triangle-fill text-warning fs-5 me-2"></i>
+                                        <span class="fw-bold">Update weak passwords</span>
+                                        <a href="/passwords" class="btn btn-warning btn-sm ms-auto w-25">Update</a>
+                                    </li>
+                                }
+                                @if (outDatedPasswords.Count > 0)
+                                {
+                                    <li class="list-group-item d-flex align-items-center">
+                                        <i class="bi bi-exclamation-triangle-fill text-warning fs-5 me-2"></i>
+                                        <span class="fw-bold">Update outdated passwords</span>
+                                        <a href="/passwords" class="btn btn-warning btn-sm ms-auto w-25">Update</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Chart -->
+            <div class="row mt-5">
+                <!-- 1️⃣ Sloupcový graf (Bar Chart) -->
+                <div class="col-lg-6 col-md-12 d-flex">
+                    <div class="card shadow-lg border-0 rounded-3 flex-fill">
+                        <div class="card-header bg-dark text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-bar-chart-line-fill me-2"></i> Password Score Statistics
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center" style="height: 450px;">
                             <ApexChart TItem="PasswordDetails"
-                                    Title="Password Scores Statistics"
-                                    Width="900" Height="500"> 
+                                Width="600" Height="400"> 
                                 <ApexPointSeries TItem="PasswordDetails"
-                                                Items="PasswordScoreChartData"
-                                                Name="Password Score"
-                                                SeriesType="SeriesType.Bar"
-                                                XValue="e => e.Category"
-                                                YValue="e => e.PasswordScore" />
-                                </ApexChart> 
+                                    Items="@PasswordScoreChartData"
+                                    Name="Password Score"
+                                    SeriesType="SeriesType.Bar"
+                                    XValue="e => e.Category"
+                                    YValue="e => e.PasswordScore" />
+                            </ApexChart> 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2️⃣ Koláčový graf (Pie Chart) -->
+                <div class="col-lg-6 col-md-12 d-flex">
+                    <div class="card shadow-lg border-0 rounded-3 flex-fill">
+                        <div class="card-header bg-dark text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-pie-chart-fill me-2"></i> Password Categories
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center" style="height: 450px;">
+                            <ApexChart TItem="PasswordDetails"
+                                Width="600" Height="400">
+                                <ApexPointSeries TItem="PasswordDetails"
+                                    Items="@passwords"
+                                    Name="Password Categories"
+                                    SeriesType="SeriesType.Pie"
+                                    XValue="e => e.Name"
+                                    YValue="e => e.PasswordScore" />
+                            </ApexChart>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3️⃣ Liniový graf (Line Chart) -->
+                <div class="col-lg-12 d-flex mt-4">
+                    <div class="card shadow-lg border-0 rounded-3 flex-fill">
+                        <div class="card-header bg-dark text-white fw-bold text-center rounded-top">
+                            <i class="bi bi-graph-up me-2"></i> Password Security Trend
+                        </div>
+                        <div class="card-body d-flex justify-content-center align-items-center" style="height: 450px;">
+                            <ApexChart TItem="PasswordTrend"
+                                Width="800"
+                                Height="400">
+                                
+                                <ApexPointSeries TItem="PasswordTrend"
+                                    Items="@PasswordTrendData"
+                                    Name="Strong Passwords"
+                                    SeriesType="SeriesType.Area"
+                                    XValue="e => e.Date"
+                                    YValue="e => e.SecureCount" />
+
+                                <ApexPointSeries TItem="PasswordTrend"
+                                    Items="@PasswordTrendData"
+                                    Name="Weak Passwords"
+                                    SeriesType="SeriesType.Area"
+                                    XValue="e => e.Date"
+                                    YValue="e => e.WeakCount" />
+                            </ApexChart>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 </div>
+    
 
 @code {
     private PasswordDetails userPassword { get; set; } = new PasswordDetails();
@@ -282,6 +355,42 @@
     private int MaxPasswordDays = 30;
     private List<PasswordDetails> PasswordScoreChartData { get; set; } = new List<PasswordDetails>();
 
+    private List<PasswordTrend> PasswordTrendData { get; set; } = new List<PasswordTrend>();
+    private string userName = "User";
+    private int notifications = 0;
+
+
+    private async Task NotificationsCounter()
+    {
+        if(weakPasswords.Count > 0)
+        {
+            notifications++;
+        }
+        if(outDatedPasswords.Count > 0)
+        {
+            notifications++;
+        }
+        if(duplicatePasswords.Count > 0)
+        {
+            notifications++;
+        }
+
+    }
+
+    private async Task GeneratePasswordTrendData()
+    {
+        PasswordTrendData = passwords
+            .GroupBy(p => p.CreatedAt.Date)
+            .OrderBy(g => g.Key)
+            .Select(g => new PasswordTrend
+            {
+                Date = g.Key.ToString("yyyy-MM-dd"),
+                SecureCount = g.Count(p => p.PasswordSecure),
+                WeakCount = g.Count(p => !p.PasswordSecure)
+            })
+            .ToList();
+    }
+
     
     protected override async Task OnInitializedAsync()
     {
@@ -290,10 +399,10 @@
             var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
             var currentUser = authState.User;
             var isAuthenticated = currentUser.Identity.IsAuthenticated;
-            Console.WriteLine($"Is user authenticated: {isAuthenticated}");
 
             if (isAuthenticated)
             {
+                userName = currentUser.FindFirst(ClaimTypes.Name)?.Value ?? "User";
                 var userIdClaim = currentUser.FindFirst(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
                 if (!string.IsNullOrEmpty(userIdClaim))
@@ -340,7 +449,9 @@
         await IsPasswordSecure();
         await AccountWith2FA();
         await OutDatedPasswordsChecker();
+        await GeneratePasswordTrendData();
         await DuplicatePasswordsChecker();
+        await NotificationsCounter();
         
 
          PasswordScoreChartData = passwords

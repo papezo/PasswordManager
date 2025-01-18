@@ -81,8 +81,13 @@ namespace WebApp.Endpoints
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdatePassword(int id, PasswordDetails updatedPassword)
+        public async Task<IActionResult> UpdatePassword(int id, [FromBody] PasswordDetails updatedPassword)
         {
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(ModelState); 
+            }
+
             var existingPassword = await _context.PasswordDetails.FindAsync(id);
             
             if (existingPassword == null)
@@ -90,12 +95,15 @@ namespace WebApp.Endpoints
                 return NotFound();
             }
 
-            // Aktualizujte data hesla
             existingPassword.Name = updatedPassword.Name;
+            if(existingPassword.Password != updatedPassword.Password)
+            {
+                
+            }
             existingPassword.Email = updatedPassword.Email;
             existingPassword.Password = updatedPassword.Password;
             existingPassword.Category = updatedPassword.Category;
-            existingPassword.Description = updatedPassword.Description;
+            existingPassword.Notes = updatedPassword.Notes;
             existingPassword.CreatedAt = updatedPassword.CreatedAt;
             existingPassword.PasswordScore = updatedPassword.PasswordScore;
 
@@ -103,6 +111,7 @@ namespace WebApp.Endpoints
 
             return NoContent();
         }
+
 
 
         [HttpPut("UpdateOldPasswords")]
