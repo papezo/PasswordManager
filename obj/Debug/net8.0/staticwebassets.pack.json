@@ -57,6 +57,38 @@
       "PackagePath": "staticwebassets\\images\\google2.png"
     },
     {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\illustration.svg",
+      "PackagePath": "staticwebassets\\images\\illustration.svg"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\illustration2.svg",
+      "PackagePath": "staticwebassets\\images\\illustration2.svg"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\illustration3.svg",
+      "PackagePath": "staticwebassets\\images\\illustration3.svg"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\illustration4.svg",
+      "PackagePath": "staticwebassets\\images\\illustration4.svg"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\plart1.png",
+      "PackagePath": "staticwebassets\\images\\plart1.png"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\plart2.png",
+      "PackagePath": "staticwebassets\\images\\plart2.png"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\plart3.png",
+      "PackagePath": "staticwebassets\\images\\plart3.png"
+    },
+    {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\plart4.png",
+      "PackagePath": "staticwebassets\\images\\plart4.png"
+    },
+    {
       "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\security.png",
       "PackagePath": "staticwebassets\\images\\security.png"
     },

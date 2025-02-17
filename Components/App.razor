@@ -17,6 +17,10 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6Ld66EUqAAAAAKDFh-lJgtSsXHquwShX44plvBSi"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="css/site.css"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <HeadOutlet />
 </head>
 
@@ -31,7 +35,65 @@
     <script src="_content/Blazor-ApexCharts/js/apex-charts.min.js"></script>
     <script src="_content/Blazor-ApexCharts/js/blazor-apex-charts.js"></script>
     <script src="_content/GoogleCaptchaComponent/Scripts/ScriptLoader.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Ld66EUqAAAAAKDFh-lJgtSsXHquwShX44plvBSi"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfEMdcqAAAAACnUsRKfC7mK1sH_ouF0ZCr9NxVO"></script>
+
+
 </body>
 
 </html>
+
+<script>
+
+    
+function downloadFile(fileName, dataUri) {
+    try {
+        console.log(`Downloading file: ${fileName}`);
+        const blob = new Blob([atob(dataUri.split(',')[1])], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url); // Uvolnění URL
+        console.log('File download triggered');
+    } catch (error) {
+        console.error('Error downloading file:', error);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    const toastElements = document.querySelectorAll('.toast');
+    toastElements.forEach(toastEl => {
+        const toast = new bootstrap.Toast(toastEl); // Inicializace Bootstrap Toastu
+        toast.show(); // Zobrazení toastu
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("themeToggle");
+
+        // Načtení stavu z localStorage
+        if (localStorage.getItem("theme") === "dark") {
+            toggle.checked = true;
+            document.body.classList.add("dark-mode");
+        }
+
+        toggle.addEventListener("change", function () {
+            if (toggle.checked) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("theme", "dark");
+            } else {
+                document.body.classList.remove("dark-mode");
+                localStorage.setItem("theme", "light");
+            }
+        });
+    });
+
+
+</script>

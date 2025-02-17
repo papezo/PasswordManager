@@ -11,7 +11,8 @@
 @using System.Net.Http
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Net.Http.Json
-
+@using Blazorise;
+@using Blazorise.Bootstrap;
 
 
 @inject IHttpClientFactory HttpClientFactory
@@ -25,324 +26,635 @@
 
 <PageTitle>Home Manager</PageTitle>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand text-white d-flex align-items-center fw-bold" href="#">
-            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security">
-            <span class="ms-2">Bertly</span>
+
+
+<div class="container-fluid d-flex @(isDarkMode ? "dark-mode" : "light-mode") min-vh-100">
+
+    <!-- Sidebar -->
+    <nav class="sidebar-nav d-flex flex-column" style="width: 400px; height: 100vh;">
+      <!-- Logo -->
+      <div class="text-center mb-5">
+        @if(isDarkMode == false)
+        {
+        <img src="images/plart3.png" alt="Security" width="250" class="">
+        } else {
+        <img src="images/plart4.png" alt="Security" width="250" class="">
+        }
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile  p-4">
+      <div class="d-flex align-items-center gap-3 p-3 rounded-4 profile-card">
+        <img src="images/user.png" alt="User Avatar" class="rounded-circle border shadow-sm" width="45">
+        <div class="flex-grow-1">
+        <h6 class="mb-0 fw-semibold ">@user.FullName</h6>
+        <small class="text-primary">Admin</small>
+        </div>
+      </div>
+      </div>
+
+      <!-- Main Navigation -->
+      <div class="main-nav mb-4 p-4">
+      <ul class="nav flex-column gap-2">
+      <h6 class="text-muted text-uppercase ms-2 mb-3 fw-semibold">
+        <i class="bi bi-list me-2"></i> Menu
+      </h6>
+        <li class="nav-item">
+        <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/HomeManager">
+          <i class="bi bi-speedometer2 me-3 text-primary"></i> Dashboard
         </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/PasswordsPage">
+          <i class="bi bi-lock me-3 text-primary"></i> Passwords
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/SecurityTips">
+          <i class="bi bi-shield-check me-3 text-primary"></i> Security Tips
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/Validator">
+          <i class="bi bi-patch-check me-3 text-primary"></i> Validator
+        </a>
+        </li>
+      </ul>
+      </div>
 
 
-        <!-- Ikony -->
-        <div class="d-flex align-items-center ms-3">
-            <!-- Dropdown menu pro notifikace -->
-            <div class="dropdown">
-                <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn position-relative"
-                        type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-bell"></i>
-                    <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-danger text-white fw-bold"
-                        style="width: 18px; height: 18px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;">
-                        @notifications
-                    </span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="notificationsDropdown">
-                    <li><h6 class="dropdown-header">Notifications</h6></li>
-                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Weak password detected</a></li>
-                    <!--<li><a class="dropdown-item text-warning" href="#"><i class="bi bi-clock-history me-2"></i> Password needs update</a></li>
-                    <li><a class="dropdown-item text-primary" href="#"><i class="bi bi-patch-check me-2"></i> 2FA not enabled</a></li> -->
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item text-muted" href="#">View all</a></li>
-                </ul>
-            </div>
-
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-person"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-question-circle"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn"><i class="bi bi-gear"></i></button>
-        </div>
+      <h6 class="text-muted text-uppercase ms-4 fw-semibold">
+        <i class="bi bi-shield-lock me-2"></i> Security & Passwords
+      </h6>
+      <ul class="nav flex-column gap-2 p-4">
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/PasswordsPage">
+            <i class="bi bi-key me-3 text-primary"></i> Password Generator
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/SecurityTips">
+            <i class="bi bi-exclamation-triangle me-3 text-warning"></i> Breach Checker
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/AutofillSetup">
+            <i class="bi bi-browser-chrome me-3 text-primary"></i> Autofill Setup
+          </a>
+        </li>
+      </ul>
 
 
-
-    </div>
-</nav>
-
-
-
-<div class="container-fluid d-flex p-0 h-100 min-vh-100">
-    <nav class="d-flex flex-column bg-dark border-end shadow-sm sidebar ">
-    <!-- Logo a název -->
-        <div class="navbar-brand text-white text-center py-3 border-bottom">
-            Management
-        </div>
-
-        <ul class="navbar-nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/HomeManager">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/PasswordsPage">
-                    <i class="bi bi-lock me-2"></i> Passwords
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/SecurityTips">
-                    <i class="bi bi-book me-2"></i> Security Tips
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/Validator">
-                    <i class="bi bi-patch-check me-2"></i> Validator
-                </a>
-            </li>
-
-            <!-- Oddělení Settings -->
-            <div class="sidebar-divider"></div>
-            <p class="text-white ps-3 fw-bold text-white">Settings</p>
-
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Account">
-                    <i class="bi bi-person-circle me-2 text-white"></i> Account
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Support">
-                    <i class="bi bi-chat-right me-2 text-white"></i> Support
-                </a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link logout-link d-flex align-items-center" href="/logout">
-                    <i class="bi bi-box-arrow-left me-2"></i> Log Out
-                </a>
-            </li>
-        </ul>
+      <!-- Bottom Navigation -->
+      <div class="bottom-nav mt-auto p-4">
+      <h6 class="text-muted text-uppercase mb-3 ms-2 fw-semibold">Settings</h6>
+      <ul class="nav flex-column gap-2">
+        <li class="nav-item">
+        <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/Account">
+          <i class="bi bi-person-circle me-3 text-primary"></i> Account
+        </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link d-flex align-items-center p-3 rounded-3" href="/Support">
+          <i class="bi bi-chat-right me-3 text-primary"></i> Support
+        </a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link d-flex align-items-center p-3 rounded-3 logout-link" href="/logout">
+              <i class="bi bi-box-arrow-left me-3"></i> Log Out
+            </a>
+          </li>
+        
+      </ul>
+      </div>
     </nav>
 
 
-<!-- Main Content -->
-    <main class="w-100 bg-light p-4 d-flex flex-column flex-grow-1 overflow-auto">
-        <div class="container">
-            <!-- Overview Row -->
-            <!-- Welcome Message -->
-            <div class="d-flex align-items-center text-center justify-content-center mb-4">
-                <div>
-                    <h2 class="fw-bold text-dark">
-                        Welcome, @userName! 👋
-                    </h2>
-                    <p class="text-muted">Let's keep your passwords secure and up-to-date.</p>
-                </div>
+    <div class="top-navbar d-flex flex-column flex-grow-1 min-vh-100">
+      <div class="top-navbar d-flex justify-content-between align-items-center px-4 py-3 b2">
+        <!-- Left Section -->
+        <div class="d-flex align-items-center gap-4">
+          <!-- Search Bar with Dropdown -->
+          <div class="search-container">
+            <div class="search-wrapper">
+              <i class="bi bi-search search-icon"></i>
+              <input type="text" class="search-input" placeholder="Search passwords, websites, or notes...">
+              <button class="search-filter-btn">
+              </button>
             </div>
-
-            <div class="row g-4 align-items-stretch">
-                <div class="col-md-4">
-                    <div class="card shadow-lg border-0 rounded-3 d-flex flex-column h-100">
-                        <div class="card-header bg-success text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-shield-lock-fill me-2"></i> Security Overview
-                        </div>
-                        <div class="card-body flex-grow-1">
-                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
-                                <i class="bi bi-check-circle-fill text-success fs-5 me-2"></i> 
-                                <span class="fw-bold">Secure Passwords:</span> 
-                                <span class="ms-auto">@securePasswords.Count</span>
-                            </p>
-                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
-                                <i class="bi bi-exclamation-triangle-fill text-danger fs-5 me-2"></i> 
-                                <span class="fw-bold">Insecure Passwords:</span> 
-                                <span class="ms-auto">@insecurePasswords.Count</span>
-                            </p>
-                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
-                                <i class="bi bi-lock-fill text-primary fs-5 me-2"></i> 
-                                <span class="fw-bold">Two-Factor Authentication:</span> 
-                                <span class="ms-auto">@accountsWith2FA.Count accounts</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-lg border-0 rounded-3 d-flex flex-column h-100">
-                        <div class="card-header bg-gradient bg-primary text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-bar-chart-fill me-2"></i> Security Score
-                        </div>
-                        <div class="card-body text-center flex-grow-1">
-                            <div class="position-relative d-flex flex-column justify-content-center align-items-center">
-                                <div class="circular-progress d-flex justify-content-center align-items-center" style="--score: @user.AccountScore;">
-                                    <div class="score-label fs-4 fw-bold">@user.AccountScore %</div>
-                                </div>
-                                <div class="text-center mt-3">
-                                    @if(user.AccountScore <= 20)
-                                    {
-                                        <p class="fw-bold">Poor Score</p>
-                                        <p class="text-muted">Your account is at high risk. Consider updating your passwords and enabling 2FA.</p>
-                                    }
-                                    else if(user.AccountScore <= 40)
-                                    {
-                                        <p class="fw-bold">Weak Score</p>
-                                        <p class="text-muted">Your security is weak. Update weak passwords and avoid reusing them across accounts.</p>
-                                    }
-                                    else if(user.AccountScore <= 60)
-                                    {
-                                        <p class="fw-bold" >Good Score</p>
-                                        <p class="text-muted">Your security is decent, but there are still areas to improve. Consider checking older passwords.</p>
-                                    }
-                                    else if(user.AccountScore <= 80)
-                                    {
-                                        <p class="fw-bold">Strong Score</p>
-                                        <p class="text-muted">Your security is strong, but make sure to regularly update passwords to maintain this level.</p>
-                                    }
-                                    else
-                                    {
-                                        <p class="fw-bold">Excellent Score</p>
-                                        <p class="text-muted">Your account is very secure. Keep maintaining strong passwords and security measures.</p>
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card shadow-lg border-0 rounded-3 d-flex flex-column h-100">
-                        <div class="card-header bg-warning text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-bell-fill me-2"></i> Security Notification
-                        </div>
-                        <div class="card-body flex-grow-1">
-                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
-                                <i class="bi bi-exclamation-circle-fill text-danger fs-5 me-2"></i> 
-                                <span class="fw-bold">Weak Passwords:</span> 
-                                <span class="ms-auto">@weakPasswords.Count</span>
-                            </p>
-                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
-                                <i class="bi bi-clock-history text-warning fs-5 me-2"></i> 
-                                <span class="fw-bold">Outdated Passwords:</span> 
-                                <span class="ms-auto">@outDatedPasswords.Count</span>
-                            </p>
-                            <p class="d-flex align-items-center border-bottom pb-2 mb-2">
-                                <i class="bi bi-files text-warning fs-5 me-2"></i> 
-                                <span class="fw-bold">Duplicated Passwords:</span> 
-                                <span class="ms-auto">@duplicatePasswords.Count</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Actions Required -->
-            <div class="row mt-5">
-                <div class="col-md-6 mx-auto">
-                    <div class="card shadow-lg border-0 rounded-3">
-                        <div class="card-header bg-danger text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-exclamation-diamond-fill me-2"></i> Actions Required
-                        </div>
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                @if (user.TwoFactorEnabled == false)
-                                {
-                                    <li class="list-group-item d-flex align-items-center">
-                                        <i class="bi bi-shield-x text-danger fs-5 me-2"></i>
-                                        <span class="fw-bold">Enable Two-Factor Authentication</span>
-                                        <a href="/settings/security" class="btn btn-primary btn-sm ms-auto w-25">Enable</a>
-                                    </li>
-                                }
-                                @if (weakPasswords.Count > 0)
-                                {
-                                    <li class="list-group-item d-flex align-items-center">
-                                        <i class="bi bi-exclamation-triangle-fill text-warning fs-5 me-2"></i>
-                                        <span class="fw-bold">Update weak passwords</span>
-                                        <a href="/passwords" class="btn btn-warning btn-sm ms-auto w-25">Update</a>
-                                    </li>
-                                }
-                                @if (outDatedPasswords.Count > 0)
-                                {
-                                    <li class="list-group-item d-flex align-items-center">
-                                        <i class="bi bi-exclamation-triangle-fill text-warning fs-5 me-2"></i>
-                                        <span class="fw-bold">Update outdated passwords</span>
-                                        <a href="/passwords" class="btn btn-warning btn-sm ms-auto w-25">Update</a>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Statistics Chart -->
-            <div class="row mt-5">
-                <!-- 1️⃣ Sloupcový graf (Bar Chart) -->
-                <div class="col-lg-6 col-md-12 d-flex">
-                    <div class="card shadow-lg border-0 rounded-3 flex-fill">
-                        <div class="card-header bg-dark text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-bar-chart-line-fill me-2"></i> Password Score Statistics
-                        </div>
-                        <div class="card-body d-flex justify-content-center align-items-center" style="height: 450px;">
-                            <ApexChart TItem="PasswordDetails"
-                                Width="600" Height="400"> 
-                                <ApexPointSeries TItem="PasswordDetails"
-                                    Items="@PasswordScoreChartData"
-                                    Name="Password Score"
-                                    SeriesType="SeriesType.Bar"
-                                    XValue="e => e.Category"
-                                    YValue="e => e.PasswordScore" />
-                            </ApexChart> 
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2️⃣ Koláčový graf (Pie Chart) -->
-                <div class="col-lg-6 col-md-12 d-flex">
-                    <div class="card shadow-lg border-0 rounded-3 flex-fill">
-                        <div class="card-header bg-dark text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-pie-chart-fill me-2"></i> Password Categories
-                        </div>
-                        <div class="card-body d-flex justify-content-center align-items-center" style="height: 450px;">
-                            <ApexChart TItem="PasswordDetails"
-                                Width="600" Height="400">
-                                <ApexPointSeries TItem="PasswordDetails"
-                                    Items="@passwords"
-                                    Name="Password Categories"
-                                    SeriesType="SeriesType.Pie"
-                                    XValue="e => e.Name"
-                                    YValue="e => e.PasswordScore" />
-                            </ApexChart>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 3️⃣ Liniový graf (Line Chart) -->
-                <div class="col-lg-12 d-flex mt-4">
-                    <div class="card shadow-lg border-0 rounded-3 flex-fill">
-                        <div class="card-header bg-dark text-white fw-bold text-center rounded-top">
-                            <i class="bi bi-graph-up me-2"></i> Password Security Trend
-                        </div>
-                        <div class="card-body d-flex justify-content-center align-items-center" style="height: 450px;">
-                            <ApexChart TItem="PasswordTrend"
-                                Width="800"
-                                Height="400">
-                                
-                                <ApexPointSeries TItem="PasswordTrend"
-                                    Items="@PasswordTrendData"
-                                    Name="Strong Passwords"
-                                    SeriesType="SeriesType.Area"
-                                    XValue="e => e.Date"
-                                    YValue="e => e.SecureCount" />
-
-                                <ApexPointSeries TItem="PasswordTrend"
-                                    Items="@PasswordTrendData"
-                                    Name="Weak Passwords"
-                                    SeriesType="SeriesType.Area"
-                                    XValue="e => e.Date"
-                                    YValue="e => e.WeakCount" />
-                            </ApexChart>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </main>
-</div>
+
+        <!-- Right Section -->
+        <div class="d-flex align-items-center gap-3">
+          <!-- Add New Password Button -->
+          <button class="btn btn-primary d-flex align-items-center gap-2 add-password-btn">
+            <i class="bi bi-plus-lg"></i>
+            <span>New Password</span>
+          </button>
+
+          <!-- Notifications -->
+          <div class="notification-wrapper">
+            <button class="notification-btn" data-bs-toggle="dropdown">
+              <i class="bi bi-bell fs-5"></i>
+              @if(notifications > 0)
+              {
+                <span class="notification-badge">@notifications</span>
+              }
+            </button>
+            <div class="dropdown-menu notification-dropdown">
+              <h6 class="dropdown-header">Notifications</h6>
+              <div class="notification-list">
+                <a href="#" class="dropdown-item notification-item">
+                  <i class="bi bi-shield-exclamation text-warning"></i>
+                  <div class="notification-content">
+                    <p class="notification-title">Weak Passwords Detected</p>
+                    <p class="notification-desc">@weakPasswords.Count passwords need attention</p>
+                  </div>
+                </a>
+                <a href="#" class="dropdown-item notification-item">
+                  <i class="bi bi-clock-history text-info"></i>
+                  <div class="notification-content">
+                    <p class="notification-title">Password Update Required</p>
+                    <p class="notification-desc">@outDatedPasswords.Count passwords are outdated</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle-btn" @onclick="ToggleTheme">
+            <i class="bi @(isDarkMode ? "bi-sun" : "bi-moon-stars") fs-5"></i>
+          </button>
+
+          <!-- Help -->
+          <button class="help-btn" title="Help & Support">
+            <i class="bi bi-question-circle fs-5"></i>
+          </button>
+        </div>
+      </div>
+
     
 
+    <style>
+
+
+      .search-container {
+        width: 400px;
+      }
+
+      .search-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        background: var(--search-bg);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+      }
+
+      .search-input {
+        border: none;
+        background: transparent;
+        padding-left: 30px;
+        border: 1px solid rgb(70, 69, 69);
+        width: 100%;
+        color: var(--text-color);
+      }
+
+      .search-icon {
+        position: absolute;
+        left: 1.6rem;
+        
+        color: #6b7280;
+      }
+
+      .search-filter-btn {
+        background: transparent;
+        border: none;
+        color: #6b7280;
+        padding: 0.25rem;
+        border-radius: 4px;
+      }
+
+      .add-password-btn {
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .notification-btn, .theme-toggle-btn, .help-btn {
+        background: transparent;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 8px;
+        color: var(--text-color);
+        position: relative;
+      }
+
+      .notification-btn:hover, .theme-toggle-btn:hover, .help-btn:hover {
+        background: var(--btn-hover);
+      }
+
+      .notification-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ef4444;
+        color: white;
+        border-radius: 50%;
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        min-width: 20px;
+        text-align: center;
+      }
+
+      .notification-dropdown {
+        width: 320px;
+        padding: 0.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .notification-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem;
+        border-radius: 6px;
+      }
+
+      .notification-item:hover {
+        background: var(--btn-hover);
+      }
+
+      .notification-content {
+        flex: 1;
+      }
+
+      .notification-title {
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .notification-desc {
+        margin: 0;
+        font-size: 0.875rem;
+        color: #6b7280;
+      }
+      .add-password-btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 13px;
+  font-weight: 500;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.add-password-btn:hover {
+  transform: scale(1.05);
+  background-color: #2563eb;
+}
+
+
+
+    </style>
+    
+    
+    <!-- Main Content -->
+  <main class="dashboard-main p-4 min-vh-100">
+    <!-- Hero Section with animated gradient background -->
+    <div class="hero-section mb-4">
+      <div class="glass-card p-4 rounded-4 animated-gradient">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h1 class="text-white fw-bold mb-3 display-4 gradient-text">Welcome back, @user.FullName!</h1>
+            <p class="text-muted mb-3 fs-5">
+              Your password vault is protected with an advanced encryption.
+            </p>
+            <div class="d-flex gap-3 mt-4">
+              <button class="btn btn-primary btn-lg hover-lift">
+                <i class="bi bi-shield-plus me-2"></i>Add New Password
+              </button>
+              <button class="btn btn-outline-primary btn-lg hover-lift">
+                <i class="bi bi-shield-check me-2"></i>Security Check
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-2 offset-lg-2">
+            <div class="security-status p-3 rounded-4">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="text-white fw-bold">Account Status</span>
+                <span class="badge bg-success">Secured</span>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between align-items-center mt-1">
+                <span class="text-white fw-bold">Security Score</span>
+                <span class="gradient-text">@user.AccountScore%</span>
+              </div>
+              <hr>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <span class="text-white fw-bold">Last Login</span>
+                <span class="gradient-text">@DateTime.Now.AddHours(-2).ToString("f")</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Stats Grid with Hover Effects -->
+    <div class="stats-grid mb-4 mt-5">
+    <!-- [Previous stats cards remain the same] -->
+    <!-- Protected Passwords Card -->
+    <div class="stat-card hover-lift">
+      <div class="stat-icon bg-primary-gradient floating">
+      <i class="bi bi-shield-lock-fill text-primary"></i>
+      </div>
+      <div class="stat-info">
+      <h3 class="text-white counter">@passwords.Count</h3>
+      <p class="text-primary">Protected Passwords</p>
+      <div class="progress mt-2" style="height: 4px;">
+        <div class="progress-bar bg-primary" style="width: 100%"></div>
+      </div>
+      </div>
+    </div>
+    <!-- Strong & Secure Card -->
+    <div class="stat-card hover-lift">
+      <div class="stat-icon bg-success-gradient floating">
+      <i class="bi bi-check-circle-fill text-success"></i>
+      </div>
+      <div class="stat-info">
+      <h3 class="text-white counter ">@securePasswords.Count</h3>
+      <p class="text-success">Strong &amp; Secure</p>
+      <div class="progress mt-2" style="height: 4px;">
+        <div class="progress-bar bg-success" style="width: @(securePasswords.Count * 100 / Math.Max(1, passwords.Count))%"></div>
+      </div>
+      </div>
+    </div>
+    <!-- Needs Attention Card -->
+    <div class="stat-card hover-lift @(weakPasswords.Count > 0 ? "pulse-warning" : "")">
+      <div class="stat-icon bg-danger-gradient floating">
+      <i class="bi bi-exclamation-triangle-fill text-danger"></i>
+      </div>
+      <div class="stat-info">
+      <h3 class="text-white counter">@weakPasswords.Count</h3>
+      <p class="text-danger">Needs Attention</p>
+      <div class="progress mt-2" style="height: 4px;">
+        <div class="progress-bar bg-danger" style="width: @(weakPasswords.Count * 100 / Math.Max(1, passwords.Count))%"></div>
+      </div>
+      </div>
+    </div>
+    <!-- 2FA Protected Card -->
+    <div class="stat-card hover-lift">
+      <div class="stat-icon bg-info-gradient floating">
+      <i class="bi bi-shield-fill-check text-info"></i>
+      </div>
+      <div class="stat-info">
+      <h3 class="text-white counter">@accountsWith2FA.Count</h3>
+      <p class="text-info">Two-Factor Authentication Protected</p>
+      <div class="progress mt-2" style="height: 4px;">
+        <div class="progress-bar bg-info" style="width: @(accountsWith2FA.Count * 100 / Math.Max(1, passwords.Count))%"></div>
+      </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Security Dashboard (Security Issues & Quick Actions) -->
+    <div class="row g-4">
+    <!-- [Previous three cards remain the same] -->
+    <div class="col-md-4">
+      <div class="glass-card p-4 rounded-4 h-100">
+      <h4 class="text-white mb-4 d-flex align-items-center">
+        <i class="bi bi-shield-exclamation me-2"></i>
+        Security Issues
+      </h4>
+      <hr class="text-white">
+      <div class="security-issues">
+        @if(weakPasswords.Any())
+        {
+        <div class="alert-card danger-alert hover-lift">
+          <div class="alert-content flex-grow-1 text-danger">
+          <h4 class="mb-1 fw-bold">Critical: Weak Passwords</h4>
+          <p class="mb-0">@weakPasswords.Count passwords need immediate attention</p>
+          <div class="progress mt-2" style="height: 3px;">
+            <div class="progress-bar bg-danger" style="width: 100%"></div>
+          </div>
+          </div>
+        </div>
+        }
+
+        @if(duplicatePasswords.Any())
+        {
+        <div class="alert-card warning-alert hover-lift">
+          <i class="bi bi-files pulse-icon"></i>
+          <div class="alert-content flex-grow-1">
+          <h6 class="mb-1">Warning: Password Reuse</h6>
+          <p class="mb-0">@duplicatePasswords.Count instances of reused passwords detected</p>
+          <div class="progress mt-2" style="height: 3px;">
+            <div class="progress-bar bg-warning" style="width: 75%"></div>
+          </div>
+          </div>
+          <button class="btn btn-warning btn-sm">Review</button>
+        </div>
+        }
+      </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="glass-card p-4 rounded-4 h-100 pulse-glow">
+      <h4 class="text-white mb-4 d-flex align-items-center">
+      <i class="bi bi-shield-check me-2 "></i>
+      Account Score</h4>
+      <hr class="text-white">
+      <div class="score-container text-center">
+      <div class="score-circle glow-ring" style="background: linear-gradient(145deg, rgba(@(255-user.AccountScore*2),@(user.AccountScore*2),255,0.1), rgba(@(255-user.AccountScore*2),@(user.AccountScore*2),255,0.05));">
+        <div class="score-background"></div>
+        <span class="score-number shimmer">@user.AccountScore%</span>
+      </div>
+      <h5 class="mt-3 text-white gradient-text">@GetScoreStatus(user.AccountScore)</h5>
+      <p class="text-muted status-message">@GetScoreMessage(user.AccountScore)</p>
+      </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="glass-card p-4 rounded-4 h-100">
+      <h4 class="text-white mb-4 d-flex align-items-center">
+        <i class="bi bi-lightning-charge me-2"></i>
+        Quick Actions
+      </h4>
+      <hr class="text-white">
+      <div class="d-grid gap-3">
+        <button class="btn btn-primary btn-lg hover-lift">
+        <i class="bi bi-plus-circle me-2"></i>New Password
+        <small class="d-block text-light-50">Add to your vault</small>
+        </button>
+        <button class="btn btn-outline-info btn-lg hover-lift">
+        <i class="bi bi-shield-check me-2"></i>Run Security Audit
+        <small class="d-block text-light-50">Check your security</small>
+        </button>
+        <button class="btn btn-info btn-lg hover-lift">
+        <i class="bi bi-cloud-upload me-2"></i>Backup Data
+        <small class="d-block text-light-50">Secure your data</small>
+        </button>
+      </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- New Feature Cards Section -->
+    <div class="row g-4 mt-4">
+    <!-- Password Categories Card -->
+    <div class="col-md-6">
+      <div class="glass-card p-4 rounded-4 hover-lift">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-white m-0">
+        <i class="bi bi-folder2-open me-2"></i>Password Categories
+        </h4>
+        <span class="badge bg-primary">@passwords.Count Total</span>
+      </div>
+      <hr>
+      <div class="category-list text-white" style="max-height: 12rem; overflow-y: auto;">
+        <div class="d-flex justify-content-between align-items-center p-3 bg-light bg-opacity-10 rounded-3 mb-2">
+        <div><i class="bi bi-globe text-info me-2"></i>Social Media</div>
+        <span class="badge bg-info">@(passwords.Count(p => p.Category == "Social Media"))</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-3 bg-light bg-opacity-10 rounded-3 mb-2">
+        <div><i class="bi bi-bank text-warning me-2"></i>Banking</div>
+        <span class="badge bg-warning">@(passwords.Count(p => p.Category == "Banking"))</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-3 bg-light bg-opacity-10 rounded-3 mb-2">
+        <div><i class="bi bi-envelope text-success me-2"></i>Email</div>
+        <span class="badge bg-success">@(passwords.Count(p => p.Category == "Email"))</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-3 bg-light bg-opacity-10 rounded-3 mb-2">
+        <div><i class="bi bi-envelope text-danger me-2"></i>Shopping</div>
+        <span class="badge bg-danger">@(passwords.Count(p => p.Category == "Shopping"))</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-3 bg-light bg-opacity-10 rounded-3 mb-2">
+        <div><i class="bi bi-envelope text-light me-2"></i>Work</div>
+        <span class="badge bg-light text-dark">@(passwords.Count(p => p.Category == "Work"))</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center p-3 bg-light bg-opacity-10 rounded-3">
+        <div><i class="bi bi-envelope text-dark me-2"></i>Other</div>
+        <span class="badge bg-dark">@(passwords.Count(p => p.Category == "Other"))</span>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity Card -->
+    <div class="col-md-6">
+      <div class="glass-card p-4 rounded-4 hover-lift">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-white m-0">
+        <i class="bi bi-activity me-2"></i>Recent Activity
+        </h4>
+        <button class="btn btn-sm btn-outline-primary">View All</button>
+      </div>
+      <hr>
+      <div class="activity-timeline">
+        <div class="activity-item d-flex gap-3 mb-3">
+        <div class="activity-icon bg-success bg-opacity-10 rounded-circle p-2">
+          <i class="bi bi-check-circle text-success"></i>
+        </div>
+        <div>
+          <p class="mb-0 text-white">Password strength improved for Netflix account</p>
+          <small class="text-muted">2 hours ago</small>
+        </div>
+        </div>
+        <div class="activity-item d-flex gap-3 mb-3">
+        <div class="activity-icon bg-warning bg-opacity-10 rounded-circle p-2">
+          <i class="bi bi-shield-exclamation text-warning"></i>
+        </div>
+        <div>
+          <p class="mb-0 text-white">Security audit completed</p>
+          <small class="text-muted">Yesterday</small>
+        </div>
+        </div>
+        <div class="activity-item d-flex gap-3">
+        <div class="activity-icon bg-info bg-opacity-10 rounded-circle p-2">
+          <i class="bi bi-plus-circle text-info"></i>
+        </div>
+        <div>
+          <p class="mb-0 text-white">New password added for GitHub</p>
+          <small class="text-muted">2 days ago</small>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+
+  </main>
+    </div>
+  </div>
+
+
+
+
+<style>
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  .score-circle {
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .score-circle:hover {
+    transform: scale(1.05);
+  }
+
+  .score-background {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 70%);
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+
+  .status-message {
+    transition: all 0.3s ease;
+  }
+
+  .status-message:hover {
+    transform: translateY(-2px);
+    color: white !important;
+  }
+
+  .progress-glow {
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(100,100,255,0.5);
+  }
+
+  .glow-ring::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #6e72fc, #ad1deb) border-box;
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) padding-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    animation: rotate 4s linear infinite;
+  }
+
+  </style>
+        
+
 @code {
+    
     private PasswordDetails userPassword { get; set; } = new PasswordDetails();
     private AccountDetails user { get; set; } = new AccountDetails();
     private List<PasswordDetails> passwords { get; set; } = new List<PasswordDetails>();
@@ -356,9 +668,76 @@
     private List<PasswordDetails> PasswordScoreChartData { get; set; } = new List<PasswordDetails>();
 
     private List<PasswordTrend> PasswordTrendData { get; set; } = new List<PasswordTrend>();
-    private string userName = "User";
+    private List<UserChanges> UserChangesData { get; set; } = new List<UserChanges>();
+    private string userName = "Admin";
     private int notifications = 0;
+    private bool isDarkMode;
 
+    private async Task AddUserChanges()
+    {
+       var httpClient = HttpClientFactory.CreateClient("ApiClient");
+       var response = await httpClient.PostAsJsonAsync("api/PostPasswordDetails", UserChangesData);
+
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("User changes added successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Error");
+        }
+    }
+
+
+
+
+
+    private string GetCircumference()
+    {
+        // Obvod kruhu: 2 * PI * r, kde r = 90
+        double circumference = 2 * Math.PI * 90;
+        return $"{circumference:F2}px";
+    }
+
+    private string GetDashOffset(int score)
+    {
+        double circumference = 2 * Math.PI * 90;
+        // Offset = obvod - (obvod * score/100)
+        double offset = circumference - (circumference * score / 100.0);
+        return $"{offset:F2}px";
+    }
+
+    private string GetScoreColor(int score)
+    {
+        if (score <= 20) return "#dc3545"; // Red
+        if (score <= 40) return "#ffc107"; // Yellow
+        if (score <= 60) return "#fd7e14"; // Orange
+        if (score <= 80) return "#20c997"; // Teal
+        return "#28a745"; // Green
+    }
+
+    private string GetScoreStatus(int score)
+    {
+        if (score <= 20) return "Critical";
+        if (score <= 40) return "Poor";
+        if (score <= 60) return "Fair";
+        if (score <= 80) return "Good";
+        return "Excellent";
+    }
+
+    private string GetScoreMessage(int score)
+    {
+        if (score <= 20) 
+            return "Critical risk detected! Immediate security overhaul is necessary.";
+        if (score <= 40) 
+            return "Security is at a low level. Significant improvements are essential.";
+        if (score <= 60) 
+            return "Your password security is average. Enhancements can help strengthen protection.";
+        if (score <= 80) 
+            return "Good job! Your security is solid, though minor updates could further enhance it.";
+        
+        return "Excellent! Your system is very well-protected.";
+    }
 
     private async Task NotificationsCounter()
     {
@@ -375,6 +754,11 @@
             notifications++;
         }
 
+    }
+
+    private void ToggleTheme()
+    {
+        isDarkMode = !isDarkMode;
     }
 
     private async Task GeneratePasswordTrendData()
@@ -567,3 +951,459 @@
         }
     } 
 }
+
+<style>
+  .gradient-text {
+            background: linear-gradient(45deg, #6e72fc, #ad1deb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+.dashboard-main {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #1f4287, #2c5364);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+
+.progress {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.counter {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(255,255,255,1.0);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  padding: 1.7rgba(36, 43, 50, 0.6)
+  border-radius: 1rem;
+}
+
+.stat-icon {
+  width: 70px;
+  
+  height: 70px;
+  border-radius: 50%;
+  font-size: 1.75rem;
+}
+
+.alert-card {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+  .score-container {
+    padding: 1rem;
+  }
+
+  .score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    position: relative;
+    border: 2px solid rgba(255,255,255,0.1);
+  }
+
+  .score-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #6e72fc, #ad1deb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .score-bar .progress {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .score-bar .progress-bar {
+    transition: width 1s ease-in-out;
+  }
+
+
+.light-mode {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+
+
+.light-mode .glass-card {
+    background: rgba(240, 248, 255, 0.6);
+}
+
+.light-mode .security-status {
+   background: rgba(215, 231, 246, 0.6);
+}
+
+.dark-mode  .text-white{
+  color: white !important;
+}
+
+.dark-mode .glass-card {
+    background: #2B2B3D;
+}
+
+.dark-mode .sidebar-nav {
+    background-color: #1E1E2F !important;
+    
+}
+
+.dark-mode .sidebar-nav {
+  background-color: #1E1E2F !important;
+}
+
+.dark-mode .nav-link {
+  background-color: #2B2B3D !important;
+  color: #fff !important;
+}
+.dark-mode .sidebar-nav {
+  background-color: #1E1E2F !important;
+  border-right: 1px solid #444 !important;
+}
+
+.dark-mode .nav-link {
+  border: 1px solid #444;
+  background-color: #2B2B3D !important; 
+  color: #fff !important;
+  margin: 0.2rem 0; /* optional for spacing */
+}
+
+.dark-mode .nav-link:hover {
+  background-color: #36364E !important;
+  border-color: #555;
+}
+
+.dark-mode .stat-card
+{
+    background: #2B2B3D;
+    border: 1px solid #444;
+    
+}
+
+.dark-mode .b2 {
+  border-bottom: 1px solid #444;
+}
+
+
+.dark-mode .dashboard-main
+{
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.dark-mode .profile-card {
+    background-color: #2B2B3D !important;
+    color: #fff !important;
+    border: 1px solid #444;
+}
+
+.dark-mode .top-navbar {
+  background-color: #1E1E2F !important;
+  color: #fff !important;
+  border-bottom-color: 1px solid #444;
+}
+
+
+.dark-mode .security-status {
+  background-color: #1E1E2F !important;
+}
+
+.logout-link {
+  color: #ff4c4c !important;
+}
+
+.dark-mode .logout-link {
+  color: #ff4c4c !important;
+}
+.logout-link:hover {
+  color: #fa1a1a !important;
+}
+
+
+  /* Nav links */
+  .nav-link {
+    color: #495057;
+    margin: 0.2rem 0; /* optional for spacing */
+  }
+
+  .nav-link:hover, .nav-link.active {
+    background-color: #e9ecef;
+    color: #212529;
+    border-radius: 4px;
+  }
+
+  .dashboard-main {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    min-height: 100vh;
+    padding: 2rem;
+  }
+
+.glass-card {
+    background: rgba(240, 248, 255, 0.6); /* Světle modrý tón (AliceBlue) */
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+  .vl {
+    border-left: 2px solid gray;
+    margin-left: 7px;
+    height: 50px;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-card {
+    padding: 1.75rem;
+    border-radius: 1rem;
+        background: rgba(240, 248, 255, 0.6); /* Světle modrý tón (AliceBlue) */
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  /* Text colors */
+  .text-white {
+    color: #212529 !important;
+  }
+
+  .text-muted {
+    color: #6c757d !important;
+  }
+
+  /* Header */
+  .bg-white {
+    background-color: #ffffff !important;
+  }
+
+  /* Progress bars */
+  .progress {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  .counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #212529;
+    text-shadow: none;
+  }
+
+  .score-circle {
+    background: linear-gradient(145deg, #ffffff, #f8f9fa);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .animated-gradient {
+    background: linear-gradient(-45deg, #f8f9fa, #e9ecef, #dee2e6, #ced4da);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, #0d6efd, #6610f2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+  }
+
+  /* Dropdown menu */
+  .dropdown-menu {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .dropdown-item:hover {
+    background-color: #e9ecef;
+    color: #212529;
+  }
+      .profile-card {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      transition: all 0.2s ease;
+    }
+
+    .profile-card:hover {
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .nav-link {
+      color: #495057;
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: #0d6efd;
+      background: #ffffff;
+      border-color: #0d6efd;
+      box-shadow: 0 2px 8px rgba(13,110,253,0.1);
+      transform: translateX(5px);
+    }
+
+    .nav-link.active {
+      color: #0d6efd;
+      background: #ffffff;
+      border-color: #0d6efd;
+      box-shadow: 0 2px 8px rgba(13,110,253,0.1);
+    }
+
+    .text-primary {
+      color: #0d6efd !important;
+    }
+
+    .collapse .nav-link {
+      background: transparent;
+      border: none;
+      padding-left: 2.5rem;
+    }
+
+    .collapse .nav-link:hover {
+      background: #f8f9fa;
+      transform: translateX(3px);
+    }
+/* Menší přepínač */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;  /* Šířka přepínače */
+    height: 24px; /* Výška přepínače */
+}
+
+/* Skrýt výchozí HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Posuvník */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+/* Malý posuvník */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px; /* Výška posuvníku */
+    width: 16px;  /* Šířka posuvníku */
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: green; /* Barva při zapnutí */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px green;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(16px); /* Posunutí posuvníku */
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
+}
+
+/* Zaoblené okraje */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar-nav {
+  padding: 0 !important;
+}
+.dashboard-main {
+    height: 100vh;
+    overflow-y: auto; /* Allow scrolling in main content */
+    padding: 2rem;
+    margin-bottom: 0; /* Remove bottom margin */
+}
+
+.top-navbar {
+    height: auto; /* Let content determine height */
+    min-height: unset; /* Remove min-height if set */
+}
+
+.min-vh-100 {
+    min-height: unset !important; /* Remove minimum viewport height */
+}
+
+
+
+</style>

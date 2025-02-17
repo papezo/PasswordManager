@@ -31,7 +31,7 @@
                         </div>
                     }
 
-                    <EditForm Model="@user" OnValidSubmit="RegisterAccount">
+                    <EditForm Model="@user" OnValidSubmit="RegisterAccount" FormName="createAccountForm">
                         <DataAnnotationsValidator />
                         <ValidationSummary />
 
@@ -134,6 +134,8 @@
             errorMessage = "Error: Passwords do not match";
             return;
         }
+
+        user.Password = SecretHasher.Hash(user.Password);
 
         var httpClient = HttpClientFactory.CreateClient("ApiClient");
         var response = await httpClient.PostAsJsonAsync("api/AccountDetails", user);

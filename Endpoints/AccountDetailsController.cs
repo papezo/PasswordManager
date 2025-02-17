@@ -7,6 +7,9 @@ using WebApp.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using WebApp.Security;
+
 
 namespace WebApp.Controllers
 {
@@ -17,13 +20,20 @@ namespace WebApp.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IEmailSender _emailSender;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly string encryptionKeyBase64;
+        private readonly IConfiguration _configuration;
 
-        public AccountDetailsController(ApplicationDbContext context, IEmailSender emailSender, UserManager<ApplicationUser> userManager)
+        public AccountDetailsController(ApplicationDbContext context, IEmailSender emailSender, 
+                                        UserManager<ApplicationUser> userManager, IConfiguration configuration)
         {
             _context = context;
             _emailSender = emailSender;
             _userManager = userManager;
+            _configuration = configuration; // Přidat inicializaci
+            
+            encryptionKeyBase64 = _configuration["Encryption:Key"]; // Teď už to bude fungovat
         }
+
 
         // POST: api/AccountDetails
         [HttpPost]
@@ -65,16 +75,15 @@ namespace WebApp.Controllers
                 return BadRequest("Invalid login details.");
             }
 
-            var user = await _context.AccountDetails
-                .FirstOrDefaultAsync(u => u.Username == loginDetails.Username && u.Password == loginDetails.Password);
-
+            var user = await _context.AccountDetails.FirstOrDefaultAsync(u => u.Username == loginDetails.Username);
             if (user == null)
             {
-                return Unauthorized("Invalid email or password.");
+                return Unauthorized("Invalid username or password.");
             }
 
             return Ok("Login successful.");
         }
+
 
        [HttpPost("forgotpassword")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto forgotPassword)
@@ -86,7 +95,12 @@ namespace WebApp.Controllers
                 .FirstOrDefaultAsync(u => u.Email == forgotPassword.Email);
 
             if (user == null)
-                return BadRequest("User not found.");
+            {
+                // Předstírat, že e-mail byl odeslán, i když uživatel neexistuje
+                await Task.Delay(500);
+                return Ok("Reset link sent.");
+            }
+
 
             // Vygeneruj a ulož token
             var token = GenerateResetToken();
@@ -254,20 +268,20 @@ namespace WebApp.Controllers
         public async Task<IActionResult> ChangePassword(int id, [FromBody] ChangePasswordDto dto)
         {
             var user = await _context.AccountDetails.FindAsync(id);
-
             if (user == null)
             {
                 return NotFound("User not found.");
             }
 
-            // Validate the old password
-            if (user.Password != dto.OldPassword)
+            // Ověření starého hesla pomocí metody SecretHasher.Verify
+            bool isOldPasswordValid = Security.SecretHasher.Verify(user.Password, dto.OldPassword);
+            if (!isOldPasswordValid)
             {
                 return BadRequest("Old password is incorrect.");
             }
 
-            // Update the password
-            user.Password = dto.NewPassword;
+            // Hashování nového hesla
+            user.Password = Security.SecretHasher.Hash(dto.NewPassword);
 
             try
             {
@@ -279,6 +293,8 @@ namespace WebApp.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+
 
         [HttpPut("{id}/update-score")]
         public async Task<IActionResult> UpdateAccountScore([FromRoute] int id, [FromBody] AccountDetails accountDetails)

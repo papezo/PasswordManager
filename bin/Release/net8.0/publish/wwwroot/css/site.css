@@ -1,0 +1,138 @@
+/* Pravá část navbaru (search bar + tlačítko) */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto; /* Posune tento blok doprava */
+}
+
+/* Search bar */
+.search-container {
+    position: relative;
+    width: 250px; /* Pevná šířka */
+}
+
+.search-input {
+    width: 100%;
+    padding-left: 35px; /* Rezervace místa pro ikonu */
+    border-radius: 20px;
+    border: none;
+    height: 38px;
+    background-color: #2a2d3e;
+    color: white;
+}
+
+/* Ikona lupy */
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 16px;
+}
+
+
+
+/* 🔹 SIDEBAR */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background-color: #1e1e2f; /* Stejná barva jako navbar */
+    z-index: 1000;
+}
+
+
+.navbar-nav .nav-item a {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    border-radius: 6px;
+    padding: 10px 15px;
+}
+
+.navbar-nav .nav-item a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.navbar-nav .nav-item a.active {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-weight: bold;
+    border-left: 3px solid #007bff;
+}
+
+.navbar-nav .nav-item i {
+    font-size: 18px;
+    transition: transform 0.2s;
+}
+
+.navbar-nav .nav-item a:hover i {
+    transform: scale(1.1);
+}
+
+.sidebar-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 🔹 ODHLÁŠENÍ */
+.logout-link {
+    color: #ff4d4d !important;
+    font-weight: bold;
+}
+
+.logout-link:hover {
+    background: rgba(255, 0, 0, 0.1);
+}
+
+.card-tips {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 10px rgba(0,0,0, 0.1);
+    border-radius: 10px;
+}
+
+.card-tips:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0,0,0, 0.3);
+}
+
+/* Zvýraznění aktivní otázky */
+.accordion-button:not(.collapsed) {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hover efekt */
+.accordion-button:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+    color: #007bff;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Zvýraznění aktivní sekce */
+.accordion-item {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border: none;
+}
+
+/* Animace při otevírání */
+.accordion-collapse {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ikonky se zvětší při najetí */
+.accordion-button i {
+    font-size: 18px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.accordion-button:hover i {
+    transform: scale(1.2);
+}

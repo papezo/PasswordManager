@@ -9,12 +9,12 @@ public class PasswordChanges
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
+    public int logId { get; set; }
     public int PasswordId {get; set;}
     public string? ActionType {get; set;}
-    public string? OldValue {get; set;}
-    public string? NewValue {get; set;}
     public string? ChangedBy {get; set;}
     public DateTime ChangedAt {get; set;} = DateTime.Now;
+    public string? Details {get; set;}
 
 
 }

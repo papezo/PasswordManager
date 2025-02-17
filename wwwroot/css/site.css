@@ -36,7 +36,6 @@
 
 /* 🔹 SIDEBAR */
 .sidebar {
-    width: 300px; /* Šířka sidebaru */
     position: fixed;
     left: 0;
     top: 0;

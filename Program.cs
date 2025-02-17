@@ -19,6 +19,9 @@ using WebApp.Data;
 using WebApp.Endpoints;
 using WebApp.Models;
 using TextCopy;
+using Blazorise;
+using Blazorise.Bootstrap;
+using Blazorise.Icons.FontAwesome;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +64,9 @@ builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddSweetAlert2();
 
+builder.Services.AddScoped<ExportService>();
+
+
 builder.Services.AddScoped<IClipboard, Clipboard>();
 
 builder.Services.Configure<DataProtectionTokenProviderOptions>(o =>
@@ -86,6 +92,14 @@ builder.Services.AddAntiforgery(options =>
 {
     options.HeaderName = "X-CSRF-TOKEN";
 });
+
+builder.Services
+    .AddBlazorise(options => { options.Immediate = true; })
+    .AddBootstrapProviders()
+    .AddFontAwesomeIcons();
+
+
+builder.Services.AddScoped<GoogleCaptchaService>();
 
 var app = builder.Build();
 

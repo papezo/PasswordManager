@@ -31,4 +31,6 @@ public class PasswordDetails
     public bool DuplicatedPassword {get; set;}
     public byte[]? ImagePath {get; set;}
     public string? BackUpCodes {get; set;}
+    public bool IsFavorite {get; set;}
+    public string initVector{get; set;}
 }

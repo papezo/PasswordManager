@@ -1,100 +1,438 @@
 ﻿@page "/Validator"
 @using WebApp.Models
 
+@inject IJSRuntime JSRuntime
+
 <PageTitle>Validator</PageTitle>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand text-white d-flex align-items-center fw-bold" href="#">
-            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security">
-            <span class="ms-2">Bertly</span>
-        </a>
 
+@rendermode InteractiveServer
 
-        <!-- Ikony -->
-        <div class="d-flex align-items-center ms-3">
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-bell"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-person"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-question-circle"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn"><i class="bi bi-gear"></i></button>
+<style>
+    .sidebar {
+        background-color: #1E1E2F;
+        border-right: 1px solid #34344A;
+    }
+    /* Odkazy v sidebaru */
+    .nav-link {
+        color: #9A9AB0;
+    }
+    .nav-link:hover, .nav-link.active {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border-radius: 4px;
+    }
+    /* Kategorie - hover efekty */
+    .list-unstyled a {
+        color: #9A9AB0;
+    }
+    .list-unstyled a:hover, .list-unstyled a.active {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border-radius: 4px;
+    }
+    /* Pravý sloupec (hlavní obsah) */
+    .card, .col-9 {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border: 1px solid #34344A;
+        padding: 20px;
+        border-radius: 8px;
+    }
+    .btn-primary:hover {
+        background-color: #0056B3;
+        border-color: #0056B3;
+        color: #FFFFFF;
+    }
+    /* Hlavní záhlaví */
+    .bg-white {
+        background-color: #1E1E2F !important;
+    }
+    /* Odkazy v kartě */
+    .card a {
+        color: #007BFF;
+    }
+    .card a:hover {
+        color: #009EFF;
+        text-decoration: underline;
+    }
+    /* Oddělovací čáry */
+    .border-end, .border-bottom {
+        border-color: #34344A !important;
+    }
+    /* Text tlumený */
+    .text-muted {
+        color: #9A9AB0 !important;
+    }
+    /* Tmavé pozadí levé části (kategorie) */
+    .col-3 {
+        background-color: #1E1E2F;
+        border-right: 1px solid #34344A;
+    }
+    .dropdown-menu {
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(8px);
+    }
+    .dropdown-item {
+        padding: 10px 15px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+    .dropdown-item:hover {
+        background-color: #6c757d;
+        color: white;
+    }
+    /* ===============================
+       Končí nezměněné části (Sidebar & Header)
+       =============================== */
+       
+    /* ===============================
+       Vylepšené styly pro validátor hesel
+       =============================== */
+       
+    /* Hlavní pozadí validátoru */
+    .main-bg {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    /* Moderní validátor s efektem glassmorphism */
+    .password-validator-card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        padding: 40px 30px;
+        width: 80vh;
+        animation: fadeInUp 0.8s ease-out both;
+    }
+    
+    
+    /* Nadpis a popisek validátoru */
+    .password-validator-card h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .password-validator-card p.text-muted {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.75);
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Vylepšený input pro heslo */
+    .input-password {
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+
+        background: transparent;
+        color: #fff;
+        transition: all 0.3s ease;
+        width: 100%;
+    }
+    .input-password::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+    .input-password:focus {
+        color: white;
+        border-color: #1A73E8;
+        box-shadow: 0 0 8px rgba(26, 115, 232, 0.5);
+        background: rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Stylizace prvků skupiny inputů */
+    .input-group-text {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+    }
+    
+    /* Progress bar pro zobrazení síly hesla */
+    .progress {
+        height: 10px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.3);
+        overflow: hidden;
+        margin-bottom: 1rem;
+    }
+    .progress-bar {
+        transition: width 0.5s ease-in-out;
+        border-radius: 5px;
+    }
+    
+    /* Styl zpětné vazby */
+    #strengthFeedback {
+        font-size: 1.2rem;
+        font-weight: 600;
+        text-align: center;
+        color: #fff;
+    }
+
+</style>
+
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <!-- Sidebar – zůstává beze změny -->
+    <nav class="bg-dark text-light border-end d-flex flex-column p-3" style="width: 300px;">
+        <div class="d-flex align-items-center mb-4 justify-content-center">
+            <img src="images/plart1.png" alt="Security" width="200" class="me-2 ">
         </div>
-    </div>
-</nav>
-
-
-
-<div class="container-fluid d-flex p-0 h-100 min-vh-100">
-    <nav class="d-flex flex-column bg-dark border-end shadow-sm sidebar ">
-    <!-- Logo a název -->
-        <div class="navbar-brand text-white text-center py-3 border-bottom">
-            Management
-        </div>
-
-        <ul class="navbar-nav flex-column">
+        <hr>
+        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/HomeManager">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/HomeManager">
+                    <i class="bi bi-speedometer2 me-3"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/PasswordsPage">
-                    <i class="bi bi-lock me-2"></i> Passwords
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/PasswordsPage">
+                    <i class="bi bi-lock me-3"></i> Passwords
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/SecurityTips">
-                    <i class="bi bi-book me-2"></i> Security Tips
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/SecurityTips">
+                    <i class="bi bi-book me-3"></i> Security Tips
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/Validator">
-                    <i class="bi bi-patch-check me-2"></i> Validator
-                </a>
-            </li>
-
-            <!-- Oddělení Settings -->
-            <div class="sidebar-divider"></div>
-            <p class="text-white ps-3 fw-bold text-white">Settings</p>
-
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Account">
-                    <i class="bi bi-person-circle me-2 text-white"></i> Account
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Support">
-                    <i class="bi bi-chat-right me-2 text-white"></i> Support
-                </a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link logout-link d-flex align-items-center" href="/logout">
-                    <i class="bi bi-box-arrow-left me-2"></i> Log Out
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/Validator">
+                    <i class="bi bi-patch-check me-3"></i> Validator
                 </a>
             </li>
         </ul>
-    </nav>
-    <main class="w-100">
-        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
-            <h1 class="text-center mb-4 mt-5" style="font-size: 2.5rem; font-weight: bold;">Check the strength of your password</h1>
-            <div class="container-fluid text-dark bg-dark p-4 rounded w-100" style="flex-grow: 1;">
-                <h2 class="text-center mb-4"></h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <input type="password" id="passwordInput" class="form-control mb-3"
-                                    placeholder="Enter your password" oninput="checkPasswordStrength()">
-                                <div id="strengthMeter" class="mb-3"></div>
-                                <p id="strengthFeedback" class="text-center"></p>
-                            </div>
-                        </div>
-                    </div>
+
+        <hr>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-light d-flex justify-content-between align-items-center fs-5" data-bs-toggle="collapse" href="#category1">
+                    <span><i class="bi bi-folder me-3"></i> Social Media</span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse ps-3" id="category1">
+                    <a href="#" class="nav-link text-light">Facebook</a>
+                    <a href="#" class="nav-link text-light">Instagram</a>
+                    <a href="#" class="nav-link text-light">Trading212</a>
                 </div>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Account">
+                    <i class="bi bi-person-circle me-3"></i> Account
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Support">
+                    <i class="bi bi-chat-right me-3"></i> Support
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Documentation">
+                    <i class="bi bi-folder2-open me-3"></i> Documentation
+                </a>
+            </li>
+        </ul>
+
+        <div class="d-flex align-items-center mt-auto">
+            <i class="bi bi-moon-stars text-light me-3"></i>
+            <span class="text-light fs-5">Dark Mode</span>
+            <div class="form-check form-switch ms-auto">
+                <input class="form-check-input" type="checkbox" id="darkModeSwitch" checked>
             </div>
         </div>
-    </main>
+
+        <div class="user-info mt-3 border-top pt-3 text-center">
+            <img src="images/user.png" alt="User Avatar" class="rounded-circle mb-2" width="50">
+            <p class="text-light mb-0 fw-bold">@user.FullName</p>
+            <small class="text-muted">@user.Role</small>
+        </div>
+        
+        <div class="mt-3">
+            <a href="/logout" class="nav-link text-danger fs-5">
+                <i class="bi bi-box-arrow-left me-3"></i> Log Out
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hlavní obsah – Header zůstává beze změny, vylepšili jsme pouze validátor -->
+    <div class="d-flex flex-column flex-grow-1 min-vh-100">
+        <div class="bg-white p-3 border-bottom d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <i class="bi bi-arrow-left-short text-white fs-2"></i>
+                <i class="bi bi-arrow-right-short text-white fs-2"></i>
+                <div class="input-group ms-5 bg-light rounded-5" style="width: 500px;">
+                    <span class="input-group-text border-0"><i class="bi bi-search fs-5 text-muted"></i></span>
+                    <input type="text" class="form-control border-0 shadow-none text-white" placeholder="Search Password">
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <!-- Notifikace -->
+                <div class="dropdown me-3">
+                    <button class="btn btn-outline-light btn-sm rounded-circle icon-btn position-relative"
+                            type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-bell fs-5"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-danger text-white fw-bold"
+                            style="width: 28px; height: 28px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                            3
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="notificationsDropdown">
+                        <li><h6 class="dropdown-header">Notifications</h6></li>
+                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Weak password detected</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-muted" href="#">View all</a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-outline-light btn-sm rounded-circle icon-btn position-relative"
+                        type="button">
+                    <i class="bi bi-question-circle fs-5"></i>
+                </button>
+            </div> 
+        </div>
+        
+        <!-- Sekce validátoru hesel s novým moderním vzhledem -->
+       <main class="main-bg">
+            <div class="password-validator-card">
+                <h1>Password Strength Checker</h1>
+                <p class="text-muted">Enter your password below and see its strength!</p>
+                <div class="position-relative mt-5 mb-5">
+                    <input type="text"
+                            id="passwordInput"
+                            class="form-control ps-5 input-password"
+                            placeholder="Enter your password"
+                            value="@inputPassword"
+                            @onchange="CalculatePasswordStrength">
+                        <span class="position-absolute top-50 start-0 translate-middle-y ms-3">
+                            <i class="bi bi-key fs-5 text-white"></i>
+                        </span>
+                </div>
+<div class="progress mb-3">
+    <div class="progress-bar 
+        @(passwordStrength == 0 ? "bg-transparent" : 
+          passwordStrength > 0 && passwordStrength < 40 ? "bg-danger" :
+          passwordStrength >= 40 && passwordStrength < 60 ? "bg-warning" : "bg-success")" 
+        role="progressbar" 
+        style="width: @passwordStrength%;" 
+        aria-valuenow="@passwordStrength" 
+        aria-valuemin="0" 
+        aria-valuemax="100">
+    </div>
+</div>
+                <div class="text-center mt-3">
+                        @if(passwordStrength == 0)
+                        {
+
+                        }
+                        else if (passwordStrength > 0 && passwordStrength < 40)
+                        {
+                            <i class="bi bi-x-circle-fill text-danger fs-1" ></i>
+                        }
+                        else if (passwordStrength >= 40 && passwordStrength < 60)
+                        {
+                            <i class="bi bi-exclamation-triangle-fill text-warning fs-1"></i>
+                        }
+                        else if (passwordStrength >= 60)
+                        {
+                            <i class="bi bi-check-circle-fill text-success fs-1" ></i>
+                        }
+                        <p id="strengthFeedback" class="mt-2">
+                            @if(passwordStrength == 0)
+                            {
+                             <span class="fw-bold text-white">No password to check yet...</span>
+                            }
+    
+                            else if (passwordStrength > 0 && passwordStrength < 40)
+                            {
+                                <span class="fw-bold text-danger">Weak password!</span>
+                                <p class="text-muted mt-3">
+                                    Your password is too weak. Try adding more characters, numbers, uppercase letters, and special symbols to make it stronger.
+                                </p>
+                            }
+                            else if (passwordStrength >= 40 && passwordStrength < 60)
+                            {
+                                <span class="fw-bold text-warning">Decent password</span>
+                                <p class="text-muted mt-3">
+                                    Your password is okay, but it could be stronger. Consider using a mix of uppercase and lowercase letters, as well as numbers and special symbols.
+                                </p>
+                            }
+                            else if (passwordStrength >= 60 && passwordStrength < 80)
+                            {
+                                <span class="fw-bold text-success">Strong password!</span>
+                                <p class="text-muted mt-3">
+                                    Great job! Your password is strong. Just make sure to keep it unique and don't reuse it for other accounts.
+                                </p>
+                            }
+                            else if(passwordStrength >= 80)
+                            {
+                                <span class="fw-bold text-success">Very strong password!</span>
+                                <p class="text-muted mt-3">
+                                    Congratulations! Your password is very strong. Keep it safe and don't share it with anyone.
+                                </p>
+                            }
+                        </p>
+                    </div>
+
+            </div>
+        </main>
+    </div>
 </div>
 
 @code {
+    private PasswordDetails userPassword { get; set; } = new PasswordDetails();
+    private AccountDetails user { get; set; } = new AccountDetails();
+    private List<PasswordDetails> passwords { get; set; } = new List<PasswordDetails>();
+    private List<PasswordDetails> securePasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> insecurePasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> accountsWith2FA = new List<PasswordDetails>();
+    private List<PasswordDetails> weakPasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> outDatedPasswords = new List<PasswordDetails>();
+    private List<PasswordDetails> duplicatePasswords = new List<PasswordDetails>();
+    private int MaxPasswordDays = 30;
+    private List<PasswordDetails> PasswordScoreChartData { get; set; } = new List<PasswordDetails>();
+
+    private List<PasswordTrend> PasswordTrendData { get; set; } = new List<PasswordTrend>();
+    private string userName = "User";
+    private int notifications = 0;
+    private int passwordStrength = 0;
+    private string inputPassword = string.Empty;
+
+    private void CalculatePasswordStrength(ChangeEventArgs e)
+    {
+        inputPassword = e.Value?.ToString() ?? string.Empty;
+        passwordStrength = 0; 
+
+        if (inputPassword.Length >= 8) 
+        { 
+            passwordStrength += 15;
+        }
+        if (inputPassword.Any(char.IsUpper)) 
+        {
+            passwordStrength += 20;
+        }
+        if (inputPassword.Any(char.IsLower))
+        {
+            passwordStrength += 20;
+        } 
+        if (inputPassword.Any(char.IsDigit)) 
+        {
+            passwordStrength += 20;
+        }
+        if (inputPassword.Any(char.IsPunctuation)) 
+        {
+            passwordStrength += 25;
+        }
+
+        StateHasChanged();
+    }
 
 }

@@ -9,86 +9,142 @@
 @using System.Net.Http.Json
 
 <PageTitle>Home Manager</PageTitle>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand text-white d-flex align-items-center fw-bold" href="#">
-            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security">
-            <span class="ms-2">Bertly</span>
-        </a>
-
-
-        <!-- Ikony -->
-        <div class="d-flex align-items-center ms-3">
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-bell"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-person"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-question-circle"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn"><i class="bi bi-gear"></i></button>
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <!-- Sidebar -->
+    <nav class="bg-dark text-light border-end d-flex flex-column p-3" style="width: 300px;">
+        <div class="d-flex align-items-center mb-4 justify-content-center">
+            <img src="images/plart1.png" alt="Security" width="200" class="me-2 ">
         </div>
-    </div>
-</nav>
-
-
-
-<div class="container-fluid d-flex p-0 h-100 min-vh-100">
-    <nav class="d-flex flex-column bg-dark border-end shadow-sm sidebar ">
-    <!-- Logo a název -->
-        <div class="navbar-brand text-white text-center py-3 border-bottom">
-            Management
-        </div>
-
-        <ul class="navbar-nav flex-column">
+        <hr>
+        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/HomeManager">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/HomeManager">
+                    <i class="bi bi-speedometer2 me-3"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/PasswordsPage">
-                    <i class="bi bi-lock me-2"></i> Passwords
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/PasswordsPage">
+                    <i class="bi bi-lock me-3"></i> Passwords
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/SecurityTips">
-                    <i class="bi bi-book me-2"></i> Security Tips
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/SecurityTips">
+                    <i class="bi bi-book me-3"></i> Security Tips
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/Validator">
-                    <i class="bi bi-patch-check me-2"></i> Validator
-                </a>
-            </li>
-
-            <!-- Oddělení Settings -->
-            <div class="sidebar-divider"></div>
-            <p class="text-white ps-3 fw-bold text-white">Settings</p>
-
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Account">
-                    <i class="bi bi-person-circle me-2 text-white"></i> Account
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Support">
-                    <i class="bi bi-chat-right me-2 text-white"></i> Support
-                </a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link logout-link d-flex align-items-center" href="/logout">
-                    <i class="bi bi-box-arrow-left me-2"></i> Log Out
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/Validator">
+                    <i class="bi bi-patch-check me-3"></i> Validator
                 </a>
             </li>
         </ul>
+
+        <hr>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-light d-flex justify-content-between align-items-center fs-5" data-bs-toggle="collapse" href="#category1">
+                    <span><i class="bi bi-folder me-3"></i> Social Media</span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse ps-3" id="category1">
+                    <a href="#" class="nav-link text-light">Facebook</a>
+                    <a href="#" class="nav-link text-light">Instagram</a>
+                    <a href="#" class="nav-link text-light">Trading212</a>
+                </div>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Account">
+                    <i class="bi bi-person-circle me-3"></i> Account
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Support">
+                    <i class="bi bi-chat-right me-3"></i> Support
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Documentation">
+                    <i class="bi bi-folder2-open me-3"></i> Documentation
+                </a>
+            </li>
+        </ul>
+
+
+        <div class="d-flex align-items-center mt-auto">
+
+            <i class="bi bi-moon-stars text-light me-3"></i>
+            <span class="text-light fs-5">Dark Mode</span>
+            <div class="form-check form-switch ms-auto">
+                <input class="form-check-input" type="checkbox" id="darkModeSwitch" checked>
+            </div>
+        </div>
+
+        <div class="user-info mt-3 border-top pt-3 text-center">
+            <img src="images/user.png" alt="User Avatar" class="rounded-circle mb-2" width="50">
+            <p class="text-light mb-0 fw-bold">@user.FullName</p>
+            <small class="text-muted">@user.Role</small>
+        </div>
+        
+        <div class="mt-3">
+            <a href="/logout" class="nav-link text-danger fs-5">
+                <i class="bi bi-box-arrow-left me-3"></i> Log Out
+            </a>
+        </div>
+
     </nav>
 
+    <!-- Main Content -->
+    <div class="d-flex flex-column flex-grow-1 min-vh-100">
+        <!-- Header -->
+        <div class="bg-white p-3 border-bottom d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-arrow-left-short text-white fs-2"></i>
+            <i class="bi bi-arrow-right-short text-white fs-2"></i>
+            <div class="input-group ms-5 bg-light rounded-5" style="width: 500px;">
+                <span class="input-group-text border-0"><i class="bi bi-search fs-5 text-muted"></i></span>
+                <input type="text" class="form-control border-0 shadow-none text-white" placeholder="Search Password">
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <!-- Notifikace -->
+            <div class="dropdown me-3">
+                <button class="btn btn-outline-light btn-sm rounded-circle icon-btn position-relative"
+                        type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-danger text-white fw-bold"
+                        style="width: 28px; height: 28px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                        @notifications
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="notificationsDropdown">
+                    <li><h6 class="dropdown-header">Notifications</h6></li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Weak password detected</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-muted" href="#">View all</a></li>
+                </ul>
+            </div>
+            <!-- Volba jazyka -->
+            <!-- Otázka -->
+            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn position-relative"
+                    type="button">
+                <i class="bi bi-question-circle fs-5"></i>
+            </button>
+        </div> 
+    </div>
+
     <main class="w-100">
-        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
+        <div class="d-flex flex-column align-items-center p-4 text-white min-vh-100">
             <h1 class="text-center mb-5" style="font-size: 2.5rem; font-weight: bold;">Security Tips</h1>
             <p>Keep your accounts safe by following these best practices for password security and online safety.</p>
-            <div class="container-fluid text-dark bg-dark rounded w-100">
+            <div class="container-fluid text-dark rounded w-100">
                 <div class="container">
-                    <h2 class="text-center mb-4">Security Tips</h2>
-                    <div class="row g-4">
+                    <div class="row g-4 mt-5">
                         <!-- Card 1 -->
                         <div class="col-md-4">
                             <div class="card card-tips h-100 text-center">
@@ -285,7 +341,112 @@
         </div>
     </main>
 </div>
+</div>
 
 @code {
-
+    private AccountDetails user { get; set; } = new AccountDetails();
+    private int notifications = 0;
 }
+
+<style>
+    body {
+       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+    
+    /* Sidebar */
+    .sidebar {
+        background-color: #1E1E2F;
+        border-right: 1px solid #34344A;
+    }
+
+    /* Odkazy v sidebaru */
+    .nav-link {
+        color: #9A9AB0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border-radius: 4px;
+    }
+
+    /* Kategorie - hover efekty */
+    .list-unstyled a {
+        color: #9A9AB0;
+    }
+
+    .list-unstyled a:hover, .list-unstyled a.active {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border-radius: 4px;
+    }
+
+    /* Pravý sloupec (hlavní obsah) */
+    .card, .col-9 {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border: 1px solid #34344A;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+    /* Tlačítko */
+    .btn-primary {
+        background-color: #1A73E8;
+        border-color: #1A73E8;
+        color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056B3;
+        border-color: #0056B3;
+        color: #FFFFFF;
+    }
+
+
+    /* Hlavní záhlaví */
+    .bg-white {
+        background-color: #1E1E2F !important; /* Přepsání bílé na tmavé */
+
+    }
+
+
+
+    .card a:hover {
+        color: #009EFF;
+        text-decoration: none;
+    }
+
+    /* Oddělovací čáry */
+    .border-end, .border-bottom {
+        border-color: #34344A !important;
+    }
+
+    /* Text tlumený */
+    .text-muted {
+        color: #9A9AB0 !important;
+    }
+
+    /* Tmavé pozadí levé části (kategorie) */
+    .col-3 {
+        background-color: #1E1E2F;
+        border-right: 1px solid #34344A;
+    }
+
+    .dropdown-menu {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    }
+
+    .dropdown-item {
+        padding: 10px 15px;
+        transition: background-color 0.2s, color 0.2s;
+    }
+
+    .dropdown-item:hover {
+        background-color: #6c757d; /* Nebo jiná barva */
+        color: white;
+    }
+
+</style>

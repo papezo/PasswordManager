@@ -1,6 +1,5 @@
 ﻿@page "/Account"
 
-
 @rendermode InteractiveServer
 
 @using System.Text
@@ -12,392 +11,311 @@
 @using System.Net.Http
 @using Microsoft.AspNetCore.Components.Authorization
 @using System.Net.Http.Json
-
+@using WebApp.Security
 
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject SweetAlertService Swal
+@inject IConfiguration Configuration
 
 <PageTitle>Account</PageTitle>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3">
-    <div class="container-fluid">
-        <!-- Logo -->
-        <a class="navbar-brand text-white d-flex align-items-center fw-bold" href="#">
-            <img src="images/security.png" style="width: 40px; height: auto;" alt="Security">
-            <span class="ms-2">Bertly</span>
-        </a>
 
 
-        <!-- Ikony -->
-        <div class="d-flex align-items-center ms-3">
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-bell"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-person"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle me-3 icon-btn"><i class="bi bi-question-circle"></i></button>
-            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn"><i class="bi bi-gear"></i></button>
+
+<div class="container-fluid d-flex p-0 min-vh-100">
+    <!-- Sidebar -->
+    <nav class="bg-dark text-light border-end border-dark d-flex flex-column p-3" style="width: 300px;">
+        <div class="d-flex align-items-center mb-4 justify-content-center">
+            <img src="images/plart1.png" alt="Security" width="200" class="me-2 ">
         </div>
-    </div>
-</nav>
-
-
-
-<div class="container-fluid d-flex p-0 h-100 min-vh-100">
-    <nav class="d-flex flex-column bg-dark border-end shadow-sm sidebar ">
-    <!-- Logo a název -->
-        <div class="navbar-brand text-white text-center py-3 border-bottom">
-            Management
-        </div>
-
-        <ul class="navbar-nav flex-column">
+        <hr>
+        <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/HomeManager">
-                    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/HomeManager">
+                    <i class="bi bi-speedometer2 me-3"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/PasswordsPage">
-                    <i class="bi bi-lock me-2"></i> Passwords
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/PasswordsPage">
+                    <i class="bi bi-lock me-3"></i> Passwords
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/SecurityTips">
-                    <i class="bi bi-book me-2"></i> Security Tips
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/SecurityTips">
+                    <i class="bi bi-book me-3"></i> Security Tips
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex align-items-center text-white" href="/Validator">
-                    <i class="bi bi-patch-check me-2"></i> Validator
-                </a>
-            </li>
-
-            <!-- Oddělení Settings -->
-            <div class="sidebar-divider"></div>
-            <p class="text-white ps-3 fw-bold text-white">Settings</p>
-
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Account">
-                    <i class="bi bi-person-circle me-2 text-white"></i> Account
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link d-flex align-items-center" href="/Support">
-                    <i class="bi bi-chat-right me-2 text-white"></i> Support
-                </a>
-            </li>
-            <li class="nav-item mt-auto">
-                <a class="nav-link logout-link d-flex align-items-center" href="/logout">
-                    <i class="bi bi-box-arrow-left me-2"></i> Log Out
+                <a class="nav-link text-light d-flex align-items-center fs-5" href="/Validator">
+                    <i class="bi bi-patch-check me-3"></i> Validator
                 </a>
             </li>
         </ul>
+
+        <hr>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-light d-flex justify-content-between align-items-center fs-5" data-bs-toggle="collapse" href="#category1">
+                    <span><i class="bi bi-folder me-3"></i> Social Media</span>
+                    <i class="bi bi-chevron-down"></i>
+                </a>
+                <div class="collapse ps-3" id="category1">
+                    <a href="#" class="nav-link text-light">Facebook</a>
+                    <a href="#" class="nav-link text-light">Instagram</a>
+                    <a href="#" class="nav-link text-light">Trading212</a>
+                </div>
+            </li>
+        </ul>
+
+        <hr>
+
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Account">
+                    <i class="bi bi-person-circle me-3"></i> Account
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Support">
+                    <i class="bi bi-chat-right me-3"></i> Support
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light fs-5" href="/Documentation">
+                    <i class="bi bi-folder2-open me-3"></i> Documentation
+                </a>
+            </li>
+        </ul>
+
+
+        <div class="d-flex align-items-center mt-auto">
+
+            <i class="bi bi-moon-stars text-light me-3"></i>
+            <span class="text-light fs-5">Dark Mode</span>
+            <div class="form-check form-switch ms-auto">
+                <input class="form-check-input" type="checkbox" id="darkModeSwitch" checked>
+            </div>
+        </div>
+
+        <div class="user-info mt-3 border-top pt-3 text-center">
+            <img src="images/user.png" alt="User Avatar" class="rounded-circle mb-2" width="50">
+            <p class="text-light mb-0 fw-bold">@user.FullName</p>
+            <small class="text-muted">@user.Role</small>
+        </div>
+        
+        <div class="mt-3">
+            <a href="/logout" class="nav-link text-danger fs-5">
+                <i class="bi bi-box-arrow-left me-3"></i> Log Out
+            </a>
+        </div>
+
     </nav>
 
-    <main class="w-100">
-        <div class="d-flex flex-column align-items-center p-4 bg-dark text-white min-vh-100">
-            <div class="container-fluid text-dark bg-light p-4 rounded w-100" style="flex-grow: 1;">
-                <div class="row mb-3" style="height: 25%;">
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-header d-flex justify-content-between align-items-center fw-bold">Personal
-                                Informations
-                <div>
-                     <button type="button" class="btn p-0" @onclick="EditPersonalInfo"><i class="bi bi-gear"></i></button>
-                </div>
-                </div>
-                <div class="card-body d-flex flex-column gap-3">
-                
-                <EditForm Model="@user" OnValidSubmit="EditUserInfo">
-                    <div class="d-flex align-items-center mb-3 mt-3">
-                        <label for="username" class="form-label me-3" style="width: 150px;">Full Name:</label>
-                        <InputText id="username" class="form-control flex-grow-1" @bind-Value="user.Username" disabled=@(!WantToEdit) />
-                    </div>
-                    
-                    <div class="d-flex align-items-center mb-3">
-                        <label for="email" class="form-label me-3" style="width: 150px;">Email address:</label>
-                        <InputText id="email" type="email" class="form-control flex-grow-1" @bind-Value="user.Email" disabled="@(!WantToEdit)" />
-                    </div>
+    <!-- Main Content -->
+    <div class="d-flex flex-column flex-grow-1 min-vh-100">
+        <!-- Header -->
+        <div class="bg-white p-3 border-bottom border-dark d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+            <i class="bi bi-arrow-left-short text-white fs-2"></i>
+            <i class="bi bi-arrow-right-short text-white fs-2"></i>
+            <div class="input-group ms-5 bg-light rounded-5" style="width: 500px;">
+                <span class="input-group-text border-0"><i class="bi bi-search fs-5 text-muted"></i></span>
+                <input type="text" class="form-control border-0 shadow-none text-white" placeholder="Search Password">
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            <!-- Notifikace -->
+            <div class="dropdown me-3">
+                <button class="btn btn-outline-light btn-sm rounded-circle icon-btn position-relative"
+                        type="button" id="notificationsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-bell fs-5"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge border border-light rounded-pill bg-danger text-white fw-bold"
+                        style="width: 28px; height: 28px; font-size: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                        @notifications
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="notificationsDropdown">
+                    <li><h6 class="dropdown-header">Notifications</h6></li>
+                    <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-exclamation-triangle me-2"></i> Weak password detected</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-muted" href="#">View all</a></li>
+                </ul>
+            </div>
+            <!-- Volba jazyka -->
+            <!-- Otázka -->
+            <button class="btn btn-outline-light btn-sm rounded-circle icon-btn position-relative"
+                    type="button">
+                <i class="bi bi-question-circle fs-5"></i>
+            </button>
+        </div> 
+    </div>
 
-                   <div class="d-flex align-items-center mb-3">
-                        <label for="password" class="form-label me-3" style="width: 150px;">Password:</label>
-                        <div class="input-group flex-grow-1">
-                            <InputText id="password" 
-                                    type="@(IsPasswordVisible(user.Id) ? "text" : "password")" 
-                                    class="form-control" 
-                                    @bind-Value="user.Password" 
-                                    disabled="@(!WantToEdit)" />
-                            <span class="input-group-text" style="cursor: pointer;" @onclick="() => TogglePasswordVisibility(user.Id)">
-                                <i class="bi @(IsPasswordVisible(user.Id) ? "bi-eye-slash" : "bi-eye")"></i>
-                            </span>
+      
+
+    <!-- Tabs -->
+    <div class="container py-3">
+      <ul class="nav nav-tabs" id="accountTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal"
+                  type="button" role="tab" aria-controls="personal" aria-selected="true">Personal Info</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security"
+                  type="button" role="tab" aria-controls="security" aria-selected="false">Security</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications"
+                  type="button" role="tab" aria-controls="notifications" aria-selected="false">Notifications</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="billing-tab" data-bs-toggle="tab" data-bs-target="#billing"
+                  type="button" role="tab" aria-controls="billing" aria-selected="false">Billing</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="support-tab" data-bs-toggle="tab" data-bs-target="#support"
+                  type="button" role="tab" aria-controls="support" aria-selected="false">Support</button>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="accountTabContent">
+        <!-- Personal Info Tab -->
+        <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
+    <div class="row g-4">
+        <!-- Personal Information Card -->
+        <div class="col-md-8">
+            <div class="notification-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-person me-2"></i>Personal Information</h5>
+                    <button class="btn btn-outline-primary btn-sm" @onclick="EditPersonalInfo">
+                        <i class="bi bi-pencil me-2"></i>@(WantToEdit ? "Save" : "Edit")
+                    </button>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@user" OnValidSubmit="EditUserInfo">
+                        <!-- Basic Information -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title text-light">Basic Information</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">Full Name</label>
+                                        <InputText class="form-control " @bind-Value="user.Username" placeholder="Full Name" disabled="@(!WantToEdit)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">Email Address</label>
+                                        <InputText type="email" class="form-control " @bind-Value="user.Email" placeholder="Email Address" disabled="@(!WantToEdit)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">Date of Birth</label>
+                                        <InputDate class="form-control" @bind-Value="user.DateOfBirth" disabled="@(!WantToEdit)" />
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
+                        <!-- Contact Information -->
+                        <div class="form-section mb-4">
+                            <h6 class="section-title text-light">Contact Information</h6>
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="text-light">Address</label>
+                                        <InputText class="form-control" @bind-Value="user.Address" placeholder="Your Address" disabled="@(!WantToEdit)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">Postal Code</label>
+                                        <InputText class="form-control " @bind-Value="user.PostalCode" placeholder="Postal Code" disabled="@(!WantToEdit)" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">City</label>
+                                        <InputText class="form-control " @bind-Value="user.City" placeholder="City" disabled="@(!WantToEdit)" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="d-flex align-items-center mb-3">
-                        <label for="address" class="form-label me-3" style="width: 150px;">Address:</label>
-                        <InputText id="address" class="form-control flex-grow-1" @bind-Value="user.Address" disabled="@(!WantToEdit)" />
-                    </div>
-
-                    <div class="d-flex align-items-center mb-3">
-                        <label for="dob" class="form-label me-3" style="width: 150px;">Date of Birth:</label>
-                        <InputDate id="dob" class="form-control flex-grow-1" @bind-Value="user.DateOfBirth" disabled="@(!WantToEdit)" min= />
-                    </div>
-                </EditForm>
-
-
-                <hr>
-
-                <div class="d-flex align-items-center mb-3">
-                    <label for="customerId" class="form-label me-3" style="width: 150px;">Customer Id:</label>
-                    <input type="text" id="customerId" value="@user.CustomerId" class="form-control flex-grow-1" disabled />
-                </div>
-
-                <div class="d-flex align-items-center mb-3">
-                    <label for="accountId" class="form-label me-3" style="width: 150px;">Account Id:</label>
-                    <input type="text" id="accountId" value="@user.AccountId" class="form-control flex-grow-1" disabled />
-                </div>
-
-                <div class="d-flex align-items-center mb-3">
-                    <label for="developerMode" class="form-label me-3" style="width: 150px;">Developer Mode:</label>
-                    <InputSelect id="category" @bind-Value="userPassword.Category" class="form-select">
-                                <option disabled >Select a Mode</option>
-                                <option value="Enabled">Enabled</option>
-                                <option value="Disabled" selected>Disabled</option>
-                    </InputSelect>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary w-25" @onclick="EditUserInfo">Save</button>
-                    
+                        <!-- Account Details -->
+                        <div class="form-section">
+                            <h6 class="section-title text-light">Account Details</h6>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">Customer ID</label>
+                                        <input class="form-control " value="@user.CustomerId" disabled />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="text-light">Account ID</label>
+                                        <input class="form-control " value="@user.AccountId" disabled />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </EditForm>
                 </div>
             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Change Password</div>
-                            <div class="card-body d-flex flex-column justify-content-start">
-                                <EditForm Model="@userPassword" OnValidSubmit="ChangePassword"
-                                    FormName="ChangePassword">
-                                    <div class="mb-3">
-                                        <label for="oldPassword" class="form-label">Old Password</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <i class="bi bi-lock"></i>
-                                            </span>
-                                            <InputText type="password" id="oldPassword" class="form-control"
-                                                @bind-Value="oldPassword" placeholder="Old Password" />
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="newPassword" class="form-label">New Password</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text">
-                                                <i class="bi bi-lock"></i>
-                                            </span>
-                                            <InputText type="password" id="newPassword" class="form-control"
-                                                @bind-Value="newPassword" placeholder="New Password" />
-                                        </div>
-                                    </div>
-                                    <div class="d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-primary w-25">Change Password</button>
-                                    </div>
-                                    <em class="d-flex align-items-center justify-content-center mt-4 italic-text">We track how old your password is old
-                                        and we will send you a notification to change the password if it is too old.
-                                    </em>
-                                </EditForm>
-                                <div class="mt-5 text-center">
-                                    <h6>Need Help?</h6>
-                                    <p class="mt-4">If you encounter any issues while changing your password, please contact our 
-                                        <a href="#" class="text-decoration-none">support team</a> for assistance.</p>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Two-Factor Authentication (2FA)</div>
-                            <div class="card-body d-flex flex-column justify-content-start">
-                            <div class="text-center mb-4">
-                                <h6 class="fs-4">Status</h6>
-                                <div class="d-flex flex-column align-items-center">
-                                    
-                                    @if(user.TwoFactorEnabled == true)
-                                    {
-                                        <i class="bi bi-check-circle text-success fs-4 mb-2"></i>
-                                        <p id="2fa-status" class="mb-0 text-success">Enabled</p>
-                                        <p class="text-muted mt-2">Your account is protected by Two-Factor Authentication (2FA). This additional security 
-                                        layer helps keep your account safe from unauthorized access!</p>
-                                    }
-                                    else
-                                    {
-                                        <i class="bi bi-x-circle text-danger fs-4 mb-2"></i>
-                                        <p id="2fa-status" class="mb-0 text-danger">Disabled</p>
-                                        <p class="text-muted mt-2">Your account is not protected by Two-Factor Authentication (2FA). We highly
-                                            recommend you to enable it.
-                                        </p>
+        </div>
 
-                                    }
-                                    
-                                </div>
-                            </div>
-                            <div class=" mb-4 text-center">
-                                <h6><i class="bi bi-key me-2"></i>Set Up 2FA</h6>
-                                <p>To enhance your account security, set up Two-Factor Authentication (2FA).</p>
-                                <a class="btn btn-primary w-50" href="/2FA" role="button">Turn On</a>
-                            </div>
-
-
-                            <div class="mb-4 text-center">
-                                <h6><i class="bi bi-gear me-2"></i>Manage 2FA</h6>
-                                <button class="btn btn-secondary w-50 " data-bs-toggle="modal" data-bs-target="#manage2FA">Manage Settings</button>
-                            </div>
-
-
-                            <div class="mb-4 text-center">
-                                <h6><i class="bi bi-x-circle me-2"></i>Disable 2FA</h6>
-                                <p>If you want to disable Two-Factor Authentication, click the button below. This action will reduce the security of your account.</p>
-                                <button class="btn btn-danger w-50" data-bs-toggle="modal" data-bs-target="#disable2FA">Disable 2FA</button>
-
-                            </div>
-
-                            <div class="modal fade" id="manage2FA" tabindex="-1" aria-labelledby="manage2FA" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="manage2FA">Manage Two-Factor Authentication</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Dismiss</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="modal fade" id="disable2FA" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="disable2FA" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="disable2FA">Disable Two-Factor Authentication</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    
-                                    <p><strong>Disabling 2FA</strong> could leave your account vulnerable to attacks, especially if your password is compromised. 
-                                    With rising security threats and data breaches, we strongly recommend keeping 2FA turned on to safeguard your sensitive data.</p>
-                                    
-                                    <h4>Here is why 2FA matters:</h4>
-                                    <ul class="mt-3">
-                                        <li><strong>Enhanced Protection</strong>: Even if someone steals your password, they wont be able to log in without access to your 2FA device.</li>
-                                        <li><strong>Prevent Unauthorized Access</strong>: 2FA drastically reduces the chances of hackers breaking into your account.</li>
-                                        <li><strong>Peace of Mind</strong>: Know that your account is protected, even in case of password theft.</li>
-                                    </ul>
-                                    <p>We understand that 2FA might add an extra step when logging in, but the security benefits far outweigh the slight inconvenience. 
-                                        Please consider keeping 2FA enabled to ensure your account stays secure.</p>
-                                    <p><strong>Stay safe, stay protected!</strong></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-danger" @onclick="Disable2FA" data-bs-dismiss="modal">Disable</button>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="alert alert-warning mt-4" role="alert">
-                                <i class="bi bi-exclamation-triangle me-2"></i>
-                                <strong>Important:</strong> Disabling 2FA reduces the security of your account. Consider keeping it enabled to protect your account from unauthorized access.
-                            </div>
-                        </div>
-                    </div>
+        <!-- Account Summary Card -->
+        <div class="col-md-4">
+            <div class="notification-card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-diagram-3 me-2"></i>Account Summary</h5>
                 </div>
-
-                    <div class="col-md-4 mt-3">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Security Settings</div>
-                            <div class="card-body d-flex flex-column justify-content-start">
-                                <button class="btn btn-primary" id="view-activity">View Recent Activity</button>
-                                <button class="btn btn-primary mt-3" id="logout-dev">Log out From Other
-                                    Devices</button>
-                                <button class="btn btn-primary mt-3" id="backup-codes">Backup Codes</button>
+                <div class="card-body">
+                    <div class="summary-item mb-4">
+                        <div class="summary-icon">
+                            <i class="bi bi-person-check"></i>
+                        </div>
+                        <div class="summary-info w-75">
+                            <h6 class="text-light mb-3">Profile Completion</h6>
+                            <div class="progress-custom mt-2">
+                                <div class="progress-bar" style="width: 50%;"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="card h-100">
-                            <div class="card-header d-flex justify-content-between align-items-center fw-bold">Notification Settings
-                                <button type="submit" class="btn btn-primary w-25">Manage</button>
-                            </div>
-
-                            <div class="card-body d-flex flex-column justify-content-start">
-                                <p>Email notifications: </p>
-                                <p>Notification Timing</p>
-                                <p>Alert Types: </p>
-                            </div>
+                    <div class="summary-item mb-4">
+                        <div class="summary-icon">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <div class="summary-info">
+                            <h6 class="text-light">Account Created</h6>
+                            <p class="text-secondary mt-2">@user.CreatedAt.ToString("d")</p>
                         </div>
                     </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Data Export and Import</div>
-                            <div class="card-body d-flex flex-column justify-content-start">
-                                <button class="btn btn-primary mt-3" id="logout-dev">Import Data</button>
-                                <button class="btn btn-secondary mt-3" id="backup-codes">Export Data</button>
-                            </div>
+                      <div class="summary-item mb-4">
+                          <div class="summary-icon">
+                              <i class="bi bi-shield-lock"></i>
+                          </div>
+                          <div class="summary-info">
+                              <h6 class="text-light">Two-Factor Authentication</h6>
+                              <span class="badge category-badge mt-2 mb-3 @(user.TwoFactorEnabled ? "bg-success" : "bg-danger")">
+                                  @(user.TwoFactorEnabled ? "Enabled" : "Disabled")
+                              </span>
+                          </div>
+                      </div>
+                    <div class="summary-item">
+                        <div class="summary-icon">
+                            <i class="bi bi-shield-check"></i>
                         </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Backup and Restore</div>
-                            <div class="card-body d-flex flex-column justify-content-start">
-                                <button class="btn btn-primary mt-3" id="logout-dev">Backup Data</button>
-                                <button class="btn btn-danger mt-3" id="backup-codes">Restore Data</button>
-                                <button class="btn btn-secondary mt-3" id="backup-codes">Schedule Backup</button>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Support and Contact</div>
-                            <div class="card-body d-flex flex-column justify-content-start">
-                                <div class="mb-3">
-                                    <h5>Help Center</h5>
-                                    <p>Find answers to common questions and troubleshoot issues.</p>
-                                    <a href="/help-center" class="btn btn-info">Visit Help Center</a>
-                                </div>
-                                <div class="mb-3">
-                                    <h5>Contact Us</h5>
-                                    <p>If you have any questions or need assistance, please fill out the contact form.
-                                    </p>
-                                    <a href="/contact-form" class="btn btn-primary">Contact Form</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="card h-100">
-                            <div class="card-header fw-bold">Billing</div>
-                            <div class="card-body d-flex flex-row justify-content-start card-content mt-5">
-                                <div class="card-item me-3 ">
-                                    <h5>Billing Overview</h5>
-                                    <p>View your current billing informations</p>
-                                    <a href="/billing-overview" class="btn btn-primary">View Overview</a>
-                                </div>
-
-                                <div class="card-item ms-3">
-                                    <h5>Payment Methods</h5>
-                                    <p>Manage and update your payment methods.</p>
-                                    <a href="/payment-methods" class="btn btn-primary">Manage Payment</a>
-                                </div>
-
-                                <div class="card-item ms-3">
-                                    <h5>Subscription Plan</h5>
-                                    <p>View details about your current subscription plan.</p>
-                                    <a href="/subscription-plan" class="btn btn-primary">View Subscription</a>
+                        <div class="summary-info">
+                            <h6 class="text-light">Security Score</h6>
+                            <div class="d-flex align-items-center">
+                                <div class="progress-custom flex-grow-1 me-2 mt-2">
+                                    <div class="progress-bar" style="width: @(user.AccountScore)%;"></div>
+                                    <p>@user.AccountScore/100</p>
                                 </div>
                             </div>
                         </div>
@@ -405,9 +323,1080 @@
                 </div>
             </div>
         </div>
-    </main>
+
+        <!-- Password Change Card -->
+        <div class="col-12">
+          <div class="notification-card">
+              <div class="card-header">
+                  <h5 class="mb-0"><i class="bi bi-key me-2"></i>Change Password</h5>
+              </div>
+              <div class="card-body">
+                  <EditForm Model="@userPassword" OnValidSubmit="ChangePassword" FormName="ChangePassword">
+                      <div class="row justify-content-center">
+                          <div class="col-md-6">
+                              <div class="form-group mb-4 d-flex align-items-center justify-content-center">
+                                  <label class="text-light text-center mb-3 fw-bold">Old Password</label>
+                                  <div class="input-group w-50">
+                                      <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                      <InputText type="password" class="form-control" @bind-Value="oldPassword" placeholder="Enter old password" />
+                                  </div>
+                              </div>
+                              <div class="form-group mb-4 d-flex align-items-center justify-content-center">
+                                  <label class="text-light text-center mb-3 fw-bold">New Password</label>
+                                  <div class="input-group w-50">
+                                      <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                      <InputText type="password" class="form-control" @bind-Value="newPassword" placeholder="Enter new password" />
+                                  </div>
+                              </div>
+                              <div class="form-group d-flex align-items-center mt-5">
+                                  <button type="submit" class="btn btn-primary w-50">Change Password</button>
+                              </div>
+                          </div>
+                      </div>
+                  </EditForm>
+              </div>
+          </div>
+      </div>
+    </div>
 </div>
 
+        <!-- SECURITY TAB -->
+        <div class="tab-pane fade" id="security" role="tabpanel" aria-labelledby="security-tab">
+          <div class="row g-4">
+            <!-- 2FA Status Card -->
+            <div class="col-md-6">
+              <div class="security-card status-card">
+                <div class="card-header">
+                  <h5>2FA Status</h5>
+                </div>
+                <div class="card-body text-center">
+                    @if(user.TwoFactorEnabled)
+                    {
+                      <div class="status-icon mb-4">
+                        <i class="bi bi-check-circle text-success fs-1"></i>
+                      </div>
+                      <h3 class="text-success fw-bold mb-3">Enabled</h3>
+                      <p class="text-secondary mb-5">
+                        Your account is protected with an extra layer of security.  
+                        You will need to enter a verification code when signing in.
+                      </p>
+                    }
+                    else
+                    {
+                      <div class="status-icon mb-4">
+                        <i class="bi bi-x-circle text-danger fs-1"></i>
+                      </div>
+                      <h3 class="text-danger fw-bold mb-3">Disabled</h3>
+                      <p class="text-secondary mb-5">
+                        Your account is at risk. Without 2FA, anyone with your password can log in.  
+                        Enable it to improve your security.
+                      </p>
+                    }
+                    <div class="action-buttons">
+                      @if(!user.TwoFactorEnabled)
+                      {
+                        <a href="/2FA" class="btn btn-success btn-lg w-50 mb-2">
+                          <i class="bi bi-shield-plus me-2"></i>Enable 2FA
+                        </a>
+                      }
+                      else
+                      {
+                        <button class="btn btn-danger btn-lg w-100 mb-2" data-bs-toggle="modal" data-bs-target="#disable2FA">
+                          <i class="bi bi-shield-minus me-2"></i>Disable 2FA
+                        </button>
+                      }
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Actions Card -->
+            <div class="col-md-6">
+              <div class="security-card actions-card">
+                <div class="card-header">
+                  <h5>Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                  <div class="action-item">
+                    <i class="bi bi-clock-history"></i>
+                    <div class="action-content">
+                      <h6>View Activity</h6>
+                      <p>Check recent login attempts and security events</p>
+                      <button class="btn btn-outline-info w-100">View History</button>
+                    </div>
+                  </div>
+                  <div class="action-item">
+                    <i class="bi bi-laptop"></i>
+                    <div class="action-content">
+                      <h6>Active Sessions</h6>
+                      <p>Manage devices logged into your account</p>
+                      <button class="btn btn-outline-warning w-100">Manage Devices</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Security Settings Card -->
+            <div class="col-md-12">
+              <div class="security-card settings-card">
+                <div class="card-header">
+                  <h5>Security Settings</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row g-4">
+                    <div class="col-md-4">
+                      <div class="setting-item">
+                        <i class="bi bi-key"></i>
+                        <h6>Backup Codes</h6>
+                        <p>Generate backup codes for account recovery</p>
+                        <button class="btn btn-outline-secondary w-100">Generate Codes</button>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="setting-item">
+                        <i class="bi bi-bell"></i>
+                        <h6>Security Alerts</h6>
+                        <p>Manage your security notification preferences</p>
+                        <button class="btn btn-outline-primary w-100">Configure</button>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="setting-item">
+                        <i class="bi bi-shield-lock"></i>
+                        <h6>Password Policy</h6>
+                        <p>Review and update password requirements</p>
+                        <button class="btn btn-outline-success w-100">Review</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Opravený modal s ID disable2FA -->
+          <div class="modal fade" id="disable2FA" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Disable 2FA</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to disable Two-Factor Authentication?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-danger">Disable</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Konec modalu -->
+        </div>
+ <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+    <div class="row g-4">
+        <!-- Email Notifications Card -->
+        <div class="col-md-6">
+           <div class="notification-card h-100 improved-notification-card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="bi bi-envelope me-2"></i>Email Notifications
+        </h5>
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="emailNotificationSwitch" checked>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="notification-setting">
+            
+            <!-- Security Alerts Dropdown -->
+            <div class="dropdown mb-3">
+                <button class="btn btn-outline-light w-100 d-flex justify-content-between align-items-center" 
+                        type="button" data-bs-toggle="collapse" data-bs-target="#securityAlerts">
+                    <span><i class="bi bi-shield-lock me-2 text-primary"></i>Security Alerts</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="collapse mt-2" id="securityAlerts">
+                    <small class="text-secondary d-block mb-2">Get notified about security-related events</small>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label text-secondary ms-2">Login Attempts</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label text-secondary ms-2">Device Changes</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Updates Dropdown -->
+            <div class="dropdown mb-3">
+                <button class="btn btn-outline-light w-100 d-flex justify-content-between align-items-center" 
+                        type="button" data-bs-toggle="collapse" data-bs-target="#accountUpdates">
+                    <span><i class="bi bi-person-badge me-2 text-primary"></i>Account Updates</span>
+                    <i class="bi bi-chevron-down"></i>
+                </button>
+                <div class="collapse mt-2" id="accountUpdates">
+                    <small class="text-secondary d-block mb-2">Notifications about account changes</small>
+                    <div class="form-check form-switch mb-2">
+                        <input class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label text-secondary ms-2">Profile Changes</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label text-secondary ms-2">Password Updates</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <!-- Alert Settings Card -->
+        <div class="col-md-6">
+            <div class="notification-card h-100 improved-notification-card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-bell me-2"></i>Alert Settings</h5>
+                </div>
+                <div class="card-body">
+                    <div class="setting-group mb-4">
+                        <label class="form-label text-light">Notification Frequency</label>
+                        <select class="form-select dark-select">
+                            <option value="instant">Real-time</option>
+                            <option value="hourly">Hourly Digest</option>
+                            <option value="daily">Daily Summary</option>
+                            <option value="weekly">Weekly Recap</option>
+                        </select>
+                    </div>
+                    <div class="setting-group mb-4">
+                        <label class="form-label text-light">Priority Level</label>
+                        <select class="form-select dark-select">
+                            <option value="all">All Notifications</option>
+                            <option value="high">High Priority Only</option>
+                            <option value="medium">Medium & High</option>
+                            <option value="none">None</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label class="form-label text-light">Quiet Hours</label>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <label class="text-secondary small">From</label>
+                                <input type="time" class="form-control dark-input" value="22:00">
+                            </div>
+                            <div class="col-6">
+                                <label class="text-secondary small">To</label>
+                                <input type="time" class="form-control dark-input" value="07:00">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Channels -->
+        <div class="col-12">
+            <div class="notification-card improved-notification-card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-broadcast me-2"></i>Notification Channels</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-4">
+                        <div class="col-md-3">
+                            <div class="channel-card">
+                                <i class="bi bi-envelope-fill channel-icon"></i>
+                                <h6 class="text-light mt-2">Email</h6>
+                                <p class="text-secondary">Primary inbox notifications</p>
+                                <button class="btn btn-outline-primary btn-sm w-100">Configure</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="channel-card">
+                                <i class="bi bi-phone-fill channel-icon"></i>
+                                <h6 class="text-light mt-2">Mobile Push</h6>
+                                <p class="text-secondary">Send notifications to your Mobile</p>
+                                <button class="btn btn-outline-primary btn-sm w-100">Configure</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="channel-card">
+                                <i class="bi bi-browser-chrome channel-icon"></i>
+                                <h6 class="text-light mt-2">Browser</h6>
+                                <p class="text-secondary">On-screen alerts</p>
+                                <button class="btn btn-outline-primary btn-sm w-100">Configure</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="channel-card">
+                                <i class="bi bi-chat-dots-fill channel-icon"></i>
+                                <h6 class="text-light mt-2">SMS</h6>
+                                <p class="text-secondary">Get SMS notifications</p>
+                                <button class="btn btn-outline-primary btn-sm w-100">Configure</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- BILLING TAB -->
+ <div class="tab-pane fade" id="billing" role="tabpanel" aria-labelledby="billing-tab">
+    <div class="row g-4">
+        <!-- Current Plan Card -->
+        <div class="col-md-6">
+            <div class="notification-card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-star me-2"></i>Current Plan</h5>
+                </div>
+                <div class="card-body">
+                    <div class="plan-details">
+                        <div class="plan-badge mb-3">
+                            <span class="badge bg-primary">Premium</span>
+                            <span class="badge bg-success ms-2">Active</span>
+                        </div>
+                        <h3 class="text-light mb-3">$9.99/month</h3>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <span class="text-secondary">Unlimited passwords</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <span class="text-secondary">Advanced security</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <span class="text-secondary">Priority support</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-primary w-100 mt-4">Upgrade Plan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Methods Card -->
+        <div class="col-md-6">
+            <div class="notification-card h-100">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0"><i class="bi bi-credit-card me-2"></i>Payment Methods</h5>
+                    <button class="btn btn-outline-primary btn-sm">Add New</button>
+                </div>
+                <div class="card-body">
+                    <div class="payment-method-item">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-credit-card-2-front fs-4 text-primary me-3"></i>
+                                <div>
+                                    <h6 class="text-light mb-0">•••• •••• •••• 4242</h6>
+                                    <small class="text-secondary">Expires 12/24</small>
+                                </div>
+                            </div>
+                            <div class="badge bg-success">Default</div>
+                        </div>
+                    </div>
+                    <div class="payment-method-item">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-paypal fs-4 text-primary me-3"></i>
+                                <div>
+                                    <h6 class="text-light mb-0">PayPal</h6>
+                                    <small class="text-secondary">Connected</small>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-danger btn-sm">Remove</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Billing History Card -->
+        <div class="col-12">
+            <div class="notification-card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Billing History</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Description</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Invoice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jan 01, 2024</td>
+                                    <td>Premium Plan - Monthly</td>
+                                    <td>$9.99</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                    <td><button class="btn btn-outline-primary btn-sm">Download</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Dec 01, 2023</td>
+                                    <td>Premium Plan - Monthly</td>
+                                    <td>$9.99</td>
+                                    <td><span class="badge bg-success">Paid</span></td>
+                                    <td><button class="btn btn-outline-primary btn-sm">Download</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SUPPORT TAB -->
+<div class="tab-pane fade" id="support" role="tabpanel" aria-labelledby="support-tab">
+    <div class="row g-4">
+        <!-- Quick Help Card -->
+        <div class="col-md-6">
+            <div class="notification-card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-question-circle me-2"></i>Quick Help</h5>
+                </div>
+                <div class="card-body">
+                    <div class="help-items">
+                        <div class="help-item">
+                            <h6 class="text-light"><i class="bi bi-book me-2"></i>Documentation</h6>
+                            <p class="text-secondary mb-3">Browse through our detailed documentation</p>
+                            <button class="btn btn-outline-primary btn-sm w-100">View Docs</button>
+                        </div>
+                        <div class="help-item mt-4">
+                            <h6 class="text-light"><i class="bi bi-play-circle me-2"></i>Video Tutorials</h6>
+                            <p class="text-secondary mb-3">Watch our helpful video guides</p>
+                            <button class="btn btn-outline-primary btn-sm w-100">Watch Videos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Support Card -->
+        <div class="col-md-6">
+            <div class="notification-card h-100">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-headset me-2"></i>Contact Support</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label text-light">Subject</label>
+                            <select class="form-select dark-select">
+                                <option>Technical Issue</option>
+                                <option>Billing Question</option>
+                                <option>Feature Request</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-light">Message</label>
+                            <textarea class="form-control dark-input" rows="4" placeholder="Describe your issue..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQs Card -->
+        <div class="col-12">
+            <div class="notification-card">
+                <div class="card-header">
+                    <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Frequently Asked Questions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item bg-dark">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How do I reset my password?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary">
+                                    Detailed instructions for password reset process...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item bg-dark">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed bg-dark text-light" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    How secure is my data?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-secondary">
+                                    Information about our security measures...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<style>
+
+.improved-notification-card {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Slightly bigger notification setting headings */
+.notification-setting .setting-group h6 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Better spacing for icons and text */
+.setting-group i {
+    font-size: 1.2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.payment-method-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.payment-method-item:last-child {
+    margin-bottom: 0;
+}
+
+.help-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.table {
+    color: #fff;
+}
+
+.table-dark {
+    background-color: transparent;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #343450;
+    color: #fff;
+}
+
+.accordion-button::after {
+    filter: invert(1);
+}
+
+.plan-badge {
+    margin-bottom: 1rem;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.setting-group:last-child {
+    margin-bottom: 0;
+}
+
+.notification-setting .form-check {
+    margin-bottom: 0.5rem;
+}
+
+.notification-setting .form-check:last-child {
+    margin-bottom: 0;
+}
+  .dark-select {
+    background-color: #2B2B3D;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark-select option {
+    background-color: #2B2B3D;
+    color: #fff;
+}
+
+.dark-input {
+    background-color: #2B2B3D;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-secondary {
+    color: #9A9AB0 !important;
+}
+
+.notification-setting {
+    background: rgba(43, 43, 61, 0.5);
+}
+
+.dark-input:focus {
+    background-color: #343450;
+    color: #fff;
+    border-color: #4e54c8;
+    box-shadow: 0 0 0 0.25rem rgba(78, 84, 200, 0.25);
+}
+  .notification-card {
+    background: #2B2B3D;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.notification-card .card-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-card .card-header h5 {
+    color: #fff;
+    margin: 0;
+}
+
+.notification-card .card-body {
+    padding: 1.5rem;
+}
+
+.notification-setting {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.channel-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.channel-card:hover {
+    transform: translateY(-5px);
+}
+
+.channel-icon {
+    font-size: 2rem;
+    color: #4e54c8;
+    margin-bottom: 1rem;
+}
+
+.form-check-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: #4e54c8;
+    border-color: #4e54c8;
+}
+
+
+
+
+.btn-outline-primary {
+    color: #4e54c8;
+    border-color: #4e54c8;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4e54c8;
+    color: #fff;
+}
+
+.bg-white {
+    background-color: #1E1E2F !important; /* Dark background */
+
+}
+
+/* Fix for the main content background */
+.d-flex.flex-column.flex-grow-1.min-vh-100 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+
+
+
+.btn-outline-light:hover {
+    background-color: #34344A;
+}
+      .nav-link:hover, .nav-link.active {
+        background-color: #2B2B3D;
+        color: #FFFFFF;
+        border-radius: 4px;
+    }
+ .security-card {
+            background: #2B2B3D;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+
+          .security-card .card-header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+
+          .security-card .card-header h5 {
+            color: #fff;
+            margin: 0;
+          }
+
+          .security-card .card-body {
+            padding: 1.5rem;
+          }
+
+          .status-icon {
+            background: rgba(255, 255, 255, 0.05);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+          }
+
+          .status-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 0.5rem;
+          }
+
+          .action-item {
+            display: flex;
+            align-items: start;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+          }
+
+          .action-item i {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: #4e54c8;
+          }
+
+          .action-content {
+            flex: 1;
+          }
+
+          .action-content h6 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+          }
+
+          .action-content p {
+            color: #9A9AB0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+          }
+
+          .setting-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            height: 100%;
+          }
+
+          .setting-item i {
+            font-size: 2rem;
+            color: #4e54c8;
+            margin-bottom: 1rem;
+          }
+
+          .setting-item h6 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+          }
+
+          .setting-item p {
+            color: #9A9AB0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+          }
+
+    /* Karta Account Summary */
+.account-summary {
+  background: #2B2B3D;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin-top: 20px;
+}
+
+.account-summary .card-header {
+
+  color: #fff;
+  font-size: 1.2rem;
+  padding: 15px;
+  border-bottom: none;
+}
+
+/* Sekce pro jednotlivé položky */
+.summary-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.summary-item:last-child {
+  border-bottom: none;
+}
+
+/* Ikony položek */
+.summary-icon {
+  background: #fff;
+  color: #2575fc;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-right: 15px;
+}
+
+/* Text a informace */
+.summary-info h6 {
+  color: #fff;
+  margin-bottom: 5px;
+}
+.summary-info p {
+  color: #ccc;
+}
+
+/* Progress bar */
+.progress-custom {
+  height: 10px;
+  border-radius: 5px;
+  background: #444;
+  overflow: hidden;
+}
+.progress-custom .progress-bar {
+  background: #fff;
+  height: 100%;
+  line-height: 8px;
+  text-align: center;
+  color: #2575fc;
+  font-weight: bold;
+}
+
+  /* Animace při načtení */
+  .fadeIn {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+    .form-section {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+    }
+
+    .section-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    }
+
+  /* Main Content */
+  .main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    background: #1E1E2F;
+  }
+  .main-header {
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    padding: 15px 30px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+
+
+  /* Tabs */
+  .nav-tabs {
+    border-bottom: 2px solid #444;
+    margin-bottom: 20px;
+  }
+  .nav-tabs .nav-link {
+    font-weight: 500;
+    color: #aaa;
+    border: none;
+    padding: 10px 15px;
+    transition: background 0.3s, color 0.3s;
+  }
+  .nav-tabs .nav-link.active {
+    background: #6a11cb;
+    color: #fff;
+    border-bottom: 2px solid transparent;
+    border-radius: 5px 5px 0 0;
+  }
+
+  /* Cards, formuláře, tlačítka, atd. */
+  .card {
+    background: #3C3C50;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .btn-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 15px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group label {
+    margin-bottom: 5px;
+    color: #ccc;
+  }
+  .form-actions {
+    text-align: right;
+    margin-top: 15px;
+  }
+
+  .secondary-card {
+    margin-top: 20px;
+  }
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+  .input-group-icon {
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+  }
+  .account-summary {
+    margin-top: 20px;
+  }
+  .summary-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .summary-item:last-child {
+    border-bottom: none;
+  }
+  .summary-icon {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .progress-custom {
+    height: 8px;
+    border-radius: 5px;
+    background: #444;
+    overflow: hidden;
+  }
+  .progress-custom .progress-bar {
+    background: #4e54c8;
+    height: 100%;
+    line-height: 8px;
+    text-align: center;
+    color: #fff;
+  }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  /* Dropdown */
+  .dropdown-menu {
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+  }
+  .dropdown-item {
+    padding: 10px 15px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .dropdown-item:hover {
+    background-color: #6c757d;
+    color: white;
+  }
+</style>
 @code {
     private PasswordDetails userPassword { get; set; } = new PasswordDetails();
     private AccountDetails user { get; set; } = new AccountDetails();
@@ -421,6 +1410,10 @@
     private DateTime dateOfPassword;
     private bool HasPasswordBeenChangedThisMonth;
     private bool WantToEdit = false;
+    private int notifications = 0;
+    private string encryptionKeyBase64;
+    private string decryptedPassword;
+    private string plainPassword;
 
 
     private void HandleValidSubmit() 
@@ -537,7 +1530,7 @@
 
     private async Task ChangePassword()
     {
-        if(HasPasswordBeenChangedThisMonth == true)
+        if (HasPasswordBeenChangedThisMonth)
         {
             var result = await Swal.FireAsync(new SweetAlertOptions
             {
@@ -548,52 +1541,65 @@
                 Timer = 5000
             });
             return;
-        } else {
-                var changePasswordDto = new ChangePasswordDto
-                {
-                    OldPassword = oldPassword,
-                    NewPassword = newPassword,
-                    DateOfChange = dateOfPassword,
-                    HasBeenChangedThisMonth = HasPasswordBeenChangedThisMonth
+        }
 
-                };
+        // Přidána kontrola, zda je staré heslo vyplněno
+        if (string.IsNullOrEmpty(oldPassword))
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Error",
+                Text = "Old password is required.",
+                Icon = SweetAlertIcon.Error,
+                ConfirmButtonText = "OK",
+                Timer = 5000
+            });
+            return;
+        }
 
-                var response = await HttpClientFactory.CreateClient("ApiClient")
-                    .PutAsJsonAsync($"api/AccountDetails/{user.Id}/change-password", changePasswordDto);
+        var changePasswordDto = new ChangePasswordDto
+        {
+            OldPassword = oldPassword,
+            NewPassword = newPassword,
+            DateOfChange = dateOfPassword,
+            HasBeenChangedThisMonth = HasPasswordBeenChangedThisMonth
+        };
 
-                if(response.IsSuccessStatusCode)
-                {
-                    var result = await Swal.FireAsync(new SweetAlertOptions
-                    {
-                        Title = "Confirmation",
-                        Text = "Your password has been changed successfully.",
-                        Icon = SweetAlertIcon.Success,
-                        ConfirmButtonText = "OK",
-                        Timer = 5000
-                    });
-                    PasswordChangeSuccess = true;
-                
+        var response = await HttpClientFactory.CreateClient("ApiClient")
+            .PutAsJsonAsync($"api/AccountDetails/{user.Id}/change-password", changePasswordDto);
 
+        if (response.IsSuccessStatusCode)
+        {
+            var result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Confirmation",
+                Text = "Your password has been changed successfully.",
+                Icon = SweetAlertIcon.Success,
+                ConfirmButtonText = "OK",
+                Timer = 5000
+            });
+            PasswordChangeSuccess = true;
+            oldPassword = string.Empty;
+            newPassword = string.Empty;
+            StateHasChanged();
+        }
+        else
+        {
+            var errorResponse = await response.Content.ReadAsStringAsync();
+            Console.WriteLine($"Error: {errorResponse}");
 
-                    oldPassword = string.Empty;	
-                    newPassword = string.Empty;
+            var result = await Swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Error",
+                Text = $"Incorrect password. Please try again. {errorResponse}",
+                Icon = SweetAlertIcon.Error,
+                ConfirmButtonText = "OK",
+                Timer = 5000
+            });
+            PasswordChangeSuccess = false;
+        }
+    }
 
-                    StateHasChanged();
-
-                } else {
-                    var result = await Swal.FireAsync(new SweetAlertOptions
-                    {
-                        Title = "Error",
-                        Text = "Incorrect password. Please try again.",
-                        Icon = SweetAlertIcon.Error,
-                        ConfirmButtonText = "OK",
-                        Timer = 5000
-                    });
-                    PasswordChangeSuccess = false;
-                    
-                }
-            }
-    } 
 
     private async Task GenerateCustomerId()
     {
@@ -702,6 +1708,3 @@
         }
     }
 }
-
-
-

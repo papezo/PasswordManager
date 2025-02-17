@@ -22,3 +22,7 @@ GET http://localhost:5237/api/PasswordDetails/39
 
 ###
 GET http://localhost:5237/api/PasswordDetails/29
+
+###
+
+GET http://localhost:5237/api/PasswordDetails/22/history

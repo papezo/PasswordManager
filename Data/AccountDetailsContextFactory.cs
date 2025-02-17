@@ -11,7 +11,6 @@ namespace WebApp.Data
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
 
-            // Použijte SQLite connection string
             optionsBuilder.UseSqlite("Data Source=WebAppDb.db");
 
             return new ApplicationDbContext(optionsBuilder.Options);

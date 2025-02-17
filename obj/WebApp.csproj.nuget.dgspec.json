@@ -42,15 +42,15 @@
           "dependencies": {
             "Blazor-ApexCharts": {
               "target": "Package",
-              "version": "[3.4.0, )"
+              "version": "[5.1.0, )"
             },
             "Blazorise": {
               "target": "Package",
-              "version": "[1.6.1, )"
+              "version": "[1.7.4, )"
             },
             "Blazorise.Bootstrap": {
               "target": "Package",
-              "version": "[1.6.1, )"
+              "version": "[1.7.4, )"
             },
             "Blazorise.Captcha": {
               "target": "Package",
@@ -86,7 +86,7 @@
             },
             "Microsoft.AspNetCore.Components.Web": {
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.12, )"
             },
             "Microsoft.AspNetCore.Components.WebAssembly.Server": {
               "target": "Package",
@@ -120,11 +120,15 @@
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.1, )"
             },
             "MinimalApis.Extensions": {
               "target": "Package",
               "version": "[0.11.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
             },
             "Otp.NET": {
               "target": "Package",
@@ -162,7 +166,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.112/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.113/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

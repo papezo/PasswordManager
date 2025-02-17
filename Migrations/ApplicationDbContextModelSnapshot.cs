@@ -176,6 +176,9 @@ namespace WebApp.Migrations
                     b.Property<byte[]>("ImagePath")
                         .HasColumnType("BLOB");
 
+                    b.Property<bool>("IsFavorite")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("IsPasswordOld")
                         .HasColumnType("INTEGER");
 
@@ -205,6 +208,10 @@ namespace WebApp.Migrations
                     b.Property<bool>("PasswordSecure")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("initVector")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AccountDetailsId");
@@ -226,11 +233,13 @@ namespace WebApp.Migrations
                     b.Property<int>("AccountScore")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("ActivateRememberMe")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Address")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
+                    b.Property<string>("City")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
@@ -257,6 +266,9 @@ namespace WebApp.Migrations
                     b.Property<string>("PasswordResetToken")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("PostalCode")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -273,6 +285,10 @@ namespace WebApp.Migrations
 
                     b.Property<bool>("dev_mode")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("initVector")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
@@ -358,13 +374,13 @@ namespace WebApp.Migrations
                     b.Property<string>("ChangedBy")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NewValue")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("OldValue")
+                    b.Property<string>("Details")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("PasswordId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("logId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -394,6 +410,32 @@ namespace WebApp.Migrations
                     b.HasIndex("AccountDetailsId");
 
                     b.ToTable("ResetPassword");
+                });
+
+            modelBuilder.Entity("WebApp.Models.UserChanges", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ChangeType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Details")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("logId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserChanges", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
