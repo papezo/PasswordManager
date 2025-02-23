@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets\\images\\illustration4.svg"
     },
     {
+      "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\image.png",
+      "PackagePath": "staticwebassets\\images\\image.png"
+    },
+    {
       "Id": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\plart1.png",
       "PackagePath": "staticwebassets\\images\\plart1.png"
     },

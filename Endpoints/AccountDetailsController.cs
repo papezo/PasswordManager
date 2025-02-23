@@ -332,5 +332,55 @@ namespace WebApp.Controllers
             return Ok(false);
         }
 
+        [HttpPut("{id}/UpdateProfileCompletion")]
+        public async Task<IActionResult> UpdateAccountCompletion([FromRoute] int id, [FromBody] AccountDetails accountDetails)
+        {
+            var user = await _context.AccountDetails.FindAsync(id);
+            int points = 0;
+
+            if(user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            if(user.Email != null)
+            {
+                points += 25;
+            }
+            if(user.Username != null)
+            {
+                points += 10;
+            }
+            if(user.Password != null)
+            {
+                points += 10;
+            }
+            if(user.DateOfBirth != null)
+            {
+                points += 10;
+            }
+            if(user.Address != null)
+            {
+                points += 10;
+            }
+            if(user.TwoFactorEnabled == true)
+            {
+                points += 25;
+            }
+
+            user.AccountPoints = points;
+            try
+            {
+                await _context.SaveChangesAsync();
+                return Ok("Profile completion updated successfully.");
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            } 
+
+
+        }
+
     }
 }

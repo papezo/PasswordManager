@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WeMZnHSXEj/TEXJisojaHzTzDGstDOU0r+F+/ScsPAA=",
+  "Hash": "8OnXGHCWE4HRtxkOHHRy4qpuux8iEJznyTCuSQ2Qjr0=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -4461,6 +4461,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\illustration4.svg"
+    },
+    {
+      "Identity": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\image.png",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "images/image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\image.png"
     },
     {
       "Identity": "C:\\Users\\papez\\OneDrive\\Plocha\\pasman\\WebApp\\wwwroot\\images\\plart1.png",

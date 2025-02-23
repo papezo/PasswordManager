@@ -42,4 +42,5 @@ public class AccountDetails
     public string initVector { get; set; } = string.Empty;
     public string? PostalCode {get; set;}
     public string? City {get; set;}
+    public int AccountPoints {get; set;} // Used for Account Completion
 }
