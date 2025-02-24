@@ -62,6 +62,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXNzd29yZHNQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/PaymentGateway.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xQYXltZW50R2F0ZXdheS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/papez/OneDrive/Plocha/pasman/WebApp/Components/Pages/Reset-password.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xSZXNldC1wYXNzd29yZC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

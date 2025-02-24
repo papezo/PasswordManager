@@ -6,29 +6,31 @@
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <span class="fw-bold">Plart</span>
+            <img src="images/plart4.png" class="navbar-logo" alt="Logo"/>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#features">Features</a>
+                    <a class="nav-link fs-4 me-4" href="#features">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#security">Security</a>
+                    <a class="nav-link fs-4 me-4" href="#security">Security</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pricing">Pricing</a>
+                    <a class="nav-link fs-4 me-4" href="#pricing">Pricing</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link fs-4 me-4" href="#contact">Contact</a>
                 </li>
             </ul>
-            <div class="d-flex ms-lg-3">
-                <a href="/login" class="btn btn-outline-light me-2">Login</a>
-                <a href="/register" class="btn btn-gradient">Sign Up</a>
+            <div class="nav-buttons">
+                <a href="/login" class="btn btn-link fs-4">Login</a>
+                <a href="/register" class="btn btn-primary fs-4">Sign Up</a>
             </div>
         </div>
     </div>
@@ -36,63 +38,77 @@
 
 <style>
 .navbar {
-    background: rgba(0, 0, 0, 0.4) !important; /* Glassmorphism background */
-    backdrop-filter: blur(10px); /* Add blur effect */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-    padding: 1rem 1.5rem; /* Adjust padding */
+    background: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1.5rem; /* Reduced padding */
+    height: 120px; /* Fixed height for the navbar */
 }
 
-.navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff; /* White color */
+
+.navbar-nav .nav-link {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    transition: color 0.2s ease;
 }
 
-.navbar-brand i {
-    margin-right: 0.5rem;
+.navbar-nav .nav-link:hover {
+    color: #ffffff;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 3rem;
+    align-items: center;
+}
+
+.btn-link {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: #ffffff;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
 .navbar-toggler {
     border: none;
+    padding: 0.5rem;
 }
 
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(255, 255, 255, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+.navbar-toggler:focus {
+    box-shadow: none;
 }
 
-.navbar-nav .nav-link {
-    color: #fff;
-    margin-left: 1rem;
-    transition: color 0.3s ease;
+    
+
+
+.navbar-logo {
+    height: 1500px; /* Reduced from 900px to a reasonable size */
+    width: auto;
+    max-height: 150px; /* Reduced from 150px to match height */
 }
 
-.navbar-nav .nav-link:hover {
-    color: #ddd;
-}
 
-.btn-outline-light {
-    border-color: rgba(255, 255, 255, 0.5);
-    color: #fff;
-    transition: all 0.3s ease;
-}
-
-.btn-outline-light:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.8);
-    color: #fff;
-}
-
-.btn-gradient {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border: none;
-    color: white;
-    transition: transform 0.3s ease;
-}
-
-.btn-gradient:hover {
-    transform: translateY(-2px);
-    color: white;
-}
 </style>
 
     <!-- Hero Section -->
@@ -173,7 +189,10 @@
                  <div class="col-lg-6 position-relative">
                     <div class="hero-image-wrapper">
                         <div class="glow-overlay"></div>
-                        <img src="images/image.png" alt="SecureVault Interface" class="img-fluid floating-animation">
+                        <iframe width="760" height="450" src="https://www.youtube.com/embed/XnAVFtasCaM?si=2j5vTOh2KQIios3g" 
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-left: 600px;">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -315,48 +334,162 @@
         </div>
     </section>
     <!-- Security Section -->
-<section id="security" class="section-padding bg-darker position-relative ">
-<div class="container">
-    <div class="row align-items-center">
-        <div class="col-lg-12 text-center mb-5">
-            <span class="badge bg-danger mb-3">Advanced Security</span>
-            <h2 class="section-title">Your Security Is Our Priority</h2>
-            <p class="section-subtitle text-light-50">Protected by industry-leading encryption standards</p>
+<section id="security" class="security-section position-relative overflow-hidden">
+    <div class="security-glow"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center mb-5">
+                <div class="badge-wrapper">
+                    <span class="security-badge">Our Most Advanced Security System</span>
+                </div>
+                <h1 class="security-title mt-4">Protected by Advanced Encryption</h1>
+                <p class="security-subtitle">Using the latest security standards to keep your data safe</p>
+            </div>
         </div>
-        <div class="col-lg-12">
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="security-feature text-center">
-                        <i class="fas fa-lock-alt fa-2x text-primary mb-3"></i>
-                        <h4>256-bit AES</h4>
-                        <p class="text-light-50">Bank-level encryption for all stored data</p>
-                    </div>
+        
+        <div class="security-grid">
+            <div class="security-card">
+                <div class="security-icon-wrapper">
+                    <i class="fas fa-shield-alt"></i>
                 </div>
-                <div class="col-md-3">
-                    <div class="security-feature text-center">
-                        <i class="fas fa-user-shield fa-2x text-warning mb-3"></i>
-                        <h4>Zero-Knowledge</h4>
-                        <p class="text-light-50">We can't access your encrypted data</p>
-                    </div>
+                <h2 class="fw-bold">AES-256</h2>
+                <p>Military-grade encryption protocol</p>
+                <div class="security-hover-effect"></div>
+            </div>
+
+            <div class="security-card">
+                <div class="security-icon-wrapper">
+                    <i class="fas fa-fingerprint"></i>
                 </div>
-                <div class="col-md-3">
-                    <div class="security-feature text-center">
-                        <i class="fas fa-fingerprint fa-2x text-success mb-3"></i>
-                        <h4>2FA Protection</h4>
-                        <p class="text-light-50">Multi-factor authentication support</p>
-                    </div>
+                <h2 class="fw-bold">Authentication</h2>
+                <p>Advanced fingerprint & face recognition</p>
+                <div class="security-hover-effect"></div>
+            </div>
+
+            <div class="security-card">
+                <div class="security-icon-wrapper">
+                    <i class="fas fa-key"></i>
                 </div>
-                <div class="col-md-3">
-                    <div class="security-feature text-center">
-                        <i class="fas fa-shield-check fa-2x text-info mb-3"></i>
-                        <h4>SOC2 Certified</h4>
-                        <p class="text-light-50">Regularly audited security controls</p>
-                    </div>
+                <h2 class="fw-bold">Privacy</h2>
+                <p>Your data remains private, always</p>
+                <div class="security-hover-effect"></div>
+            </div>
+
+            <div class="security-card">
+                <div class="security-icon-wrapper">
+                    <i class="fas fa-lock"></i>
                 </div>
+                <h2 class="fw-bold">SOC2 Certified</h2>
+                <p>Highest security standards met</p>
+                <div class="security-hover-effect"></div>
             </div>
         </div>
     </div>
-</div>
+
+    <style>
+        .security-section {
+            padding: 120px 0;
+            background: linear-gradient(to bottom, rgba(15,23,42,0.8), rgba(15,23,42,1));
+        }
+
+        .security-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        .security-badge {
+            background: rgba(59,130,246,0.1);
+            color: #3b82f6;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        .security-title {
+            font-size: 2.5rem;
+            margin: 1.5rem 0;
+            background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .security-subtitle {
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .security-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .security-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .security-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(59,130,246,0.1);
+            color: #3b82f6;
+            font-size: 1.5rem;
+        }
+
+        .security-card h3 {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-card p {
+            color: #94a3b8;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .security-hover-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(59,130,246,0.1), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .security-card:hover .security-hover-effect {
+            opacity: 1;
+        }
+    </style>
 </section>
 
 
@@ -462,7 +595,7 @@ h2 {
     <section id="pricing" class="section-padding">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <h1 class="section-title">Simple, Transparent Pricing</h1>
                 <p class="section-subtitle">Choose the plan that works for you</p>
             </div>
             <div class="row g-4">
@@ -473,9 +606,9 @@ h2 {
                             <div class="price">$0<span>/month</span></div>
                         </div>
                         <ul class="pricing-features">
-                            <li><i class="fas fa-check"></i> Up to 50 passwords</li>
+                            <li><i class="fas fa-check"></i> Up to 30 passwords</li>
                             <li><i class="fas fa-check"></i> Basic 2FA</li>
-                            <li><i class="fas fa-check"></i> 10MB secure storage</li>
+                            <li><i class="fas fa-check"></i> 1 GB secure storage</li>
                         </ul>
                         <a href="/register" class="btn btn-outline-primary w-100">Get Started</a>
                     </div>
@@ -490,7 +623,7 @@ h2 {
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> Unlimited passwords</li>
                             <li><i class="fas fa-check"></i> Advanced 2FA</li>
-                            <li><i class="fas fa-check"></i> 1GB secure storage</li>
+                            <li><i class="fas fa-check"></i> 10 GB secure storage</li>
                             <li><i class="fas fa-check"></i> Password sharing</li>
                         </ul>
                         <a href="/register" class="btn btn-primary w-100">Try Premium</a>
@@ -500,44 +633,201 @@ h2 {
                     <div class="pricing-card">
                         <div class="pricing-header">
                             <h3>Business</h3>
-                            <div class="price">$8.99<span>/user/month</span></div>
+                            <div class="price">$20.99<span>/month</span></div>
                         </div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> Everything in Premium</li>
                             <li><i class="fas fa-check"></i> Team management</li>
-                            <li><i class="fas fa-check"></i> 5GB secure storage</li>
+                            <li><i class="fas fa-check"></i> 100 GB secure storage</li>
                             <li><i class="fas fa-check"></i> API access</li>
                         </ul>
-                        <a href="/contact" class="btn btn-outline-primary w-100">Contact Sales</a>
+                        <a href="/contact" class="btn btn-outline-primary w-100">Contact Us</a>
                     </div>
                 </div>
             </div>
         </div>
+         <div class="plan-comparison mb-5" style="margin-top: 7rem;">
+            <h2 class="text-center mb-4">Plan Comparison</h2>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="feature-name"></div>
+                    <div class="plan-header">Free</div>
+                    <div class="plan-header">Premium</div>
+                    <div class="plan-header">Business</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Password Storage</div>
+                    <div class="feature-value">Up to 30 passwords</div> 
+                    <div class="feature-value">Unlimited</div>
+                    <div class="feature-value">Unlimited</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Secure Notes</div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Priority Support</div>
+                    <div class="feature-value"><i class="fas fa-times text-danger"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Team Sharing</div>
+                    <div class="feature-value">Up to 2</div>
+                    <div class="feature-value">Up to 5</div>
+                    <div class="feature-value">Unlimited</div>
+                </div>
+            </div>
+        </div>
+
+
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding bg-darker">
-        <div class="container ">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <h2 class="section-title">Get in Touch</h2>
-                    <p class="section-subtitle mb-5">Have questions? We're here to help.</p>
-                    <form class="contact-form ">
-                        <div class="mb-3 ">
-                            <input type="text" class="form-control " placeholder="Your Name">
+<style>
+.plan-comparison {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    width: 50%; /* Add this to ensure full width container */
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+    align-items: center; /* Add this */
+    justify-content: center; /* Add this */
+    margin: 0; /* Add this 
+}
+
+.comparison-table {
+    width: 80%; /* Increased width for better responsiveness */
+    max-width: 1000px; /* Maximum width to maintain readability */
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+    .comparison-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        background: rgba(59, 130, 246, 0.1);
+        padding: 1rem;
+        font-weight: bold;
+    }
+
+    .comparison-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-row:last-child {
+        border-bottom: none;
+    }
+
+    .feature-name {
+        font-weight: 500;
+    }
+
+    .feature-value {
+        text-align: center;
+    }
+
+    .plan-header {
+        text-align: center;
+        color: #3b82f6;
+    }
+
+    .comparison-row:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<section id="contact" class="section-padding bg-darker">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7 text-center">
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle mb-5">Have questions? We're here to help.</p>
+                <div class="contact-card">
+                    <form class="contact-form">
+                        <div class="form-floating mb-4">
+                            <input type="text" class="form-control custom-input" id="nameInput" placeholder="Your Name">
+                            <label for="nameInput">Your Name</label>
                         </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email">
+                        <div class="form-floating mb-4">
+                            <input type="email" class="form-control custom-input" id="emailInput" placeholder="Your Email">
+                            <label for="emailInput">Your Email</label>
                         </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control custom-input" id="messageInput" placeholder="Your Message" style="height: 120px"></textarea>
+                            <label for="messageInput">Your Message</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-gradient btn-lg px-5">
+                            <i class="fas fa-paper-plane me-2"></i>
+                            Send Message
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<style>
+.contact-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.custom-input {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    font-size: 1rem;
+    padding: 1.2rem 1rem !important;
+    transition: all 0.3s ease;
+}
+
+.custom-input:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(59, 130, 246, 0.5) !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+}
+
+.form-floating > label {
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 1rem;
+}
+
+.form-floating > .custom-input::placeholder {
+    color: transparent;
+}
+
+.form-floating > .custom-input:focus ~ label,
+.form-floating > .custom-input:not(:placeholder-shown) ~ label {
+    color: rgba(0, 0, 0, 0.8);
+    transform: scale(0.85) translateY(-0.75rem) translateX(0.15rem);
+}
+
+.contact-form .btn-gradient {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.contact-form .btn-gradient:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(29, 78, 216, 0.2);
+}
+</style>
 
     <!-- Footer -->
     <footer class="footer">
@@ -545,10 +835,10 @@ h2 {
             <div class="row g-4">
                 <div class="col-lg-4">
                     <div class="footer-brand">
-                        <i class="fas fa-shield-alt me-2"></i>
-                        <span>Plart</span>
+                        <a class="navbar-brand" href="/">
+                            <img src="images/plart4.png" class="navbar-logo"/>
+                        </a>
                     </div>
-                    <p class="mt-3">Protecting your digital life with industry-leading security and ease of use.</p>
                 </div>
                 <div class="col-6 col-lg-2">
                     <h5>Product</h5>
@@ -565,7 +855,6 @@ h2 {
                         <li><a href="#">About</a></li>
                         <li><a href="#">Blog</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">

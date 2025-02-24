@@ -1,0 +1,503 @@
+﻿@page "/PaymentGateway"
+@using System.Collections.Generic
+
+@rendermode InteractiveServer
+
+<div class="payment-page">
+    <div class="container py-5">
+        @if(!showForm)
+        {
+        <h1 class="title-gradient mb-5">Unlock Premium Features</h1>
+        
+        <!-- Features Section -->
+        <div class="features-container mb-5">
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5>Advanced Security</h5>
+                        <p>Our most advanced encryption for your sensitive data</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <h5>Unlimited Storage</h5>
+                        <p>Store unlimited passwords and secure notes</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-share-alt"></i>
+                        </div>
+                        <h5>Secure Sharing</h5>
+                        <p>Share credentials safely with your team</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="feature-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h5>24/7 Support</h5>
+                        <p>Get help whenever you need it</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Pricing Cards -->
+        <div class="text-center mb-5">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose the plan that works for you</p>
+        </div>
+        <div class="row g-4 pricing-container">
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">0.00</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card popular">
+                    <div class="popular-badge fw-bold">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">4.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Business</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">20.99</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
+                </div>
+            </div>
+        </div>
+                <!-- Plan Comparison -->
+        <div class="plan-comparison mb-5" style="margin-top: 7rem;">
+            <h2 class="text-center mb-4">Plan Comparison</h2>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="feature-name"></div>
+                    <div class="plan-header">Free</div>
+                    <div class="plan-header">Monthly</div>
+                    <div class="plan-header">Business</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Password Storage</div>
+                    <div class="feature-value">Up to 30 passwords</div> 
+                    <div class="feature-value">Unlimited</div>
+                    <div class="feature-value">Unlimited</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Secure Notes</div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Priority Support</div>
+                    <div class="feature-value"><i class="fas fa-times text-danger"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                </div>
+                <div class="comparison-row">
+                    <div class="feature-name">Team Sharing</div>
+                    <div class="feature-value">Up to 2</div>
+                    <div class="feature-value">Up to 5</div>
+                    <div class="feature-value">Unlimited</div>
+                </div>
+            </div>
+        </div>
+        }
+        else
+        {
+            <div class="payment-form">
+            <h2 class="mb-5 text-center">Payment Details</h2>
+            
+            <!-- Address Form -->
+            <div class="mb-4">
+                <h5 class="mb-4 text-center">Billing Address</h5>
+                <div class="row mb-3">
+                <div class="col-md-12">
+                    <label class="form-label fw-bold">Street Address</label>
+                    <input type="text" class="form-control" placeholder="123 Main St"/>
+                </div>
+                </div>
+                <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">City</label>
+                    <input type="text" class="form-control" placeholder="City"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Postal Code</label>
+                    <input type="text" class="form-control" placeholder="12345"/>
+                </div>
+                </div>
+                <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Country</label>
+                    <input type="text" class="form-control" placeholder="Country"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">State/Province</label>
+                    <input type="text" class="form-control" placeholder="State"/>
+                </div>
+                </div>
+            </div>
+            <hr class="mt-5">
+
+            <div class="mb-4 mt-5">
+                <h5 class="mb-4 text-center">Select Payment Method</h5>
+                <div class="payment-methods">
+                <div class="payment-method @(selectedMethod == "card" ? "selected" : "")" @onclick='() => SelectMethod("card")'>
+                    <i class="fas fa-credit-card"></i>
+                    <span>Credit Card</span>
+                </div>
+                <div class="payment-method @(selectedMethod == "paypal" ? "selected" : "")" @onclick='() => SelectMethod("paypal")'>
+                    <i class="fab fa-paypal"></i>
+                    <span>PayPal</span>
+                </div>
+                </div>
+            </div>
+
+            @if (selectedMethod == "card")
+            {
+              <div class="card-form">
+                <div class="mb-3">
+                <label class="form-label fw-bold">Card Number</label>
+                <div class="input-group">
+                <span class="input-group-text form-control-bg">
+                    <i class="bi bi-lock-fill text-white"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="1234 5678 9012 3456"/>
+                </div>
+                </div>
+
+                <div class="row mb-3">
+                <div class="col-md-6">
+                <label class="form-label fw-bold">Expiration Date</label>
+                <input type="text" class="form-control" placeholder="MM/YY"/>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">CVV</label>
+                    <input type="text" class="form-control" placeholder="123" />
+                </div>
+                </div>
+
+                <div class="row mb-4">
+                <div class="col-md-6">
+                <label class="form-label fw-bold">Name</label>
+                <input type="text" class="form-control" placeholder="John"/>
+                </div>
+                <div class="col-md-6">
+                <label class="form-label fw-bold">Last Name</label>
+                <input type="text" class="form-control" placeholder="Doe" />
+                </div>
+                </div>
+
+                <div class="text-center mt-5">
+                 <button class="btn-purchase w-25 " @onclick="ProcessPayment">Pay Now</button>
+                </div>
+               
+                </div>
+            }
+            else if (selectedMethod == "paypal")
+            {
+                <div class="text-center">
+                <button class="btn-purchase w-25 mt-5" @onclick="ProcessPaypal">
+                    <i class="fab fa-paypal me-2"></i> Continue with PayPal
+                </button>
+                </div>
+            }
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .payment-form {
+                    width: 50vh;
+                    margin: 0 auto;
+                    padding: 2rem;
+                    background: rgba(255, 255, 255, 0.05);
+                    border-radius: 15px;
+                    backdrop-filter: blur(10px);
+                }
+
+                .payment-methods {
+                    display: flex;
+                    gap: 1rem;
+                }
+
+                .payment-method {
+                    flex: 1;
+                    padding: 1rem;
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    border-radius: 10px;
+                    text-align: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                }
+
+                .payment-method.selected {
+                    background: rgba(59, 130, 246, 0.1);
+                    border-color: #3b82f6;
+                }
+
+                .payment-method i {
+                    font-size: 1.5rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .form-control-bg
+                {
+                    background: rgba(255, 255, 255, 0.1);
+                    border: none;
+                }
+
+                .form-control {
+                    background: rgba(255, 255, 255, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.1);
+                    color: white;
+                    padding: 0.75rem;
+                }
+
+                .form-control::placeholder {
+                    color: rgba(255, 255, 255, 0.5);
+                }
+
+                .form-label {
+                    color: white;
+                    margin-bottom: 0.5rem;
+                }
+    /* Add these styles to your existing CSS */
+    .plan-comparison {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .comparison-table {
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .comparison-header {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        background: rgba(59, 130, 246, 0.1);
+        padding: 1rem;
+        font-weight: bold;
+    }
+
+    .comparison-row {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .comparison-row:last-child {
+        border-bottom: none;
+    }
+
+    .feature-name {
+        font-weight: 500;
+    }
+
+    .feature-value {
+        text-align: center;
+    }
+
+    .plan-header {
+        text-align: center;
+        color: #3b82f6;
+    }
+
+    .comparison-row:hover {
+        background: rgba(255, 255, 255, 0.05);
+    }
+</style>
+
+<style>
+.payment-page {
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    min-height: 100vh;
+    color: white;
+}
+
+.title-gradient {
+    background: linear-gradient(to right, #3b82f6, #2563eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-5px);
+    }
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .icon-wrapper i {
+        font-size: 1.8rem;
+        color: white;
+    }
+
+    .pricing-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        position: relative;
+    }
+    h1 {
+  background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pricing-card.popular {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #3b82f6;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: green;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+
+    .price {
+        margin: 1.5rem 0;
+    }
+
+    .currency {
+        font-size: 1.5rem;
+        vertical-align: top;
+    }
+
+    .amount {
+        font-size: 3.5rem;
+        font-weight: bold;
+    }
+
+    .period {
+        font-size: 1rem;
+        color: #a0a0a0;
+    }
+
+.btn-purchase {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+    .btn-purchase:hover {
+        transform: scale(1.05);
+    }
+
+    .savings {
+        color: #4CAF50;
+        margin-top: 0.5rem;
+        font-weight: bold;
+    }
+</style>
+
+
+@code {
+    private bool showForm = false;
+    private string selectedMethod = "card";
+                private string cardNumber = "";
+                private string expiryDate = "";
+                private string cvv = "";
+                private string cardholderName = "";
+
+                private void SelectMethod(string method)
+                {
+                    selectedMethod = method;
+                }
+
+                private async Task ProcessPayment()
+                {
+                    // Add payment processing logic here
+                }
+
+                private async Task ProcessPaypal()
+                {
+                    // Add PayPal integration logic here
+                }
+    private async Task TakeDeal() 
+    {
+        showForm = true;
+    }
+}
