@@ -3,113 +3,162 @@
 
 <div class="landing-page">
     <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="/">
-            <img src="images/plart4.png" class="navbar-logo" alt="Logo"/>
-        </a>
+    <nav class="modern-navbar fixed-top">
+        <div class="container">
+            <div class="navbar-wrapper">
+                <div class="navbar-brand-wrapper">
+                    <a class="navbar-brand" href="/">
+                        <img src="images/plart4.png" class="navbar-logo" alt="Logo" />
+                    </a>
+                </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link fs-4 me-4" href="#features">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fs-4 me-4" href="#security">Security</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fs-4 me-4" href="#pricing">Pricing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link fs-4 me-4" href="#contact">Contact</a>
-                </li>
-            </ul>
-            <div class="nav-buttons">
-                <a href="/login" class="btn btn-link fs-4">Login</a>
-                <a href="/register" class="btn btn-primary fs-4">Sign Up</a>
+                <div class="navbar-links">
+                    <a href="#features" class="nav-link">
+                        <span class="fs-5">Features</span>
+                        <div class="link-hover-effect"></div>
+                    </a>
+                    <a href="#security" class="nav-link">
+                        <span class="fs-5">Security</span>
+                        <div class="link-hover-effect"></div>
+                    </a>
+                    <a href="#pricing" class="nav-link">
+                        <span class="fs-5">Pricing</span>
+                        <div class="link-hover-effect"></div>
+                    </a>
+                    <a href="#contact" class="nav-link">
+                        <span class="fs-5">Showcase</span>
+                        <div class="link-hover-effect"></div>
+                    </a>
+                </div>
+
+                <div class="navbar-actions">
+                    <a href="/Login" class="login-btn fs-5 me-4">Login</a>
+                    <a href="/CreateAccount" class="signup-btn">
+                        <span class="fs-5">Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<style>
-.navbar {
-    background: rgba(0, 0, 0, 0.4) !important;
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1.5rem; /* Reduced padding */
-    height: 120px; /* Fixed height for the navbar */
-}
+    <style>
+        .navbar-logo {
+            height: 1000px;
+            /* Reduced from 900px to a reasonable size */
+            width: auto;
+            max-height: 150px;
+            /* Reduced from 150px to match height */
+        }
+        .modern-navbar {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
 
-
-.navbar-nav .nav-link {
-    color: #e2e8f0;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    transition: color 0.2s ease;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #ffffff;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-}
-
-.btn-link {
-    color: #e2e8f0;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    transition: color 0.2s ease;
-}
-
-.btn-link:hover {
-    color: #ffffff;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border: none;
-    padding: 0.5rem 1.25rem;
-    border-radius: 6px;
-    font-weight: 500;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
-}
-
-.navbar-toggler {
-    border: none;
-    padding: 0.5rem;
-}
-
-.navbar-toggler:focus {
-    box-shadow: none;
-}
-
-    
+        .navbar-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
 
-.navbar-logo {
-    height: 1500px; /* Reduced from 900px to a reasonable size */
-    width: auto;
-    max-height: 150px; /* Reduced from 150px to match height */
-}
+        .navbar-links {
+            display: flex;
+            gap: 2.5rem;
+            margin: 0 2rem;
+        }
+
+        .nav-link {
+            position: relative;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .link-hover-effect {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .nav-link:hover .link-hover-effect {
+            width: 100%;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .login-btn {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            color: #ffffff;
+        }
+
+        .signup-btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: white;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
 
 
-</style>
+    </style>
 
     <!-- Hero Section -->
     <section class="hero position-relative overflow-hidden">
@@ -125,17 +174,19 @@
                             </span>
                             <h1 class="display-3 fw-bold mb-4">Secure Your Digital World</h1>
                             <p class="lead text-light-70 mb-5">
-                                Experience Advanced encryption with elegant simplicity. 
-                                Your passwords, documents, and digital identity - all protected 
+                                Experience Advanced encryption with elegant simplicity.
+                                Your passwords, documents, and digital identity - all protected
                                 in one secure vault.
                             </p>
-                            
+
                             <div class="cta-group d-flex flex-wrap gap-3 mb-5">
-                                <a href="/register" class="btn btn-gradient btn-lg px-4 py-3 d-inline-flex align-items-center">
+                                <a href="/register"
+                                    class="btn btn-gradient btn-lg px-4 py-3 d-inline-flex align-items-center">
                                     Start Protecting Now
                                     <i class="fas fa-arrow-right ms-2"></i>
                                 </a>
-                                <a href="#demo" class="btn btn-outline-light btn-lg px-4 py-3 d-inline-flex align-items-center">
+                                <a href="#demo"
+                                    class="btn btn-outline-light btn-lg px-4 py-3 d-inline-flex align-items-center">
                                     <i class="fas fa-play-circle me-2"></i>
                                     See How It Works
                                 </a>
@@ -172,83 +223,84 @@
                                     </div>
                                     <div class="trust-item d-flex align-items-center">
                                         <div class="icon-box bg-primary bg-opacity-10 rounded-circle p-2 me-2">
-                                            <i class="bi bi-shield-shaded text-primary"></i>
+                                            <i class="bi bi-shield-shaded text-danger"></i>
                                         </div>
                                         <div>
                                             <strong>SHA-512</strong>
                                             <div class="text-light-50 small">Hashing</div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                 <div class="col-lg-6 position-relative">
+                <div class="col-lg-6 position-relative">
                     <div class="hero-image-wrapper">
                         <div class="glow-overlay"></div>
-                        <iframe width="760" height="450" src="https://www.youtube.com/embed/XnAVFtasCaM?si=2j5vTOh2KQIios3g" 
-                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
-                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="margin-left: 600px;">
+                        <iframe width="760" height="450"
+                            src="https://www.youtube.com/embed/XnAVFtasCaM?si=2j5vTOh2KQIios3g"
+                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+                        picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                            style="margin-left: 600px;">
                         </iframe>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
 
 
-<style>
-.hero {
-    padding: 180px 0 120px;
-    background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 60%);
-}
+    <style>
+        .hero {
+            padding: 180px 0 120px;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 60%);
+        }
 
-.bg-gradient {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-}
+        .bg-gradient {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
 
-.btn-gradient {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border: none;
-    color: white;
-    transition: transform 0.3s ease;
-}
+        .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border: none;
+            color: white;
+            transition: transform 0.3s ease;
+        }
 
-.btn-gradient:hover {
-    transform: translateY(-2px);
-    color: white;
-}
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
 
-.bg-dark-glass {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .bg-dark-glass {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.floating-animation {
-    animation: float 6s ease-in-out infinite;
-}
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
 
 
 
-.glow-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2), transparent 70%);
-    filter: blur(60px);
-    z-index: 0;
-}
+        .glow-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2), transparent 70%);
+            filter: blur(60px);
+            z-index: 0;
+        }
 
-.animate-in-up {
-    animation: slideUp 0.8s ease-out forwards;
-}
-
-</style>
+        .animate-in-up {
+            animation: slideUp 0.8s ease-out forwards;
+        }
+    </style>
 
     <!-- Features Section -->
     <section id="features" class="section-padding">
@@ -256,7 +308,8 @@
             <div class="text-center mb-5">
                 <span class="badge bg-primary mb-3">Premium Features</span>
                 <h2 class="section-title display-4 fw-bold">Your Security Command Center</h2>
-                <p class="section-subtitle lead text-light-50">Experience next-generation password management and security</p>
+                <p class="section-subtitle lead text-light-50">Experience next-generation password management and
+                    security</p>
             </div>
             <div class="row g-4">
                 <div class="col-md-4">
@@ -266,7 +319,8 @@
                             <i class="fas fa-key fa-2x text-primary"></i>
                         </div>
                         <h3 class="fw-bold mb-3">Password Manager</h3>
-                        <p class="text-light-50">Generate, store, and autofill strong passwords across all your devices.</p>
+                        <p class="text-light-50">Generate, store, and autofill strong passwords across all your devices.
+                        </p>
                         <ul class="feature-list mt-4">
                             <li class="d-flex align-items-center mb-3">
                                 <span class="feature-icon-wrap me-3"><i class="fas fa-check text-primary"></i></span>
@@ -334,262 +388,261 @@
         </div>
     </section>
     <!-- Security Section -->
-<section id="security" class="security-section position-relative overflow-hidden">
-    <div class="security-glow"></div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 text-center mb-5">
-                <div class="badge-wrapper">
-                    <span class="security-badge">Our Most Advanced Security System</span>
+    <section id="security" class="security-section position-relative overflow-hidden">
+        <div class="security-glow"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center mb-5">
+                    <div class="badge-wrapper">
+                        <span class="security-badge">Our Most Advanced Security System</span>
+                    </div>
+                    <h1 class="security-title mt-4">Protected by Advanced Encryption</h1>
+                    <p class="security-subtitle">Using the latest security standards to keep your data safe</p>
                 </div>
-                <h1 class="security-title mt-4">Protected by Advanced Encryption</h1>
-                <p class="security-subtitle">Using the latest security standards to keep your data safe</p>
+            </div>
+
+            <div class="security-grid">
+                <div class="security-card">
+                    <div class="security-icon-wrapper">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2 class="fw-bold">AES-256</h2>
+                    <p>Military-grade encryption protocol</p>
+                    <div class="security-hover-effect"></div>
+                </div>
+
+                <div class="security-card">
+                    <div class="security-icon-wrapper">
+                        <i class="fas fa-fingerprint"></i>
+                    </div>
+                    <h2 class="fw-bold">Authentication</h2>
+                    <p>Advanced fingerprint & face recognition</p>
+                    <div class="security-hover-effect"></div>
+                </div>
+
+                <div class="security-card">
+                    <div class="security-icon-wrapper">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h2 class="fw-bold">Privacy</h2>
+                    <p>Your data remains private, always</p>
+                    <div class="security-hover-effect"></div>
+                </div>
+
+                <div class="security-card">
+                    <div class="security-icon-wrapper">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h2 class="fw-bold">SOC2 Certified</h2>
+                    <p>Highest security standards met</p>
+                    <div class="security-hover-effect"></div>
+                </div>
             </div>
         </div>
-        
-        <div class="security-grid">
-            <div class="security-card">
-                <div class="security-icon-wrapper">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h2 class="fw-bold">AES-256</h2>
-                <p>Military-grade encryption protocol</p>
-                <div class="security-hover-effect"></div>
-            </div>
 
-            <div class="security-card">
-                <div class="security-icon-wrapper">
-                    <i class="fas fa-fingerprint"></i>
-                </div>
-                <h2 class="fw-bold">Authentication</h2>
-                <p>Advanced fingerprint & face recognition</p>
-                <div class="security-hover-effect"></div>
-            </div>
+        <style>
+            .security-section {
+                padding: 120px 0;
+                background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 1));
+            }
 
-            <div class="security-card">
-                <div class="security-icon-wrapper">
-                    <i class="fas fa-key"></i>
-                </div>
-                <h2 class="fw-bold">Privacy</h2>
-                <p>Your data remains private, always</p>
-                <div class="security-hover-effect"></div>
-            </div>
+            .security-glow {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 60%;
+                height: 60%;
+                background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+                filter: blur(100px);
+                pointer-events: none;
+            }
 
-            <div class="security-card">
-                <div class="security-icon-wrapper">
-                    <i class="fas fa-lock"></i>
-                </div>
-                <h2 class="fw-bold">SOC2 Certified</h2>
-                <p>Highest security standards met</p>
-                <div class="security-hover-effect"></div>
-            </div>
-        </div>
-    </div>
+            .security-badge {
+                background: rgba(59, 130, 246, 0.1);
+                color: #3b82f6;
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                backdrop-filter: blur(10px);
+            }
+
+            .security-title {
+                font-size: 2.5rem;
+                margin: 1.5rem 0;
+                background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            .security-subtitle {
+                color: #94a3b8;
+                font-size: 1.1rem;
+            }
+
+            .security-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+                margin-top: 4rem;
+            }
+
+            .security-card {
+                background: rgba(255, 255, 255, 0.03);
+                border-radius: 20px;
+                padding: 2rem;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .security-card:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .security-icon-wrapper {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background: rgba(59, 130, 246, 0.1);
+                color: #3b82f6;
+                font-size: 1.5rem;
+            }
+
+            .security-card h3 {
+                color: #fff;
+                font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .security-card p {
+                color: #94a3b8;
+                font-size: 1rem;
+                margin: 0;
+            }
+
+            .security-hover-effect {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1), transparent 70%);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .security-card:hover .security-hover-effect {
+                opacity: 1;
+            }
+        </style>
+    </section>
+
+
 
     <style>
-        .security-section {
-            padding: 120px 0;
-            background: linear-gradient(to bottom, rgba(15,23,42,0.8), rgba(15,23,42,1));
-        }
-
-        .security-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%);
-            filter: blur(100px);
-            pointer-events: none;
-        }
-
-        .security-badge {
-            background: rgba(59,130,246,0.1);
-            color: #3b82f6;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            backdrop-filter: blur(10px);
-        }
-
-        .security-title {
-            font-size: 2.5rem;
-            margin: 1.5rem 0;
+        h1 {
             background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .security-subtitle {
-            color: #94a3b8;
-            font-size: 1.1rem;
+        h2 {
+            background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .security-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
 
-        .security-card {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+
+
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .security-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.05);
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .security-icon-wrapper {
-            width: 60px;
-            height: 60px;
-            margin: 0 auto 1.5rem;
+        .feature-card.featured {
+            background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(0, 0, 0, 0.2));
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #3b82f6;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+        }
+
+        .feature-icon-wrap {
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            background: rgba(59,130,246,0.1);
-            color: #3b82f6;
-            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .security-card h3 {
-            color: #fff;
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .glow-effect {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
+            top: -75px;
+            right: -75px;
+            border-radius: 50%;
+            pointer-events: none;
         }
 
-        .security-card p {
-            color: #94a3b8;
-            font-size: 1rem;
-            margin: 0;
-        }
-
-        .security-hover-effect {
+        .security-bg-pattern {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at center, rgba(59,130,246,0.1), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.5;
         }
 
-        .security-card:hover .security-hover-effect {
-            opacity: 1;
+        .security-image-wrapper {
+            padding: 20px;
+        }
+
+        .security-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2), transparent 70%);
+            filter: blur(40px);
+            z-index: -1;
+        }
+
+        .text-light-50 {
+            color: rgba(255, 255, 255, 0.5);
         }
     </style>
-</section>
-
-
-
-<style>
-h1 {
-  background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h2 {
-  background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-
-
-
-
-.feature-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 24px;
-    padding: 2.5rem;
-    transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.feature-card.featured {
-    background: linear-gradient(145deg, rgba(59, 130, 246, 0.1), rgba(0, 0, 0, 0.2));
-    border: 2px solid rgba(59, 130, 246, 0.3);
-}
-
-.featured-badge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #3b82f6;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-}
-
-.feature-icon-wrap {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.glow-effect {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
-    top: -75px;
-    right: -75px;
-    border-radius: 50%;
-    pointer-events: none;
-}
-
-.security-bg-pattern {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 20px 20px;
-    opacity: 0.5;
-}
-
-.security-image-wrapper {
-    padding: 20px;
-}
-
-.security-glow {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.2), transparent 70%);
-    filter: blur(40px);
-    z-index: -1;
-}
-
-.text-light-50 {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-</style>
 
     <!-- Pricing Section -->
     <section id="pricing" class="section-padding">
@@ -610,7 +663,7 @@ h2 {
                             <li><i class="fas fa-check"></i> Basic 2FA</li>
                             <li><i class="fas fa-check"></i> 1 GB secure storage</li>
                         </ul>
-                        <a href="/register" class="btn btn-outline-primary w-100">Get Started</a>
+                        <a href="/CreateAccount" class="btn btn-outline-primary w-100">Get Started</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -618,7 +671,59 @@ h2 {
                         <div class="popular-badge">Most Popular</div>
                         <div class="pricing-header">
                             <h3>Premium</h3>
-                            <div class="price">$4.99<span>/month</span></div>
+                            <div class="price">
+                                <span class="free-price">$0</span>
+                                <span class="price-period"> now, then </span>
+                                <div class="regular-price">$4.99<span>/month</span></div>
+                                <div class="trial-badge">7-day free trial</div>
+                            </div>
+
+                            <style>
+                                .price {
+                                    position: relative;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    margin-bottom: 1rem;
+                                }
+
+                                .free-price {
+                                    font-size: 2.5rem;
+                                    font-weight: 700;
+                                    color: #3b82f6;
+                                }
+
+                                .price-period {
+                                    font-size: 1rem;
+                                    color: rgba(255, 255, 255, 0.6);
+                                    margin-bottom: 0.25rem;
+                                }
+
+                                .regular-price {
+                                    font-size: 1rem;
+                                    font-weight: 600;
+                                }
+
+                                .regular-price span {
+                                    font-size: 1rem;
+                                    font-weight: normal;
+                                    opacity: 0.7;
+                                }
+
+                                .trial-badge {
+                                    position: absolute;
+                                    top: -15px;
+                                    right: -25px;
+                                    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                                    color: white;
+                                    padding: 0.25rem 0.75rem;
+                                    border-radius: 20px;
+                                    font-size: 0.75rem;
+                                    font-weight: 500;
+                                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                                    transform: rotate(10deg);
+                                }
+                            </style>
                         </div>
                         <ul class="pricing-features">
                             <li><i class="fas fa-check"></i> Unlimited passwords</li>
@@ -626,7 +731,7 @@ h2 {
                             <li><i class="fas fa-check"></i> 10 GB secure storage</li>
                             <li><i class="fas fa-check"></i> Password sharing</li>
                         </ul>
-                        <a href="/register" class="btn btn-primary w-100">Try Premium</a>
+                        <a href="/PaymentGateway" class="btn btn-primary w-100">Try Free For 7 days</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -646,197 +751,261 @@ h2 {
                 </div>
             </div>
         </div>
-         <div class="plan-comparison mb-5" style="margin-top: 7rem;">
-            <h2 class="text-center mb-4">Plan Comparison</h2>
-            <div class="comparison-table">
-                <div class="comparison-header">
-                    <div class="feature-name"></div>
-                    <div class="plan-header">Free</div>
-                    <div class="plan-header">Premium</div>
-                    <div class="plan-header">Business</div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Password Storage</div>
-                    <div class="feature-value">Up to 30 passwords</div> 
-                    <div class="feature-value">Unlimited</div>
-                    <div class="feature-value">Unlimited</div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Secure Notes</div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Priority Support</div>
-                    <div class="feature-value"><i class="fas fa-times text-danger"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Team Sharing</div>
-                    <div class="feature-value">Up to 2</div>
-                    <div class="feature-value">Up to 5</div>
-                    <div class="feature-value">Unlimited</div>
-                </div>
+        <style>
+            .plan-comparison {
+                background: rgba(255, 255, 255, 0.02);
+                border-radius: 24px;
+                padding: 3rem 2rem;
+                margin-top: 4rem;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .comparison-header {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .comparison-feature {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1rem;
+                padding: 1rem;
+                transition: background 0.3s ease;
+            }
+
+            .comparison-feature:hover {
+                background: rgba(255, 255, 255, 0.03);
+            }
+
+            .feature-name {
+                color: rgba(255, 255, 255, 0.8);
+            }
+
+            .check-icon {
+                color: #3b82f6;
+                font-size: 1.2rem;
+            }
+
+            .x-icon {
+                color: rgba(255, 255, 255, 0.3);
+                font-size: 1.2rem;
+            }
+        </style>
+
+        <div class="plan-comparison w-50 mx-auto">
+            <div class="comparison-header">
+                <div></div>
+                <div class="text-center"><h4>Free</h4></div>
+                <div class="text-center"><h4>Premium</h4></div>
+                <div class="text-center"><h4>Business</h4></div>
+            </div>
+
+            <div class="comparison-feature">
+                <div class="feature-name">Password Storage</div>
+                <div class="text-center">30 passwords</div>
+                <div class="text-center">Unlimited</div>
+                <div class="text-center">Unlimited</div>
+            </div>
+
+            <div class="comparison-feature">
+                <div class="feature-name">Secure Storage</div>
+                <div class="text-center">1 GB</div>
+                <div class="text-center">10 GB</div>
+                <div class="text-center">100 GB</div>
+            </div>
+
+            <div class="comparison-feature">
+                <div class="feature-name">Password Sharing</div>
+                <div class="text-center"><i class="fas fa-times x-icon"></i></div>
+                <div class="text-center"><i class="fas fa-check check-icon"></i></div>
+                <div class="text-center"><i class="fas fa-check check-icon"></i></div>
+            </div>
+
+            <div class="comparison-feature">
+                <div class="feature-name">Team Management</div>
+                <div class="text-center"><i class="fas fa-times x-icon"></i></div>
+                <div class="text-center"><i class="fas fa-times x-icon"></i></div>
+                <div class="text-center"><i class="fas fa-check check-icon"></i></div>
+            </div>
+
+            <div class="comparison-feature">
+                <div class="feature-name">API Access</div>
+                <div class="text-center"><i class="fas fa-times x-icon"></i></div>
+                <div class="text-center"><i class="fas fa-times x-icon"></i></div>
+                <div class="text-center"><i class="fas fa-check check-icon"></i></div>
+            </div>
+
+            <div class="comparison-feature">
+                <div class="feature-name">Advanced 2FA</div>
+                <div class="text-center"><i class="fas fa-times x-icon"></i></div>
+                <div class="text-center"><i class="fas fa-check check-icon"></i></div>
+                <div class="text-center"><i class="fas fa-check check-icon"></i></div>
             </div>
         </div>
+    </section>
+    <section id="contact" class="section-padding bg-darker">
+        <div class="container text-center mb-5">
+            <div class="section-header">
+                <h1 class="section-title mb-3">See Plart in Action</h1>
+                <div class="title-underline"></div>
+                <p class="section-subtitle mt-4 fs-5">Discover how our intuitive interface makes password management
+                    simple and secure</p>
+            </div>
+        </div>
+        <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button>
+            </div>
 
+            <!-- Slides -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="images/slide1.png" class="d-block w-100" alt="Password Security">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Password Security</h2>
+                        <p>Protect your digital life with advanced encryption</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/slide2.png" class="d-block w-100" alt="Easy Management">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Easy Management</h2>
+                        <p>Manage all your passwords in one secure place</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="images/slide3.jpg" class="d-block w-100" alt="Team Collaboration">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2>Team Collaboration</h2>
+                        <p>Share passwords securely with your team</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
     </section>
 
-<style>
-.plan-comparison {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-    width: 50%; /* Add this to ensure full width container */
-    display: flex; /* Add this */
-    flex-direction: column; /* Add this */
-    align-items: center; /* Add this */
-    justify-content: center; /* Add this */
-    margin: 0; /* Add this 
-}
+    <style>
+        .carousel {
+            margin-top: 120px;
 
-.comparison-table {
-    width: 80%; /* Increased width for better responsiveness */
-    max-width: 1000px; /* Maximum width to maintain readability */
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 0 auto;
-}
+        }
 
-    .comparison-header {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        background: rgba(59, 130, 246, 0.1);
-        padding: 1rem;
-        font-weight: bold;
-    }
+        .carousel-item {
+            height: 70vh;
+        }
 
-    .comparison-row {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        padding: 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .carousel-item img {
+            object-fit: contain;
+            /* Changed from 'cover' to 'contain' to prevent cropping */
+            height: 100%;
+            width: 100%;
 
-    .comparison-row:last-child {
-        border-bottom: none;
-    }
+        }
 
-    .feature-name {
-        font-weight: 500;
-    }
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.7);
+            /* Slightly darker for better readability */
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            max-width: 80%;
+        }
 
-    .feature-value {
-        text-align: center;
-    }
 
-    .plan-header {
-        text-align: center;
-        color: #3b82f6;
-    }
+        .carousel-indicators {
+            margin-bottom: 2rem;
+        }
 
-    .comparison-row:hover {
-        background: rgba(255, 255, 255, 0.05);
-    }
-</style>
+        .carousel-indicators button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin: 0 5px;
+        }
 
-<section id="contact" class="section-padding bg-darker">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-7 text-center">
-                <h2 class="section-title">Get in Touch</h2>
-                <p class="section-subtitle mb-5">Have questions? We're here to help.</p>
-                <div class="contact-card">
-                    <form class="contact-form">
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control custom-input" id="nameInput" placeholder="Your Name">
-                            <label for="nameInput">Your Name</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="email" class="form-control custom-input" id="emailInput" placeholder="Your Email">
-                            <label for="emailInput">Your Email</label>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <textarea class="form-control custom-input" id="messageInput" placeholder="Your Message" style="height: 120px"></textarea>
-                            <label for="messageInput">Your Message</label>
-                        </div>
-                        <button type="submit" class="btn btn-gradient btn-lg px-5">
-                            <i class="fas fa-paper-plane me-2"></i>
-                            Send Message
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 5%;
+        }
 
-<style>
-.contact-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 2.5rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-}
+        .contact-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
 
-.custom-input {
-    background: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 12px !important;
-    color: #fff !important;
-    font-size: 1rem;
-    padding: 1.2rem 1rem !important;
-    transition: all 0.3s ease;
-}
+        .custom-input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 12px !important;
+            color: #fff !important;
+            font-size: 1rem;
+            padding: 1.2rem 1rem !important;
+            transition: all 0.3s ease;
+        }
 
-.custom-input:focus {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(59, 130, 246, 0.5) !important;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
-}
+        .custom-input:focus {
+            background: rgba(255, 255, 255, 0.08) !important;
+            border-color: rgba(59, 130, 246, 0.5) !important;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+        }
 
-.form-floating > label {
-    color: rgba(255, 255, 255, 0.6);
-    padding-left: 1rem;
-}
+        .form-floating>label {
+            color: rgba(255, 255, 255, 0.6);
+            padding-left: 1rem;
+        }
 
-.form-floating > .custom-input::placeholder {
-    color: transparent;
-}
+        .form-floating>.custom-input::placeholder {
+            color: transparent;
+        }
 
-.form-floating > .custom-input:focus ~ label,
-.form-floating > .custom-input:not(:placeholder-shown) ~ label {
-    color: rgba(0, 0, 0, 0.8);
-    transform: scale(0.85) translateY(-0.75rem) translateX(0.15rem);
-}
+        .form-floating>.custom-input:focus~label,
+        .form-floating>.custom-input:not(:placeholder-shown)~label {
+            color: rgba(0, 0, 0, 0.8);
+            transform: scale(0.85) translateY(-0.75rem) translateX(0.15rem);
+        }
 
-.contact-form .btn-gradient {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border: none;
-    color: white;
-    transition: all 0.3s ease;
-}
+        .contact-form .btn-gradient {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            border: none;
+            color: white;
+            transition: all 0.3s ease;
+        }
 
-.contact-form .btn-gradient:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(29, 78, 216, 0.2);
-}
-</style>
+        .contact-form .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(29, 78, 216, 0.2);
+        }
+    </style>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <div class="footer-brand">
                         <a class="navbar-brand" href="/">
-                            <img src="images/plart4.png" class="navbar-logo"/>
+                            <img src="images/plart4.png" class="navbar-logo" />
                         </a>
                     </div>
                 </div>
@@ -869,7 +1038,7 @@ h2 {
             <hr class="mt-5">
             <div class="row align-items-center py-3">
                 <div class="col-lg-6">
-                    <p class="mb-lg-0">© 2025 Plart. All rights reserved.</p>
+                    <p class="mb-lg-0">© 2025 Plart. All rights reserved. 485/87 Ostrava, Czech republic</p>
                 </div>
                 <div class="col-lg-6 text-lg-end">
                     <a href="#" class="me-3">Privacy Policy</a>
@@ -883,11 +1052,6 @@ h2 {
 
 
 <style>
-
-
-
-
-
     .landing-page {
         background: linear-gradient(135deg, #0f172a, #1e293b);
         color: #f8fafc;
@@ -977,16 +1141,21 @@ h2 {
     .footer-links a:hover {
         opacity: 1;
     }
-    
+
 
     .form-control {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
         color: #f8fafc;
     }
-    .form-control::placeholder { /* Add this line */
-        color: #f8fafc; /* And this line */
-    } /*
+
+    .form-control::placeholder {
+        /* Add this line */
+        color: #f8fafc;
+        /* And this line */
+    }
+
+    /*
 
     .form-control:focus {
         background: rgba(255, 255, 255, 0.1);

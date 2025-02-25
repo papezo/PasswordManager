@@ -1,302 +1,578 @@
 ﻿@page "/PaymentGateway"
 @using System.Collections.Generic
+@using System.Text.RegularExpressions
 
 @rendermode InteractiveServer
 
 <div class="payment-page">
     <div class="container py-5">
-        @if(!showForm)
+        @if (!showForm)
         {
-        <h1 class="title-gradient mb-5">Unlock Premium Features</h1>
-        
-        <!-- Features Section -->
-        <div class="features-container mb-5">
-            <div class="row g-4">
-                <div class="col-md-3">
-                    <div class="feature-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-shield-alt"></i>
+            <h1 class="title-gradient mb-5">Unlock Premium Features</h1>
+
+            <!-- Features Section -->
+            <div class="features-container mb-5">
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h5>Advanced Security</h5>
+                            <p>Our most advanced encryption for your sensitive data</p>
                         </div>
-                        <h5>Advanced Security</h5>
-                        <p>Our most advanced encryption for your sensitive data</p>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="feature-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-infinity"></i>
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-infinity"></i>
+                            </div>
+                            <h5>Unlimited Storage</h5>
+                            <p>Store unlimited passwords and secure notes</p>
                         </div>
-                        <h5>Unlimited Storage</h5>
-                        <p>Store unlimited passwords and secure notes</p>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="feature-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-share-alt"></i>
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <h5>Secure Sharing</h5>
+                            <p>Share credentials safely with your team</p>
                         </div>
-                        <h5>Secure Sharing</h5>
-                        <p>Share credentials safely with your team</p>
                     </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="feature-card">
-                        <div class="icon-wrapper">
-                            <i class="fas fa-headset"></i>
+                    <div class="col-md-3">
+                        <div class="feature-card">
+                            <div class="icon-wrapper">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h5>24/7 Support</h5>
+                            <p>Get help whenever you need it</p>
                         </div>
-                        <h5>24/7 Support</h5>
-                        <p>Get help whenever you need it</p>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!-- Pricing Cards -->
-        <div class="text-center mb-5">
-            <h2 class="section-title">Simple, Transparent Pricing</h2>
-            <p class="section-subtitle">Choose the plan that works for you</p>
-        </div>
-        <div class="row g-4 pricing-container">
-            <div class="col-md-4">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Free</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">0.00</span>
-                            <span class="period">/month</span>
+            <!-- Pricing Cards -->
+            <div class="text-center mb-5">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Choose the plan that works for you</p>
+            </div>
+            <div class="row g-4 pricing-container">
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Free</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">0.00</span>
+                                <span class="period">/month</span>
+                            </div>
                         </div>
+                        <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
                     </div>
-                    <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="pricing-card popular">
-                    <div class="popular-badge fw-bold">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Premium</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">4.99</span>
-                            <span class="period">/month</span>
+                <div class="col-md-4">
+                    <div class="pricing-card popular">
+                        <div class="popular-badge fw-bold">Most Popular</div>
+                        <div class="pricing-header">
+                            <h3>Premium</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">4.99</span>
+                                <span class="period">/month</span>
+                            </div>
                         </div>
+                        <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
                     </div>
-                    <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Business</h3>
-                        <div class="price">
-                            <span class="currency">$</span>
-                            <span class="amount">20.99</span>
-                            <span class="period">/month</span>
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3>Business</h3>
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount">20.99</span>
+                                <span class="period">/month</span>
+                            </div>
                         </div>
+                        <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
                     </div>
-                    <button class="btn-purchase" @onclick="TakeDeal">Choose Plan</button>
                 </div>
             </div>
-        </div>
-                <!-- Plan Comparison -->
-        <div class="plan-comparison mb-5" style="margin-top: 7rem;">
-            <h2 class="text-center mb-4">Plan Comparison</h2>
-            <div class="comparison-table">
-                <div class="comparison-header">
-                    <div class="feature-name"></div>
-                    <div class="plan-header">Free</div>
-                    <div class="plan-header">Monthly</div>
-                    <div class="plan-header">Business</div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Password Storage</div>
-                    <div class="feature-value">Up to 30 passwords</div> 
-                    <div class="feature-value">Unlimited</div>
-                    <div class="feature-value">Unlimited</div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Secure Notes</div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Priority Support</div>
-                    <div class="feature-value"><i class="fas fa-times text-danger"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                    <div class="feature-value"><i class="fas fa-check text-success"></i></div>
-                </div>
-                <div class="comparison-row">
-                    <div class="feature-name">Team Sharing</div>
-                    <div class="feature-value">Up to 2</div>
-                    <div class="feature-value">Up to 5</div>
-                    <div class="feature-value">Unlimited</div>
+            <!-- Plan Comparison -->
+            <div class="plan-comparison mb-5" style="margin-top: 7rem;">
+                <h2 class="text-center mb-4">Plan Comparison</h2>
+                <div class="comparison-table">
+                    <div class="comparison-header">
+                        <div class="feature-name"></div>
+                        <div class="plan-header">Free</div>
+                        <div class="plan-header">Monthly</div>
+                        <div class="plan-header">Business</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="feature-name">Password Storage</div>
+                        <div class="feature-value">Up to 30 passwords</div>
+                        <div class="feature-value">Unlimited</div>
+                        <div class="feature-value">Unlimited</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="feature-name">Secure Notes</div>
+                        <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                        <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                        <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="feature-name">Priority Support</div>
+                        <div class="feature-value"><i class="fas fa-times text-danger"></i></div>
+                        <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                        <div class="feature-value"><i class="fas fa-check text-success"></i></div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="feature-name">Team Sharing</div>
+                        <div class="feature-value">Up to 2</div>
+                        <div class="feature-value">Up to 5</div>
+                        <div class="feature-value">Unlimited</div>
+                    </div>
                 </div>
             </div>
-        </div>
         }
         else
         {
-            <div class="payment-form">
-            <h2 class="mb-5 text-center">Payment Details</h2>
-            
-            <!-- Address Form -->
-            <div class="mb-4">
-                <h5 class="mb-4 text-center">Billing Address</h5>
-                <div class="row mb-3">
-                <div class="col-md-12">
-                    <label class="form-label fw-bold">Street Address</label>
-                    <input type="text" class="form-control" placeholder="123 Main St"/>
+            <div class="payment-form w-100">
+                <h1 class="mb-5 text-center">Payment Details</h1>
+                <!-- Order Summary -->
+                <div class="order-summary mt-4 mb-5">
+                    <div class="summary-header">
+                        <h5 class="fs-bold">Order Summary</h5>
+                        <div class="pulse-badge">Premium</div>
+                    </div>
+                    <hr>
+                    <div class="summary-card">
+                        <div class="summary-item d-flex justify-content-between">
+                            <span><i class="fas fa-tag me-2"></i>Plan</span>
+                            <span class="fw-bold">Premium Monthly</span>
+                        </div>
+                        <div class="summary-item d-flex justify-content-between">
+                            <span><i class="fas fa-money-bill me-2"></i>Price</span>
+                            <span class="fw-bold">$4.99/month</span>
+                        </div>
+                        <div class="summary-item d-flex justify-content-between">
+                            <span><i class="fas fa-calendar-alt me-2"></i>Billing cycle</span>
+                            <span>Monthly</span>
+                        </div>
+                        
+                        <div class="summary-divider">
+                            <div class="divider-dot"></div>
+                            <div class="divider-line"></div>
+                            <div class="divider-dot"></div>
+                        </div>
+                        
+                        <div class="summary-total d-flex justify-content-between align-items-center">
+                            <span>Total today</span>
+                            <div class="total-price-wrapper">
+                                <span class="currency">$</span>
+                                <span class="total-price">4.99</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-                <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">City</label>
-                    <input type="text" class="form-control" placeholder="City"/>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">Postal Code</label>
-                    <input type="text" class="form-control" placeholder="12345"/>
-                </div>
-                </div>
-                <div class="row mb-4">
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">Country</label>
-                    <input type="text" class="form-control" placeholder="Country"/>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">State/Province</label>
-                    <input type="text" class="form-control" placeholder="State"/>
-                </div>
-                </div>
-            </div>
-            <hr class="mt-5">
-
-            <div class="mb-4 mt-5">
-                <h5 class="mb-4 text-center">Select Payment Method</h5>
-                <div class="payment-methods">
-                <div class="payment-method @(selectedMethod == "card" ? "selected" : "")" @onclick='() => SelectMethod("card")'>
-                    <i class="fas fa-credit-card"></i>
-                    <span>Credit Card</span>
-                </div>
-                <div class="payment-method @(selectedMethod == "paypal" ? "selected" : "")" @onclick='() => SelectMethod("paypal")'>
-                    <i class="fab fa-paypal"></i>
-                    <span>PayPal</span>
-                </div>
-                </div>
-            </div>
-
-            @if (selectedMethod == "card")
-            {
-              <div class="card-form">
-                <div class="mb-3">
-                <label class="form-label fw-bold">Card Number</label>
-                <div class="input-group">
-                <span class="input-group-text form-control-bg">
-                    <i class="bi bi-lock-fill text-white"></i>
-                </span>
-                <input type="text" class="form-control" placeholder="1234 5678 9012 3456"/>
-                </div>
-                </div>
-
-                <div class="row mb-3">
-                <div class="col-md-6">
-                <label class="form-label fw-bold">Expiration Date</label>
-                <input type="text" class="form-control" placeholder="MM/YY"/>
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label fw-bold">CVV</label>
-                    <input type="text" class="form-control" placeholder="123" />
-                </div>
-                </div>
-
-                <div class="row mb-4">
-                <div class="col-md-6">
-                <label class="form-label fw-bold">Name</label>
-                <input type="text" class="form-control" placeholder="John"/>
-                </div>
-                <div class="col-md-6">
-                <label class="form-label fw-bold">Last Name</label>
-                <input type="text" class="form-control" placeholder="Doe" />
-                </div>
+                <!-- Address Form -->
+                <div class="mb-4 mt-5">
+                    <h5 class="mb-4 text-center fw-bold">Billing Address</h5>
+                    <hr>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold">Street Address</label>
+                            <input type="text" class="form-control" placeholder="123 Main St" />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">City</label>
+                            <input type="text" class="form-control" placeholder="City" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Postal Code</label>
+                            <input type="text" class="form-control" placeholder="12345" />
+                        </div>
+                    </div>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Country</label>
+                                <select class="form-control" @bind="selectedCountry">
+                                    <option value="">Select a country</option>
+                                    @foreach (var country in countries)
+                                    {
+                                        <option value="@country">@country</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">State/Province</label>
+                                <input type="text" class="form-control" placeholder="State" />
+                            </div>
+                        </div>
                 </div>
 
-                <div class="text-center mt-5">
-                 <button class="btn-purchase w-25 " @onclick="ProcessPayment">Pay Now</button>
+
+                <div class="mb-4 mt-5">
+                    <h5 class="mb-4 text-center fw-bold">Select Payment Method</h5>
+                    <hr>
+                    <div class="payment-methods">
+                        <div class="payment-method @(selectedMethod == "card" ? "selected" : "")"
+                            @onclick='() => SelectMethod("card")'>
+                            <i class="fas fa-credit-card"></i>
+                            <span>Credit / Debit Card</span>
+                            <img src="images/visa.png" />
+                            <img src="images/mastercard.png" />
+                        </div>
+                        <div class="payment-method @(selectedMethod == "paypal" ? "selected" : "")"
+                            @onclick='() => SelectMethod("paypal")'>
+                            <i class="fab fa-paypal"></i>
+                            <span>PayPal</span>
+                        </div>
+                    </div>
                 </div>
-               
-                </div>
-            }
-            else if (selectedMethod == "paypal")
-            {
-                <div class="text-center">
-                <button class="btn-purchase w-25 mt-5" @onclick="ProcessPaypal">
-                    <i class="fab fa-paypal me-2"></i> Continue with PayPal
-                </button>
-                </div>
-            }
+
+                @if (selectedMethod == "card")
+                {
+                    <div class="card-form">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Card Number</label>
+                            <div class="input-group">
+                                <span class="input-group-text form-control-bg">
+                                    <i class="bi bi-credit-card text-white fs-4"></i>
+                                </span>
+                                <input type="text" class="form-control" placeholder="1234 5678 9012 3456" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Expiration Date</label>
+                                <input type="text" class="form-control" placeholder="MM/YY" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">CVV</label>
+                                <input type="text" class="form-control" placeholder="123" />
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Name</label>
+                                <input type="text" class="form-control" placeholder="Mark" />
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Last Name</label>
+                                <input type="text" class="form-control" placeholder="Clark" />
+                            </div>
+                        </div>
+                        <div class="form-check mb-4 d-flex align-items-center justify-content-center">
+                            <input class="form-check-input custom-checkbox" type="checkbox" id="termsCheck">
+                            <label class="form-check-label ms-3 terms-label" for="termsCheck">
+                                I agree to the <a href="#" class="terms-link">Terms of Service</a> and 
+                                <a href="#" class="terms-link">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <style>
+                            .custom-checkbox {
+                                width: 20px;
+                                height: 20px;
+                                background-color: rgba(255, 255, 255, 0.1);
+                                border: 1px solid rgba(255, 255, 255, 0.3);
+                                border-radius: 6px;
+                                cursor: pointer;
+                                transition: all 0.2s ease;
+                            }
+
+                            .custom-checkbox:checked {
+                                background-color: #3b82f6;
+                                border-color: #3b82f6;
+                                box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+                            }
+
+                            .terms-label {
+                                font-size: 0.95rem;
+                                color: rgba(255, 255, 255, 0.8);
+                            }
+
+                            .terms-link {
+                                color: #3b82f6;
+                                position: relative;
+                                text-decoration: none;
+                                font-weight: 500;
+                                transition: all 0.2s ease;
+                            }
+
+                            .terms-link:after {
+                                content: '';
+                                position: absolute;
+                                width: 0;
+                                height: 1px;
+                                bottom: 0;
+                                left: 0;
+                                background-color: #3b82f6;
+                                transition: width 0.3s ease;
+                            }
+
+                            .terms-link:hover {
+                                color: #60a5fa;
+                            }
+
+                            .terms-link:hover:after {
+                                width: 100%;
+                            }
+                        </style>
+
+                        <div class="text-center mt-3">
+                            <button class="btn-purchase w-25 " @onclick="ProcessPayment">Pay Now</button>
+                        </div>
+                        
+                        <div class="secure-payment text-center mt-4 mb-3">
+                            <div class="secure-badge">
+                                <i class="fas fa-lock me-2"></i>
+                                <span class="fw-bold">Secure Payment - 256-bit SSL Encrypted</span>
+                            </div>
+                        </div>
+                        
+                        
+                        
+
+                        <style>
+                            .secure-payment {
+                                margin-top: 2rem;
+                            }
+                            
+                            .secure-badge {
+                                display: inline-flex;
+                                align-items: center;
+                                justify-content: center;
+                                padding: 8px 16px;
+                                background: rgba(39, 174, 96, 0.15);
+                                border: 1px solid rgba(39, 174, 96, 0.3);
+                                border-radius: 20px;
+                                color: #2ecc71;
+                                font-size: 0.9rem;
+                                font-weight: 500;
+                                transition: all 0.3s ease;
+                            }
+
+                            .secure-badge:hover {
+                                background: rgba(39, 174, 96, 0.25);
+                                transform: translateY(-2px);
+                            }
+
+                            .secure-badge i {
+                                font-size: 1rem;
+                                margin-right: 6px;
+                            }
+                        </style>
+
+                    </div>
+                }
+                else if (selectedMethod == "paypal")
+                {
+                    <div class="text-center">
+                        <button class="btn-purchase w-25 mt-5" @onclick="ProcessPaypal">
+                            <i class="fab fa-paypal me-2"></i> Continue with PayPal
+                        </button>
+                    </div>
+                }
             </div>
         }
     </div>
 </div>
 
 <style>
+                        .order-summary {
+                        margin-bottom: 2.5rem;
+                    }
+                    
+                    .summary-header {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        margin-bottom: 1.5rem;
+                        position: relative;
+                    }
+                    
+                    .summary-header h5 {
+                        font-weight: 600;
+                        position: relative;
+                        display: inline-block;
+                    }
+                    
+                    .pulse-badge {
+                        font-size: 0.8rem;
+                        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                        color: white;
+                        padding: 3px 10px;
+                        border-radius: 12px;
+                        margin-left: 10px;
+                        box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+                        animation: pulse-animation 2s infinite;
+                    }
+                    
+                    
+                    .summary-card {
+                        background: rgba(255, 255, 255, 0.08);
+                        border-radius: 16px;
+                        padding: 1.8rem;
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                        backdrop-filter: blur(12px);
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    .summary-card:hover {
+                        transform: translateY(-5px);
+                    }
+                    
+                    .summary-item {
+                        margin-bottom: 1rem;
+                        color: rgba(255, 255, 255, 0.85);
+                        font-size: 1rem;
+                    }
+                    
+                    .summary-item i {
+                        color: #3b82f6;
+                        width: 20px;
+                    }
+                    
+                    .summary-divider {
+                        position: relative;
+                        height: 20px;
+                        margin: 1.5rem 0;
+                        display: flex;
+                        align-items: center;
+                    }
+                    
+                    .divider-line {
+                        flex: 1;
+                        height: 1px;
+                        background: linear-gradient(to right, 
+                            rgba(255,255,255,0.05), 
+                            rgba(255,255,255,0.2), 
+                            rgba(255,255,255,0.05));
+                    }
+                    
+                    .divider-dot {
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background: #3b82f6;
+                        margin: 0 5px;
+                    }
+                    
+                    .summary-total {
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                    }
+                    
+                    .total-price-wrapper {
+                        display: flex;
+                        align-items: baseline;
+                    }
+                    
+                    .currency {
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: #3b82f6;
+                        margin-right: 2px;
+                    }
+                    
+                    .total-price {
+                        font-size: 1.8rem;
+                        font-weight: 700;
+                        background: linear-gradient(135deg, #3b82f6, #60a5fa);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                    
+                    .summary-footer {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 1rem;
+                        color: rgba(255, 255, 255, 0.6);
+                        font-size: 0.85rem;
+                    }
+                    
+                    .summary-footer i {
+                        color: #2ecc71;
+                    }
     .payment-form {
-                    width: 50vh;
-                    margin: 0 auto;
-                    padding: 2rem;
-                    background: rgba(255, 255, 255, 0.05);
-                    border-radius: 15px;
-                    backdrop-filter: blur(10px);
-                }
+        width: 50vh;
+        margin: 0 auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 15px;
+        backdrop-filter: blur(10px);
+    }
 
-                .payment-methods {
-                    display: flex;
-                    gap: 1rem;
-                }
+    .payment-method img {
+        max-height: 35px;
+        margin-left: 0.5rem;
 
-                .payment-method {
-                    flex: 1;
-                    padding: 1rem;
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    border-radius: 10px;
-                    text-align: center;
-                    cursor: pointer;
-                    transition: all 0.3s ease;
-                }
+    }
 
-                .payment-method.selected {
-                    background: rgba(59, 130, 246, 0.1);
-                    border-color: #3b82f6;
-                }
+    .payment-methods {
+        display: flex;
+        gap: 1rem;
+    }
 
-                .payment-method i {
-                    font-size: 1.5rem;
-                    margin-bottom: 0.5rem;
-                }
+    .payment-method {
+        flex: 1;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-                .form-control-bg
-                {
-                    background: rgba(255, 255, 255, 0.1);
-                    border: none;
-                }
 
-                .form-control {
-                    background: rgba(255, 255, 255, 0.1);
-                    border: 1px solid rgba(255, 255, 255, 0.1);
-                    color: white;
-                    padding: 0.75rem;
-                }
+    .payment-method.selected {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: #3b82f6;
+    }
 
-                .form-control::placeholder {
-                    color: rgba(255, 255, 255, 0.5);
-                }
+    .payment-method i {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
 
-                .form-label {
-                    color: white;
-                    margin-bottom: 0.5rem;
-                }
+    .payment-method i,
+    .payment-method span {
+        margin-right: auto;
+    }
+
+    .form-control-bg {
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+    }
+
+    .form-control {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: white;
+        padding: 0.75rem;
+    }
+
+    .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-label {
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+
     /* Add these styles to your existing CSS */
     .plan-comparison {
         background: rgba(255, 255, 255, 0.05);
@@ -349,20 +625,26 @@
 </style>
 
 <style>
-.payment-page {
-    background: linear-gradient(135deg, #0f172a, #1e3a8a);
-    min-height: 100vh;
-    color: white;
-}
+    .payment-page {
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        min-height: 100vh;
+        color: white;
+    }
 
-.title-gradient {
-    background: linear-gradient(to right, #3b82f6, #2563eb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 3rem;
-    text-align: center;
-    font-weight: bold;
-}
+    .title-gradient {
+        background: linear-gradient(to right, #3b82f6, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 3rem;
+        text-align: center;
+        font-weight: bold;
+    }
+    input:focus {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: rgba(59, 130, 246, 0.5) !important;
+        color: white !important;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15) !important;
+    }
 
     .feature-card {
         background: rgba(255, 255, 255, 0.05);
@@ -377,16 +659,16 @@
         transform: translateY(-5px);
     }
 
-.icon-wrapper {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1.5rem;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    .icon-wrapper {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     .icon-wrapper i {
         font-size: 1.8rem;
@@ -402,33 +684,34 @@
         transition: all 0.3s ease;
         position: relative;
     }
+
     h1 {
-  background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+        background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-h2 {
-  background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+    h2 {
+        background: -webkit-linear-gradient(#3b82f6, #1e3a8a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
 
-.pricing-card.popular {
-    transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.1);
-    border: 2px solid #3b82f6;
-}
+    .pricing-card.popular {
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid #3b82f6;
+    }
 
-.popular-badge {
-    position: absolute;
-    top: -12px;
-    right: 20px;
-    background: green;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-}
+    .popular-badge {
+        position: absolute;
+        top: -12px;
+        right: 20px;
+        background: green;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
 
 
     .price {
@@ -450,17 +733,17 @@ h2 {
         color: #a0a0a0;
     }
 
-.btn-purchase {
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
+    .btn-purchase {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
 
     .btn-purchase:hover {
         transform: scale(1.05);
@@ -477,27 +760,55 @@ h2 {
 @code {
     private bool showForm = false;
     private string selectedMethod = "card";
-                private string cardNumber = "";
-                private string expiryDate = "";
-                private string cvv = "";
-                private string cardholderName = "";
+    private string cardNumber = "";
+    private string expiryDate = "";
+    private string cvv = "";
+    private string cardholderName = "";
+    private string selectedCountry = "";
+    private List<string> countries = new List<string>
+    {
+        "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", 
+        "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", 
+        "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", 
+        "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", 
+        "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", 
+        "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", 
+        "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", 
+        "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", 
+        "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea, North", "Korea, South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", 
+        "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", 
+        "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", 
+        "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", 
+        "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", 
+        "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", 
+        "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", 
+        "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", 
+        "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", 
+        "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", 
+        "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", 
+        "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", 
+        "Yemen", "Zambia", "Zimbabwe"
+    };
 
-                private void SelectMethod(string method)
-                {
-                    selectedMethod = method;
-                }
+    private void SelectMethod(string method)
+    {
+        selectedMethod = method;
+    }
 
-                private async Task ProcessPayment()
-                {
-                    // Add payment processing logic here
-                }
+    private async Task ProcessPayment()
+    {
+        // Add payment processing logic here
+    }
 
-                private async Task ProcessPaypal()
-                {
-                    // Add PayPal integration logic here
-                }
-    private async Task TakeDeal() 
+    private async Task ProcessPaypal()
+    {
+        // Add PayPal integration logic here
+    }
+    private async Task TakeDeal()
     {
         showForm = true;
     }
+
+
+
 }
